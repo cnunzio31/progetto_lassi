@@ -26,7 +26,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :invitation_flag
 
       ## Used by canard
-      t.integer :roles_mask
+      t.integer :roles_mask, default: 2
 
       ## Confirmable
       # t.string   :confirmation_token

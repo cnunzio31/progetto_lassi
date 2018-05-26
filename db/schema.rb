@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
     t.string "last_sign_in_ip"
     t.string "username"
     t.boolean "invitation_flag"
-    t.integer "roles_mask"
+    t.integer "roles_mask", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
