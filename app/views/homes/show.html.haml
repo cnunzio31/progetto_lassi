@@ -3,3 +3,5 @@
 %h2= link_to "Clicca qui per andare, #{@prova}", new_home_path
 =form_tag destroy_user_session_path, :method => :delete do
   =submit_tag 'Log out'
+=form_tag edit_user_registration_path, :method => :get do
+  =submit_tag 'Change username and password'

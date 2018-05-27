@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resource :homes
+  resource :home
   resource :sessions
   resource :matches
   resource :invitations
