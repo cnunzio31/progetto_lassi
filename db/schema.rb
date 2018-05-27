@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
     t.string "last_sign_in_ip"
     t.string "username"
     t.boolean "invitation_flag"
-    t.integer "roles_mask", default: 2
+    t.integer "roles_mask"
     t.string "provider"
     t.string "uid"
     t.datetime "created_at", null: false
