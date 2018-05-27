@@ -28,6 +28,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Used by canard
       t.integer :roles_mask, default: 2
 
+      ## Used by oauth google
+      t.string :provider
+      t.string :uid
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -47,5 +51,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
+
+    ## Used by oauth google
+    add_index :users, [:uid, :provider], unique: true
   end
 end
