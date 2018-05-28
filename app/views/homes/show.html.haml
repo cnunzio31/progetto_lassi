@@ -1,7 +1,19 @@
 %h1 MYDND
 %h2= @prova
-%h2= link_to "Clicca qui per andare, #{@prova}", new_home_path
+-#if can? :create, Home
+-if current_user.has_role?(:notdefined)
+  = form_tag home_path, :method => :post do
+    = select :user, :roles_mask, [1, 2]
+    = submit_tag 'Save Changes'
+-elsif current_user.has_role?(:master)
+  =form_tag edit_user_registration_path, :method => :get do
+    =submit_tag 'Change username and password'
+-elsif current_user.has_role?(:player)
+  %h2= link_to "Clicca qui per andare, #{@prova}", new_home_path
+  =form_tag edit_user_registration_path, :method => :get do
+    =submit_tag 'Change username and password'
+-elsif current_user.has_role?(:admin)
+  =form_tag edit_user_registration_path, :method => :get do
+    =submit_tag 'Change username and password'
 =form_tag destroy_user_session_path, :method => :delete do
   =submit_tag 'Log out'
-=form_tag edit_user_registration_path, :method => :get do
-  =submit_tag 'Change username and password'

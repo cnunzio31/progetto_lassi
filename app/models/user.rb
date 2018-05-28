@@ -6,5 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2, :github]
 
-  acts_as_user :roles => [ :master, :player, :admin ]
+  acts_as_user :roles => [ :master, :player, :notdefined, :admin ]
 end
