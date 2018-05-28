@@ -19086,3 +19086,609 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 107ms (Views: 105.4ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-05-28 19:22:04 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/home" for 127.0.0.1 at 2018-05-28 19:22:04 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 29ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-28 19:22:05 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 498ms (Views: 460.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-28 19:22:14 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"usc5fscNKYJ56utPeho1tuROB7HxOiJmH3nBWc/D73Zy8HMbFSPrP2Re7x1+lX3UghFHPfPH0OSv6KYF5grsTA==", "user"=>{"email"=>"federicoantonio04@libero.it", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "federicoantonio04@libero.it"], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-05-28 17:22:14.353650"], ["sign_in_count", 2], ["updated_at", "2018-05-28 17:22:14.355380"], ["id", 2]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (30.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home
+Completed 302 Found in 207ms (ActiveRecord: 32.1ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 19:22:14 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (11.7ms)
+Completed 200 OK in 57ms (Views: 52.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:22:17 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:2
+  Rendered sessions/showcreated.html.haml within layouts/application (22.2ms)
+Completed 200 OK in 72ms (Views: 59.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 19:22:27 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:2
+  Rendered sessions/showactive.html.haml within layouts/application (13.9ms)
+Completed 200 OK in 84ms (Views: 77.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 19:26:16 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (20.5ms)
+Completed 200 OK in 102ms (Views: 93.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:26:17 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:3
+  Rendered sessions/showcreated.html.haml within layouts/application (7.1ms)
+Completed 200 OK in 65ms (Views: 61.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:26:19 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:3
+  Rendered sessions/showcreated.html.haml within layouts/application (7.5ms)
+Completed 200 OK in 129ms (Views: 96.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:26:40 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:3
+  Rendered sessions/showcreated.html.haml within layouts/application (20.3ms)
+Completed 200 OK in 138ms (Views: 132.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:29:34 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:3
+  Rendered sessions/showcreated.html.haml within layouts/application (26.2ms)
+Completed 200 OK in 102ms (Views: 96.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:29:48 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (20.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:3
+  Rendered sessions/showcreated.html.haml within layouts/application (30.6ms)
+Completed 200 OK in 123ms (Views: 90.4ms | ActiveRecord: 20.4ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:30:07 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.7ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:3
+  Rendered sessions/showcreated.html.haml within layouts/application (9.9ms)
+Completed 200 OK in 135ms (Views: 124.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:30:32 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 111ms (Views: 73.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 19:30:37 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (22.6ms)
+Completed 200 OK in 86ms (Views: 76.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:30:41 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (1.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (23.9ms)
+Completed 200 OK in 149ms (Views: 140.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:31:01 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (8.4ms)
+Completed 200 OK in 129ms (Views: 118.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 19:31:13 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.8ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (12.1ms)
+Completed 200 OK in 94ms (Views: 85.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 19:31:15 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (26.5ms)
+Completed 200 OK in 81ms (Views: 73.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:19:15 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (33.7ms)
+Completed 200 OK in 174ms (Views: 125.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:19:19 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.9ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:2
+  Rendered sessions/showactive.html.haml within layouts/application (14.0ms)
+Completed 200 OK in 134ms (Views: 123.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 20:19:22 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (1.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (28.1ms)
+Completed 200 OK in 108ms (Views: 97.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 20:19:26 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (27.7ms)
+Completed 200 OK in 91ms (Views: 86.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:19:35 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (10.4ms)
+Completed 200 OK in 109ms (Views: 93.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-05-28 20:19:37 +0200
+Processing by SessionsController#showcreated as HTML
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.8ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (16.9ms)
+Completed 200 OK in 111ms (Views: 101.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:20:29 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  Rendered sessions/showactive.html.haml within layouts/application (17.7ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: %h1 My DnD
+    2: %h2 Master: username
+    3: %h3 Active session
+    4: -@createdsessions.each do |session|
+    5:   %h3= link_to "Id session: #{session.id}"
+  
+app/views/sessions/showactive.html.haml:4:in `_app_views_sessions_showactive_html_haml___3688267172638227075_70097256263060'
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:20:44 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.7ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:4
+  Rendered sessions/showactive.html.haml within layouts/application (11.5ms)
+Completed 200 OK in 105ms (Views: 95.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:21:49 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:4
+  Rendered sessions/showactive.html.haml within layouts/application (6.8ms)
+Completed 200 OK in 140ms (Views: 127.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:21:50 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (15.5ms)
+Completed 200 OK in 87ms (Views: 71.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/closedsessions" for 127.0.0.1 at 2018-05-28 20:21:52 +0200
+Processing by SessionsController#showclosed as HTML
+  Rendering sessions/showclosed.html.haml within layouts/application
+  [1m[36mSession Load (0.8ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 3]]
+  ↳ app/views/sessions/showclosed.html.haml:4
+  Rendered sessions/showclosed.html.haml within layouts/application (15.0ms)
+Completed 200 OK in 110ms (Views: 101.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:22:13 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:4
+  Rendered sessions/showactive.html.haml within layouts/application (9.6ms)
+Completed 200 OK in 95ms (Views: 84.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-28 20:27:56 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-28 20:27:56 +0200
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-05-28 20:27:58 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zEdBFNSm4UIODwenlhNy4Yoh8GfeJVv5Xxwdci8JcYMyA5kZje6ww3tiGU8QlB76mjj+g0VtjrOPqcUnPL8gsw==", "commit"=>"Log out"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 84ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-28 20:27:58 +0200
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:27:58 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-28 20:27:58 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 44ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-28 20:28:14 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (13.4ms)
+Completed 200 OK in 51ms (Views: 49.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-05-28 20:28:37 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GEKjDoXygF65b1bF+91vHiV9lx3K6QgcG0ZnmWCzGWlOYozUHtCyagcdlMIndPMtu1DNYnDCft5PvXub0XQoRg==", "user"=>{"email"=>"rafa@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "roles_mask"=>"1"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "rafa@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "rafa@gmail.com"], ["encrypted_password", "$2a$11$9ug9FoLp0g1xN69YsTQkMub8JyZNwMfsYB1AH7O.juv/0JEllS3h6"], ["roles_mask", 1], ["created_at", "2018-05-28 18:28:37.795524"], ["updated_at", "2018-05-28 18:28:37.795524"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-05-28 18:28:37.807091"], ["last_sign_in_at", "2018-05-28 18:28:37.807091"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-05-28 18:28:37.808032"], ["id", 5]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home
+Completed 302 Found in 164ms (ActiveRecord: 12.3ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:28:37 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 47ms (Views: 42.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-05-28 20:28:40 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JXTpM/1bDV9tlSykCq7V7J9PtChWn0ACcuqY4kiFu1dPtQLJ8MfuBfCzb6pf+uxaEX1c29RwURHNcvj6rFeZRQ==", "commit"=>"Log out"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-28 20:28:40 +0200
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:28:40 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-28 20:28:40 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-28 20:28:42 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (11.7ms)
+Completed 200 OK in 60ms (Views: 54.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "roles_mask" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["roles_mask", 2], ["updated_at", "2018-05-28 18:30:54.444195"], ["id", 5]]
+  [1m[35m (33.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-28 20:31:00 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 83ms (Views: 80.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-28 20:31:06 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ze0m/aomjDUGmUy0M2/wqpcKg+xwAGnjuKkgmtCOC5jAIjrgPQ90VH4SVipLdKyT6LpI4YD5833PGo6+ZSMJmQ==", "user"=>{"email"=>"rafa@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "rafa@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-05-28 18:31:06.959919"], ["sign_in_count", 2], ["updated_at", "2018-05-28 18:31:06.960946"], ["id", 5]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (31.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home
+Completed 302 Found in 193ms (ActiveRecord: 37.9ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:31:07 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (7.3ms)
+Completed 200 OK in 50ms (Views: 47.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:31:15 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:4
+  Rendered sessions/showactive.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 61ms (Views: 59.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:33:09 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (20.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (10.7ms)
+Completed 200 OK in 84ms (Views: 56.0ms | ActiveRecord: 20.7ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:33:11 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/sessions/showactive.html.haml:2
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:10
+  Rendered sessions/showactive.html.haml within layouts/application (16.9ms)
+Completed 200 OK in 77ms (Views: 70.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:36:15 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/sessions/showactive.html.haml:2
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:10
+  Rendered sessions/showactive.html.haml within layouts/application (23.6ms)
+Completed 200 OK in 85ms (Views: 77.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:36:31 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/sessions/showactive.html.haml:2
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:10
+  Rendered sessions/showactive.html.haml within layouts/application (20.2ms)
+Completed 200 OK in 79ms (Views: 73.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:36:34 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (13.1ms)
+Completed 200 OK in 71ms (Views: 55.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:36:35 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/sessions/showactive.html.haml:2
+  [1m[36mSession Load (0.5ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:10
+  Rendered sessions/showactive.html.haml within layouts/application (16.2ms)
+Completed 200 OK in 66ms (Views: 60.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-05-28 20:36:39 +0200
+Processing by SessionsController#showactive as HTML
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/sessions/showactive.html.haml:2
+  [1m[36mSession Load (0.6ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:10
+  Rendered sessions/showactive.html.haml within layouts/application (20.2ms)
+Completed 200 OK in 70ms (Views: 65.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/closedsessions" for 127.0.0.1 at 2018-05-28 20:38:56 +0200
+Processing by SessionsController#showclosed as HTML
+  Rendering sessions/showclosed.html.haml within layouts/application
+  Rendered sessions/showclosed.html.haml within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (The line was indented 2 levels deeper than the previous line.):
+     5:   -@closedsessions.each do |session|
+     6:     %h3= link_to "Id session: #{session.id}"
+     7: -elsif current_user.has_role?(:player)
+     8:     %h2 Player: username
+     9:     %h3 Ended sessions
+    10:     -@closedsessions.each do |session|
+    11:       %h3= link_to "Id session: #{session.id}"
+  
+app/views/sessions/showclosed.html.haml:8
+Started GET "/closedsessions" for 127.0.0.1 at 2018-05-28 20:39:13 +0200
+Processing by SessionsController#showclosed as HTML
+  Rendering sessions/showclosed.html.haml within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/sessions/showclosed.html.haml:2
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 3]]
+  ↳ app/views/sessions/showclosed.html.haml:10
+  Rendered sessions/showclosed.html.haml within layouts/application (22.7ms)
+Completed 200 OK in 82ms (Views: 77.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/closedsessions" for 127.0.0.1 at 2018-05-28 20:39:52 +0200
+Processing by SessionsController#showclosed as HTML
+  Rendering sessions/showclosed.html.haml within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/sessions/showclosed.html.haml:2
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 3]]
+  ↳ app/views/sessions/showclosed.html.haml:10
+  Rendered sessions/showclosed.html.haml within layouts/application (17.3ms)
+Completed 200 OK in 62ms (Views: 57.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/edit?utf8=%E2%9C%93&commit=Settings" for 127.0.0.1 at 2018-05-28 20:46:18 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Settings"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/registrations/edit.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 72ms (Views: 66.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:46:21 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (13.2ms)
+Completed 200 OK in 73ms (Views: 62.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:46:23 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (11.6ms)
+Completed 200 OK in 69ms (Views: 59.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-05-28 20:48:10 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (20.8ms)
+Completed 200 OK in 82ms (Views: 71.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/edit?utf8=%E2%9C%93&commit=Block+invitation" for 127.0.0.1 at 2018-05-28 20:48:14 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Block invitation"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/registrations/edit.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 81ms (Views: 73.0ms | ActiveRecord: 1.9ms)
+
+

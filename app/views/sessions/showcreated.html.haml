@@ -1,3 +1,5 @@
-%h1 sessioni create
+%h1 My DnD
+%h2 Master: username
+%h3 Created sessions
 -@createdsessions.each do |session|
-  %h2= "Id sessione: #{session.id}"
+  %h3= link_to "Id session: #{session.id}"

@@ -1,3 +1,13 @@
-%h1 sessioni concluse
--@closedsessions.each do |session|
-  %h2= "Id sessione: #{session.id}"
+%h1 My DnD
+-if current_user.has_role?(:master)
+  %h2 Master: username
+  %h3 Ended sessions
+  -@closedsessions.each do |session|
+    %h3= link_to "Id session: #{session.id}"
+-elsif current_user.has_role?(:player)
+  %h2 Player: username
+  %h3 Ended sessions
+  -@closedsessions.each do |session|
+    %h3= link_to "Id session: #{session.id}"
+  =form_tag edit_user_registration_path, :method => :get do
+    =submit_tag 'Settings'
