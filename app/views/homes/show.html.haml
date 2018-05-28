@@ -5,17 +5,17 @@
     = submit_tag 'Save Changes'
 -elsif current_user.has_role?(:master)
   %h2 Master: username
-  %h3= link_to "Created sessions"
-  %h3= link_to "Active sessions"
-  %h3= link_to "Ended sessions"
+  %h3= link_to "Created sessions", created_sessions_path
+  %h3= link_to "Active sessions", active_sessions_path
+  %h3= link_to "Ended sessions", closed_sessions_path
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Create a new sessions'
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 -elsif current_user.has_role?(:player)
   %h2 Player: username
-  %h3= link_to "Active sessions"
-  %h3= link_to "Ended sessions"
+  %h3= link_to "Active sessions", active_sessions_path
+  %h3= link_to "Ended sessions", closed_sessions_path
   %h3= link_to "Invitations"
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Join a new session'
