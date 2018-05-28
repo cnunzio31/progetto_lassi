@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resource :home
-  resource :sessions do
-    resource :matches
-    resource :invitations
-    resource :partecipations
-    resource :requests
+  resources :sessions do #with s you see :id
+    resources :matches
+    resources :invitations
+    resources :partecipations
+    resources :requests
   end
   #resources :movies do
   #  resources :reviews, only: [:new, :create, :destroy, :like]

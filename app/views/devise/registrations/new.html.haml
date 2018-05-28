@@ -19,7 +19,11 @@
   .field
     = f.label :roles_mask
     %br/
-    = select :user, :roles_mask, [1, 2]                     |
+    = select :user, :roles_mask, [1, 2]
+    %br/
+    = f.label :username
+    %br/
+    = f.text_field :username, autofocus: true, autocomplete: "email"                     |
   .actions
     = f.submit "Sign up"
 = render "devise/shared/links"
