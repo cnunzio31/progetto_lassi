@@ -1,18 +1,33 @@
-%h1 MYDND
-%h2= @prova
+%h1 My DnD
 -if current_user.has_role?(:notdefined)
   = form_tag home_path, :method => :post do
     = select :user, :roles_mask, [1, 2]
     = submit_tag 'Save Changes'
 -elsif current_user.has_role?(:master)
+  %h2 Master: username
+  %h3= link_to "Created sessions"
+  %h3= link_to "Active sessions"
+  %h3= link_to "Ended sessions"
+  =form_tag edit_user_registration_path, :method => :get do
+    =submit_tag 'Create a new sessions'
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 -elsif current_user.has_role?(:player)
-  %h2= link_to "Clicca qui per andare, #{@prova}", new_home_path
+  %h2 Player: username
+  %h3= link_to "Active sessions"
+  %h3= link_to "Ended sessions"
+  %h3= link_to "Invitations"
+  =form_tag edit_user_registration_path, :method => :get do
+    =submit_tag 'Join a new session'
+  =form_tag edit_user_registration_path, :method => :get do
+    =submit_tag 'Block invitation'
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 -elsif current_user.has_role?(:admin)
+  %h2 Admin
+  %h3= link_to "Reported sessions"
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 =form_tag destroy_user_session_path, :method => :delete do
+  =submit_tag 'Settings'
   =submit_tag 'Log out'
