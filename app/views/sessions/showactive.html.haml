@@ -1,1 +1,3 @@
 %h1 sessioni attive
+-@activesessions.each do |session|
+  %h2= "Id sessione: #{session.id}"
