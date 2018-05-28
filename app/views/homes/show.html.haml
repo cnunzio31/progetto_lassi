@@ -1,6 +1,5 @@
 %h1 MYDND
 %h2= @prova
--#if can? :create, Home
 -if current_user.has_role?(:notdefined)
   = form_tag home_path, :method => :post do
     = select :user, :roles_mask, [1, 2]
