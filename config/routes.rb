@@ -16,14 +16,14 @@ Rails.application.routes.draw do
   get 'createdsessions', to: 'sessions#showcreated', as: 'created_sessions'
   get 'closedsessions', to: 'sessions#showclosed', as: 'closed_sessions'
   get 'reportedsessions', to: 'sessions#showreported', as: 'reported_sessions'
-  post 'sessions/:id/makeprivate', to: 'sessions#makeprivate', as: 'make_session_private'
-  post 'sessions/:id/close', to: 'sessions#close', as: 'close_session'
-  post 'sessions/:id/report', to: 'sessions#report', as: 'report_session'
+  get 'sessions/:id/makeprivate', to: 'sessions#makeprivate', as: 'make_session_private'
+  get 'sessions/:id/close', to: 'sessions#close', as: 'close_session'
+  get 'sessions/:id/report', to: 'sessions#report', as: 'report_session'
 
-  post 'users/:id/ban', to: 'users#ban', as: 'ban_user'
+  get 'users/:id/ban', to: 'users#ban', as: 'ban_user'
 
-  post 'matches/:id/like', to: 'matches#like', as: 'like_match'
-  post 'matches/:id/close', to: 'matches#close', as: 'close_match'
+  get '/session/:id/matches/:id/like_match/:id', to: 'session_match#like', as: 'i_like_match'
+  get '/session/:id/matches/:id/add_summary/:id', to: 'session_match#summary', as: 'add_summary_match'
 
   root :to => redirect('/home')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
