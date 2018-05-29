@@ -20,6 +20,7 @@
     = f.label :roles_mask
     %br/
     = select :user, :roles_mask, [1, 2]
+    -#, options_for_select([['A data', 'A'], ['B data', 'B']]
     %br/
     = f.label :username
     %br/

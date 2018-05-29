@@ -4,12 +4,12 @@ class CreateMatches < ActiveRecord::Migration[5.2]
       #links to other tables
       t.integer :session_id
       #types' flags
-      t.boolean :status
+      t.boolean :status, :default => true
       #informations
       t.string :title
       t.datetime :data
       t.string :summary
-      t.integer :like
+      t.integer :like, :default => 0
       t.timestamps
     end
   end
