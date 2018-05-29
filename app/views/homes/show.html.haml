@@ -16,7 +16,7 @@
   %h2= "Player: #{@username}"
   %h3= link_to "Active sessions", active_sessions_path
   %h3= link_to "Ended sessions", closed_sessions_path
-  %h3= link_to "Invitations"
+  %h3= link_to "Invitations", session_invitations_path(1)
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Join a new session'
   =form_tag edit_user_registration_path, :method => :get do
@@ -25,7 +25,7 @@
     =submit_tag 'Change username and password'
 -elsif current_user.has_role?(:admin)
   %h2= "Admin: #{@username}"
-  %h3= link_to "Reported sessions"
+  %h3= link_to "Reported sessions", reported_sessions_path(1)
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 =form_tag destroy_user_session_path, :method => :delete do

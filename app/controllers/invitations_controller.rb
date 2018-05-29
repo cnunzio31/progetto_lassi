@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   def index
-    #mochup: invitationpage
+    @username = current_user.username
+    @activesessions = Session.where(:status => 2)
   end
 end
