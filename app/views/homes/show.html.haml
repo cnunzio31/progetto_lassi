@@ -8,7 +8,7 @@
   %h3= link_to "Created sessions", created_sessions_path
   %h3= link_to "Active sessions", active_sessions_path
   %h3= link_to "Ended sessions", closed_sessions_path
-  =form_tag edit_user_registration_path, :method => :get do
+  =form_tag new_session_path, :method => :get do
     =submit_tag 'Create a new sessions'
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
@@ -16,18 +16,17 @@
   %h2= "Player: #{@username}"
   %h3= link_to "Active sessions", active_sessions_path
   %h3= link_to "Ended sessions", closed_sessions_path
-  %h3= link_to "Invitations", session_invitations_path(1)
-  =form_tag edit_user_registration_path, :method => :get do
+  %h3= link_to "Invitations", invitations_path
+  =form_tag active_sessions_path, :method => :get do
     =submit_tag 'Join a new session'
-  =form_tag edit_user_registration_path, :method => :get do
+  =form_tag block_invitation_path, :method => :get do
     =submit_tag 'Block invitation'
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 -elsif current_user.has_role?(:admin)
   %h2= "Admin: #{@username}"
-  %h3= link_to "Reported sessions", reported_sessions_path(1)
+  %h3= link_to "Reported sessions", reported_sessions_path
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 =form_tag destroy_user_session_path, :method => :delete do
-  =submit_tag 'Settings'
   =submit_tag 'Log out'

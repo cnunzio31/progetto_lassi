@@ -1,1 +1,37 @@
-%h2 pagina visualizzazione sessione
+%h1 MyDnD
+%h2= "Session: #{@session.title}"
+%table
+  %tbody
+    %tr
+      -if current_user.has_role?(:master)
+        %td= button_to "Make it private", make_session_private_path, :method => :get
+        %td= button_to "Invite people", new_invitation_path, :method => :get
+        %td= button_to "Pending request", reported_sessions_path, :method => :get
+      -elsif current_user.has_role?(:player)
+        %td= button_to "Join", session_partecipations_path(@session.id), :method => :get
+      -elsif current_user.has_role?(:admin)
+        %td= button_to "Delete", session_path(@session.id), :method => :delete
+%h3= "Master: #{@session.master_id}"
+%h3= "Status: #{@session.status}"
+%h3 Location:
+-#google maps
+%h3= "Description: #{@session.description}"
+%h3 Partecipants:
+%table
+  %tbody
+    %tr
+      -@partecipants.each do |partecipant|
+        %td= "#{partecipant.username}"
+        %td= button_to "Ban", ban_user_path(@session.id), :method => :get
+%h3 Flickr photos:
+-#aggiungi le foto di Flickr
+%h3= link_to "Current match", session_match_path(@session.id, @currentmatch)
+%h3= link_to "Match list", session_matches_path(@session.id)
+%table
+  %tbody
+    %tr
+      -if current_user.has_role?(:master)
+        %td= button_to "Add photo", home_path, :method => :get
+        %td= button_to "Close session", close_session_path(@session.id), :method => :get
+      -elsif current_user.has_role?(:player)
+        %td= button_to "Report", report_session_path(@session.id), :method => :get

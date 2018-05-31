@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
   def showreported
     @username = current_user.username
-    @createdsessions = Session.where("reported_counter >= 1")
+    @reportedsessions = Session.where("reported_counter >= 1")
     #mockup: reportedsessions
   end
   def new
@@ -27,6 +27,12 @@ class SessionsController < ApplicationController
   end
   def show
     #controller per visualizzare la sessione (mockup: session)
+    @username = current_user.username
+    id = params[:id]
+    @session = Session.find(id)
+    partecipations = Partecipation.where(:session_id => id)
+    @partecipants = partecipations.map { |x| User.find(x.player_id) }
+    @currentmatch = Match.where(:session_id => id, :status => false)
   end
   def makeprivate
     #post associata al tasto make private della pagina session di show

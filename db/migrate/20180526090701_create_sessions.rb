@@ -5,7 +5,7 @@ class CreateSessions < ActiveRecord::Migration[5.2]
       t.integer :master_id
       #types' flags
       t.integer :status
-      t.boolean :type
+      t.boolean :session_type
       t.boolean :private_flag
       #informations
       t.string :title

@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resource :home, only: [:show, :create]
   resources :sessions, only: [:new, :show, :create, :destroy] do #with s you see :id
     resources :matches, only: [:new, :create, :index, :show]
-    resources :invitations, only: [:index]
     resources :partecipations, only: [:create]
-    resources :requests, only: [:index]
   end
+  resources :invitations, only: [:index, :new]
+  resources :requests, only: [:index]
   #resources :movies do
   #  resources :reviews, only: [:new, :create, :destroy, :like]
   #end
@@ -21,9 +21,10 @@ Rails.application.routes.draw do
   get 'sessions/:id/report', to: 'sessions#report', as: 'report_session'
 
   get 'users/:id/ban', to: 'users#ban', as: 'ban_user'
+  get 'users/blockinvitation', to: 'users#blockinvitation', as: 'block_invitation'
 
-  get '/session/:id/matches/:id/like_match/:id', to: 'session_match#like', as: 'i_like_match'
-  get '/session/:id/matches/:id/add_summary/:id', to: 'session_match#summary', as: 'add_summary_match'
+  get '/session/:session_id/matches/:id/like_match', to: 'matches#like', as: 'i_like_match'
+  get '/session/:session_id/matches/:id/add_summary', to: 'matches#summary', as: 'add_summary_match'
 
   root :to => redirect('/home')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

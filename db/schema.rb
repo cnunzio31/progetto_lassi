@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
   create_table "sessions", force: :cascade do |t|
     t.integer "master_id"
     t.integer "status"
-    t.boolean "type"
+    t.boolean "session_type"
     t.boolean "private_flag"
     t.string "title"
     t.string "description"
