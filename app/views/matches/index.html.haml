@@ -1,1 +1,18 @@
-%h2 pagina visualizzazione match finiti
+%h1 MyDnD
+
+%h2 Session: #{@session.title}
+
+%h2 Master: #{@master_username}
+
+%h2 All Ended Matches
+
+%table#matches
+  %thead
+    %tr
+      %th Match Title
+  %tbody
+    - @matches.each do |match|
+      %tr
+        - if !match.status
+          %td= match.title
+          %td= link_to "Details about the match", session_match_path(@session.id, match)

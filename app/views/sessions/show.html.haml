@@ -26,21 +26,24 @@
         %td= button_to "Ban", ban_user_path(@session.id), :method => :get
 %h3 Flickr photos:
 - @photos.each do |photo|
-  - if photo.title.to_s.casecmp?(@session.title.to_s)
+  - s="session"+@session.title
+  - if photo.title.to_s.casecmp?(s)
     %img(src = "#{photo.url}")
-%h3= link_to "Current match", session_match_path(@session.id, @currentmatch)
-%h3= link_to "Match list", session_matches_path(@session.id)
+-if current_user.has_role?(:master)
+  %br/
+  = form_tag add_photo_path(@session), :method => :put, :multipart => true do
+    = file_field_tag 'images[]', multiple: true
+    = submit_tag 'Add photo to flickr'
+  %br/
+%h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
+%h3= link_to "Ended Match list", session_matches_path(@session.id)
+-if current_user.has_role?(:master)
+  %td= button_to "Create new match!", new_session_match_path(@session), :method => :get
+
 %table
   %tbody
     %tr
       -if current_user.has_role?(:master)
-        %br/
-        %br/
-        = form_tag add_photo_path(@session), :method => :put, :multipart => true do
-          = file_field_tag 'images[]', multiple: true
-          = submit_tag 'Add photo to flickr'
-        %br/
-        %br/
         %td= button_to "Close session", close_session_path(@session.id), :method => :get
         %td= button_to "Activate session", activate_session_path, :method => :get
       -elsif current_user.has_role?(:player)

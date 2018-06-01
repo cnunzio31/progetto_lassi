@@ -24,12 +24,12 @@ class SessionsController < ApplicationController
     #mockup: reportedsessions
   end
   def add_photo
-    @username = current_user.username
     id = params[:id]
     @session = Session.find(id)
+    s="session"+@session.title
     if !params[:images].nil?
         params[:images].each{ |image|
-            photo_id = Flickr.upload(image, title: @session.title)
+            photo_id = Flickr.upload(image, title: s)
         }
     end
     redirect_to session_path(@session)
@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
     @session = Session.find(id)
     partecipations = Partecipation.where(:session_id => id)
     @partecipants = partecipations.map { |x| User.find(x.player_id) }
-    @currentmatch = Match.where(:session_id => id, :status => false)
+    @currentmatch = Match.where(:session_id => id, :status => true)
     @photos = Flickr.photos.search(user_id: "139197130@N06")
   end
   def makeprivate

@@ -26,14 +26,16 @@ Rails.application.routes.draw do
   get 'users/:id/ban', to: 'users#ban', as: 'ban_user'
   get 'users/blockinvitation', to: 'users#blockinvitation', as: 'block_invitation'
 
-  get '/session/:session_id/matches/:id/like_match', to: 'matches#like', as: 'i_like_match'
-  get '/session/:session_id/matches/:id/add_summary', to: 'matches#summary', as: 'add_summary_match'
+  get '/session/:session_id/matches/:match_id/like_match', to: 'matches#like', as: 'i_like_match'
+  put '/session/:session_id/matches/:match_id/add_summary', to: 'matches#summary', as: 'add_summary_match'
+  get '/session/:session_id/matches/:id/show_current', to: 'matches#show_current', as: 'show_current_match'
+  get 'sessions/:session_id/matches/:id/close', to: 'matches#close', as: 'close_match'
 
   get 'requests/:id', to: 'requests#index', as: 'index_requests'
   post 'requests/:id/join', to: 'requests#create', as: 'create_requests'
 
-  get 'session/:session_id/photo/:id', to: 'sessions#photo', as: 'photo'
   put 'session/:session_id/add_photo/:id', to: 'sessions#add_photo', as: 'add_photo'
+  put 'session/:session_id/matches/:match_id/add_photo_match/:id', to: 'matches#add_photo', as: 'add_photo_match'
 
   root :to => redirect('/home')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
