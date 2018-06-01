@@ -21,9 +21,9 @@
   = label :session, :version, 'Version'
   = text_field :session, :version
   %br/
+  = radio_button :session, 'private_flag', :checked => true
+  Private 
+  %br/
   = submit_tag 'Create session'
 
-.radio
-  %label
-    %input{name: "Privacy", type: "radio", value: "private"}
-    Private
+

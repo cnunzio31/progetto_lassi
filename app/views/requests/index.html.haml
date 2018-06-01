@@ -1,1 +1,7 @@
-%h2 pagina visualizzazione richieste
+%h1 My DnD
+%h2 Pending requests!
+%h2= "Master: #{@username}"
+
+-@activerequests.each do |request|
+  %h3= "Id session: #{request.session_id} from id player: #{request.player_id}" 
+  %td= button_to "Accept", session_partecipations_path(request.id), :method => :post

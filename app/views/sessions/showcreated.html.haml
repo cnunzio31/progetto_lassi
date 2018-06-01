@@ -2,4 +2,4 @@
 %h2= "Master: #{@username}"
 %h3 Created sessions
 -@createdsessions.each do |session|
-  %h3= link_to "Id session: #{session.id}"
+  %h3= link_to "Id session: #{session.id}", session_path(session.id)
