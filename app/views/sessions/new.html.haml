@@ -7,7 +7,7 @@
   = text_field :session, :title
   %br/
   = label :session, :date, 'Date'
-  = date_select :movie, :release_date
+  = date_select :session, :date
   %br/
   = label :session, :location, 'Location'
   = text_field :session, :location
@@ -22,8 +22,6 @@
   = text_field :session, :version
   %br/
   = radio_button :session, 'private_flag', :checked => true
-  Private 
+  Private
   %br/
   = submit_tag 'Create session'
-
-

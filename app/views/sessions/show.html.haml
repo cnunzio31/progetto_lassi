@@ -13,6 +13,7 @@
         %td= button_to "Delete", session_path(@session.id), :method => :delete
 %h3= "Master: #{@session.master_id}"
 %h3= "Status: #{@session.status}"
+%h3= "Date: #{@session.date}"
 %h3 Location:
 -#google maps
 %h3= "Description: #{@session.description}"

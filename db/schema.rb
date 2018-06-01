@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
     t.integer "master_id"
     t.integer "status"
     t.boolean "type"
-    t.boolean "private_flag"
+    t.boolean "private_flag", default: false
     t.string "title"
     t.string "description"
     t.datetime "date"
     t.string "version"
-    t.integer "reported_counter"
+    t.integer "reported_counter", default: 0
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

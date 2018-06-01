@@ -6,13 +6,13 @@ class CreateSessions < ActiveRecord::Migration[5.2]
       #types' flags
       t.integer :status
       t.boolean :type
-      t.boolean :private_flag
+      t.boolean :private_flag, :default => false
       #informations
       t.string :title
       t.string :description
       t.datetime :date
       t.string :version
-      t.integer :reported_counter
+      t.integer :reported_counter, :default => 0
       t.string :location
       t.timestamps
     end
