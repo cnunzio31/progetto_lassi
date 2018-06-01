@@ -25,14 +25,22 @@
         %td= "#{partecipant.username}"
         %td= button_to "Ban", ban_user_path(@session.id), :method => :get
 %h3 Flickr photos:
--#aggiungi le foto di Flickr
+- @photos.each do |photo|
+  - if photo.title.to_s.casecmp?(@session.title.to_s)
+    %img(src = "#{photo.url}")
 %h3= link_to "Current match", session_match_path(@session.id, @currentmatch)
 %h3= link_to "Match list", session_matches_path(@session.id)
 %table
   %tbody
     %tr
       -if current_user.has_role?(:master)
-        %td= button_to "Add photo", home_path, :method => :get
+        %br/
+        %br/
+        = form_tag add_photo_path(@session), :method => :put, :multipart => true do
+          = file_field_tag 'images[]', multiple: true
+          = submit_tag 'Add photo to flickr'
+        %br/
+        %br/
         %td= button_to "Close session", close_session_path(@session.id), :method => :get
         %td= button_to "Activate session", activate_session_path, :method => :get
       -elsif current_user.has_role?(:player)
