@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resource :home, only: [:show, :create]
-  resources :sessions, only: [:new, :show, :create, :destroy, :join] do #with s you see :id
+  resources :sessions, only: [:new, :show, :create, :destroy, :join, :exit] do #with s you see :id
     resources :matches, only: [:new, :create, :index, :show]
     resources :partecipations, only: [:create]
   end
@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   #get 'sessions/:id/partecipations', to: 'partecipations#create', as: 'join_session'
   #get 'sessions/:id/partecipations', to: 'partecipations#create', as: 'join_session'
 
-  get 'users/:id/ban', to: 'users#ban', as: 'ban_user'
+  post 'sessions/:session_id/exit', to: 'sessions#exit', as: 'exit_session'
+
+  post 'users/:session_id/user/:player_id/ban', to: 'users#ban', as: 'ban_user'
   get 'users/blockinvitation', to: 'users#blockinvitation', as: 'block_invitation'
 
   get '/session/:session_id/matches/:match_id/like_match', to: 'matches#like', as: 'i_like_match'
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
   post 'requests/:id/join', to: 'requests#create', as: 'create_requests'
 
   get 'session/:s_id/invite', to: 'invitations#new', as: 'new_invitations'
-  post 'session/:s_id/users/:p_id/invite', to: 'invitations#invitation', as: 'send_invitations'
+  post 'session/:s_id/users/:p_id/invite', to: 'invitations#inviting', as: 'send_invitations'
 
   put 'session/:session_id/add_photo/:id', to: 'sessions#add_photo', as: 'add_photo'
   put 'session/:session_id/matches/:match_id/add_photo_match/:id', to: 'matches#add_photo', as: 'add_photo_match'

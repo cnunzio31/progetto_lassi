@@ -6,9 +6,10 @@
       %td= button_to "Home", home_path, :method => :get
       -if current_user.has_role?(:master)
         %td= button_to "Make it private", make_session_private_path, :method => :get
-        %td= button_to "Invite people", new_invitations_path, :method => :get
+        %td= button_to "Invite people", new_invitations_path(@session.id), :method => :get
         %td= button_to "Pending request", index_requests_path, :method => :get
       -elsif current_user.has_role?(:player)
+        %td= button_to "Join", create_requests_path(@session.id), :method => :post
         %td= button_to "Join", create_requests_path(@session.id), :method => :post
       -elsif current_user.has_role?(:admin)
         %td= button_to "Delete", session_path(@session.id), :method => :delete
@@ -24,7 +25,7 @@
     %tr
       -@partecipants.each do |partecipant|
         %td= "#{partecipant.username}"
-        %td= button_to "Ban", ban_user_path(@session.id), :method => :get
+        %td= button_to "Kick", ban_user_path(@session.id,partecipant.id), :method => :post
 %h3 Flickr photos:
 - @photos.each do |photo|
   - s="session"+@session.title

@@ -7,7 +7,7 @@
   = text_field :session, :title
   %br/
   = label :session, :date, 'Date'
-  = date_select :movie, :release_date
+  = date_select :session, :date
   %br/
   = label :session, :location, 'Location'
   = text_field :session, :location
@@ -15,15 +15,13 @@
   = label :session, :description, 'Description'
   = text_field :session, :description
   %br/
-  = label :session, :type, 'Type'
-  = select :session, :type, ['cartaceo','online']
+  = label :session, :session_type, 'Session_type'
+  = select :session, :session_type, ['cartaceo','online']
   %br/
   = label :session, :version, 'Version'
   = text_field :session, :version
   %br/
-  = radio_button :private, 'private', :checked => true
-  Private 
+  = radio_button :session, 'private_flag', :checked => true
+  Private
   %br/
   = submit_tag 'Create session'
-
-

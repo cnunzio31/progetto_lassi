@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def ban
-    #post associata al tasto ban dell'admin
+    #post associata al tasto kick del master
+    s_id = params[:session_id]
+    p_id = params[:player_id]
+    Partecipation.where(:session_id=>s_id).where(:player_id=>p_id).first.delete
+    redirect_to home_path
   end
   def blockinvitation
     #post per bloccare gli inviti di un utente

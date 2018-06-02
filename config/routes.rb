@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resource :home, only: [:show, :create]
-  resources :sessions, only: [:new, :show, :create, :destroy, :join] do #with s you see :id
+  resources :sessions, only: [:new, :show, :create, :destroy, :join, :exit] do #with s you see :id
     resources :matches, only: [:new, :create, :index, :show]
     resources :partecipations, only: [:create]
   end
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'closedsessions', to: 'sessions#showclosed', as: 'closed_sessions'
   get 'reportedsessions', to: 'sessions#showreported', as: 'reported_sessions'
   get 'joinablesessions', to: 'sessions#showjoinable', as: 'join_sessions'
+  get 'joinedsessions', to: 'sessions#showjoined', as: 'joined_sessions'
   get 'sessions/:id/makeprivate', to: 'sessions#makeprivate', as: 'make_session_private'
   get 'sessions/:id/close', to: 'sessions#close', as: 'close_session'
   get 'sessions/:id/activate', to: 'sessions#activate', as: 'activate_session'
@@ -24,7 +25,9 @@ Rails.application.routes.draw do
   #get 'sessions/:id/partecipations', to: 'partecipations#create', as: 'join_session'
   #get 'sessions/:id/partecipations', to: 'partecipations#create', as: 'join_session'
 
-  get 'users/:id/ban', to: 'users#ban', as: 'ban_user'
+  post 'sessions/:session_id/exit', to: 'sessions#exit', as: 'exit_session'
+
+  post 'users/:session_id/user/:player_id/ban', to: 'users#ban', as: 'ban_user'
   get 'users/blockinvitation', to: 'users#blockinvitation', as: 'block_invitation'
 
   get '/session/:session_id/matches/:match_id/like_match', to: 'matches#like', as: 'i_like_match'

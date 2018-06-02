@@ -29,6 +29,11 @@ class SessionsController < ApplicationController
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     #mockup: reportedsessions
   end
+  def showjoined
+    @username = current_user.username
+    @joinedsessions = Session.where("status == 1 OR status == 2")
+    @photos = Flickr.photos.search(user_id: "139197130@N06")
+  end
   def showjoinable
     #visualizejoinablesessions
     @username = current_user.username
@@ -50,7 +55,7 @@ class SessionsController < ApplicationController
   end
   def create
     #post di creazione della sessione del master (va insieme a new)
-    @session = Session.create!(params[:session].permit(:title, :date, :location, :description, :version,:private_flag))
+    @session = Session.create!(params[:session].permit(:title, :date, :location,:version,:session_type ,:description,:private_flag))
     .update(master_id:current_user.id,status:1)
     redirect_to home_path
   end
@@ -73,6 +78,13 @@ class SessionsController < ApplicationController
     else
 	Session.find(id).update(private_flag:true)
     end
+    redirect_to home_path
+  end
+  def exit
+    #user decide di lasciare la sessione
+    s_id = params[:session_id]
+    p_id = current_user.id
+    Partecipation.where(:session_id=>s_id).where(:player_id=>p_id).first.delete
     redirect_to home_path
   end
   def destroy

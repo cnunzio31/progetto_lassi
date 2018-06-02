@@ -1,5 +1,5 @@
 %h1 My DnD
 %h2= "Player: #{@username}"
-%h3 Ended sessions
+%h3 Joinable sessions
 -@joinablesessions.each do |session|
    %h3= link_to "Session: #{session.title}", session_path(session.id)

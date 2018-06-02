@@ -15,7 +15,7 @@ class MatchesController < ApplicationController
     @matches.each do |match|
       if match.status==true
         flash[:notice] = "There is already the match #{match.title} to play. Close it before creating another one"
-        redirect_to redirect_to session_path(@session) and return
+        redirect_to session_path(@session) and return
       end
     end
 	@match = @session.matches.create!(params[:match].permit(:title, :data))

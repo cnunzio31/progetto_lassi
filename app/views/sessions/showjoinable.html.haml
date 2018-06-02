@@ -3,3 +3,4 @@
 %h3 Joinable sessions
 -@joinablesessions.each do |session|
    %h3= link_to "Session: #{session.title}", session_path(session.id)
+%td= button_to "Home", home_path, :method => :get
