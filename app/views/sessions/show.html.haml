@@ -6,7 +6,7 @@
       %td= button_to "Home", home_path, :method => :get
       -if current_user.has_role?(:master)
         %td= button_to "Make it private", make_session_private_path, :method => :get
-        %td= button_to "Invite people", new_invitation_path, :method => :get
+        %td= button_to "Invite people", new_invitations_path(@session.id), :method => :get
         %td= button_to "Pending request", index_requests_path, :method => :get
       -elsif current_user.has_role?(:player)
         %td= button_to "Join", create_requests_path(@session.id), :method => :post

@@ -17,7 +17,7 @@
   %h3= link_to "Active sessions", active_sessions_path
   %h3= link_to "Ended sessions", closed_sessions_path
   %h3= link_to "Invitations", invitations_path
-  =form_tag active_sessions_path, :method => :get do
+  =form_tag join_sessions_path, :method => :get do
     =submit_tag 'Join a new session'
   =form_tag block_invitation_path, :method => :get do
     =submit_tag 'Block invitation'
