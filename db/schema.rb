@@ -37,14 +37,6 @@ ActiveRecord::Schema.define(version: 2018_06_02_175951) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "partecipations_match", force: :cascade do |t|
-    t.integer "session_id"
-    t.integer "match_id"
-    t.integer "player_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "partecipationsmatches", force: :cascade do |t|
     t.integer "session_id"
     t.integer "match_id"
