@@ -23,7 +23,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       ## Data from normal users
       t.string :username
-      t.boolean :invitation_flag
+      t.boolean :invitation_flag, default: true
 
       ## Used by canard
       t.integer :roles_mask, default: 4
