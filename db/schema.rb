@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_132859) do
+ActiveRecord::Schema.define(version: 2018_06_02_175951) do
 
   create_table "invitations", force: :cascade do |t|
     t.integer "session_id"
@@ -32,6 +32,22 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
 
   create_table "partecipations", force: :cascade do |t|
     t.integer "session_id"
+    t.integer "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "partecipations_match", force: :cascade do |t|
+    t.integer "session_id"
+    t.integer "match_id"
+    t.integer "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "partecipationsmatches", force: :cascade do |t|
+    t.integer "session_id"
+    t.integer "match_id"
     t.integer "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

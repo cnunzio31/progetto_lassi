@@ -40,6 +40,9 @@ class MatchesController < ApplicationController
   end
 
   def show_current
+    if current_user.has_role?(:player)
+        @partecipationmatch = Partecipationsmatch.where(:player_id => current_user.id)
+    end
     id = params[:session_id]
     @session = Session.find(id)
     @matches=@session.matches

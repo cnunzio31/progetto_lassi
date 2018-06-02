@@ -1,10 +1,10 @@
 %h1 MyDnD
 
-%h2 Session: #{@session.title}
+%h3 Session: #{@session.title}
 
-%h2 Master: #{@master_username}
+%h3 Master: #{@master_username}
 
-%h3 #{@match.title}
+%h2 Match: #{@match.title}
 
 %h3= "Date: #{@match.data}"
 
@@ -33,5 +33,9 @@
 - if @match.status
     - if current_user.has_role?(:master)
         %td= button_to "Add summary and close", close_match_path(@session,@match), :method => :get
-%br
+    - if current_user.has_role?(:player)
+        -if @partecipations.nil?
+            %td= button_to "Partecipate", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
+
+%br/
 %td= button_to "Back to Session", session_path(@session), :method => :get

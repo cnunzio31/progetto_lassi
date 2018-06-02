@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resource :home, only: [:show, :create]
-  resources :sessions, only: [:new, :show, :create, :destroy, :join, :exit] do #with s you see :id
-    resources :matches, only: [:new, :create, :index, :show]
+  resources :sessions, only: [:new, :show, :create, :destroy, :join, :exit] do
     resources :partecipations, only: [:create]
+    resources :matches, only: [:new, :create, :index, :show] do
+        resources :partecipationsmatch, only: [:create]
+    end
   end
   resources :invitations, only: [:index, :new, :inviting]
   resources :requests, only: [:index,:create]
