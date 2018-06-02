@@ -16,3 +16,6 @@
         - if !match.status
           %td= match.title
           %td= link_to "Details about the match", session_match_path(@session.id, match)
+%br/
+%br/
+%td= button_to "Return to #{@session.title}", session_path(@session), :method => :get
