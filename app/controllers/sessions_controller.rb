@@ -29,6 +29,11 @@ class SessionsController < ApplicationController
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     #mockup: reportedsessions
   end
+  def showjoinable
+    #visualizejoinablesessions
+    @username = current_user.username
+    @joinablesessions = Session.where(:private_flag => false).where("status == 1 OR status == 2")
+  end
   def add_photo
     id = params[:id]
     @session = Session.find(id)

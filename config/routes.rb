@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resource :home, only: [:show, :create]
-  resources :sessions, only: [:new, :show, :create, :destroy] do #with s you see :id
+  resources :sessions, only: [:new, :show, :create, :destroy, :join] do #with s you see :id
     resources :matches, only: [:new, :create, :index, :show]
     resources :partecipations, only: [:create]
   end
-  resources :invitations, only: [:index, :new]
+  resources :invitations, only: [:index, :new, :inviting]
   resources :requests, only: [:index,:create]
   #resources :movies do
   #  resources :reviews, only: [:new, :create, :destroy, :like]
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'createdsessions', to: 'sessions#showcreated', as: 'created_sessions'
   get 'closedsessions', to: 'sessions#showclosed', as: 'closed_sessions'
   get 'reportedsessions', to: 'sessions#showreported', as: 'reported_sessions'
+  get 'joinablesessions', to: 'sessions#showjoinable', as: 'join_sessions'
   get 'sessions/:id/makeprivate', to: 'sessions#makeprivate', as: 'make_session_private'
   get 'sessions/:id/close', to: 'sessions#close', as: 'close_session'
   get 'sessions/:id/activate', to: 'sessions#activate', as: 'activate_session'
@@ -33,6 +34,9 @@ Rails.application.routes.draw do
 
   get 'requests/:id', to: 'requests#index', as: 'index_requests'
   post 'requests/:id/join', to: 'requests#create', as: 'create_requests'
+
+  get 'session/:s_id/invite', to: 'invitations#new', as: 'new_invitations'
+  post 'session/:s_id/users/:p_id/invite', to: 'invitations#inviting', as: 'send_invitations'
 
   put 'session/:session_id/add_photo/:id', to: 'sessions#add_photo', as: 'add_photo'
   put 'session/:session_id/matches/:match_id/add_photo_match/:id', to: 'matches#add_photo', as: 'add_photo_match'

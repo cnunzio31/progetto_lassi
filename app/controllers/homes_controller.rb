@@ -10,6 +10,6 @@ class HomesController < ApplicationController
     role = params[:user][:roles_mask]
     #Rails.logger.debug("Salveeee #{role}")
     current_user.update_attributes(:roles_mask => role)
-    redirect_to home_path
+    redirect_to home
   end
 end

@@ -4,4 +4,4 @@
 
 -@activerequests.each do |request|
   %h3= "Id session: #{request.session_id} from id player: #{request.player_id}" 
-  %td= button_to "Accept", session_partecipations_path(request.session_id), :method => :post
+  %td= button_to "Accept", session_partecipations_path(request.id), :method => :post
