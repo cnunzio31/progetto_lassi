@@ -8,5 +8,7 @@ class UsersController < ApplicationController
   end
   def blockinvitation
     #post per bloccare gli inviti di un utente
+    current_user.update_attributes(:invitation_flag => false)
+    redirect_to home_path
   end
 end
