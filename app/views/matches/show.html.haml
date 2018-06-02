@@ -22,10 +22,12 @@
 %br/
 %br/
 - if !(@match.status)
-    #{link_to 'Like', i_like_match_path(@session,@match)}
+    %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+    %br/
 - if @match.status
     - if current_user.has_role?(:master)
-        #{link_to 'Add summary and close', close_match_path(@session,@match)}
+        %td= button_to "Add summary and close", close_match_path(@session,@match), :method => :get
+
 %br/
 %br/
 - if current_user.has_role?(:master)

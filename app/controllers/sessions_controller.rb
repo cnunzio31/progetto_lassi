@@ -2,12 +2,18 @@ class SessionsController < ApplicationController
   def showactive
     @username = current_user.username
     @activesessions = Session.where(:status => 2)
+    if current_user.has_role?(:player)
+        @partecipations=Partecipation.where(:player_id => current_user.id)
+    end
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     #mockup: activesessionsmaster, activesessionsplayer
   end
   def showclosed
     @username = current_user.username
     @closedsessions = Session.where(:status => 3)
+    if current_user.has_role?(:player)
+        @partecipations=Partecipation.where(:player_id => current_user.id)
+    end
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     #mockup: endedsessionsmaster, endedsessionsplayer
   end
@@ -48,6 +54,7 @@ class SessionsController < ApplicationController
     @username = current_user.username
     id = params[:id]
     @session = Session.find(id)
+    @master_username = User.find(@session.master_id).username
     partecipations = Partecipation.where(:session_id => id)
     @partecipants = partecipations.map { |x| User.find(x.player_id) }
     @currentmatch = Match.where(:session_id => id, :status => true)
@@ -61,12 +68,6 @@ class SessionsController < ApplicationController
     else
 	Session.find(id).update(private_flag:true)
     end
-    redirect_to home_path
-  end
-  def activate
-    #post del tasto close session del master in show
-    id = params[:id]
-    @session = Session.find(id).update(status:2)
     redirect_to home_path
   end
   def destroy

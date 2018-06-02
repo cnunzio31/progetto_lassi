@@ -40128,3 +40128,1277 @@ Processing by MatchesController#new as HTML
 Completed 200 OK in 91ms (Views: 84.5ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-06-02 09:51:20 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-06-02 09:51:30 +0200
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/home" for 127.0.0.1 at 2018-06-02 09:51:30 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-02 07:51:30.861431"], ["last_sign_in_at", "2018-06-01 23:48:09.173378"], ["sign_in_count", 4], ["updated_at", "2018-06-02 07:51:30.862686"], ["id", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 317ms (Views: 278.5ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 09:51:38 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:15
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (7.4ms)
+Completed 200 OK in 688ms (Views: 23.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:51:39 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 612ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `status' for nil:NilClass):
+    38: %h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
+    39: %h3= link_to "Ended Match list", session_matches_path(@session.id)
+    40: -if current_user.has_role?(:master)
+    41:   - if @sesssion.status==1
+    42:     %td= button_to "Activate session: Create first match!", new_session_match_path(@session), :method => :get
+    43:   - else
+    44:     %td= button_to "Create new match!", new_session_match_path(@session), :method => :get
+  
+app/views/sessions/show.html.haml:41:in `_app_views_sessions_show_html_haml___1737092927917071972_70353208913640'
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:51:52 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 566ms (Views: 30.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/sessions/1/matches/new" for 127.0.0.1 at 2018-06-02 09:52:04 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:6
+  Rendering matches/new.html.haml within layouts/application
+  Rendered matches/new.html.haml within layouts/application (18.4ms)
+Completed 200 OK in 44ms (Views: 41.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/sessions/1/matches" for 127.0.0.1 at 2018-06-02 09:52:07 +0200
+Processing by MatchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4aDibY1J75dOuJ87wCUq/a41P2pb5zFheYsM168Z8YV711HrUKnN9DwU6PgF0yO0bU+HYz6vjlGjQX5Y+yZEkg==", "match"=>{"title"=>"efdffasdf", "data(1i)"=>"2018", "data(2i)"=>"6", "data(3i)"=>"2"}, "commit"=>"Create", "session_id"=>"1"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:11
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:12
+  [1m[36mSession Update (0.9ms)[0m  [1m[33mUPDATE "sessions" SET "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["status", 2], ["updated_at", "2018-06-02 07:52:07.325115"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:12
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:12
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 5.9ms)
+
+
+  
+NoMethodError (undefined method `master_id' for true:TrueClass):
+  
+app/controllers/matches_controller.rb:13:in `create'
+Started POST "/sessions/1/matches" for 127.0.0.1 at 2018-06-02 09:52:45 +0200
+Processing by MatchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4aDibY1J75dOuJ87wCUq/a41P2pb5zFheYsM168Z8YV711HrUKnN9DwU6PgF0yO0bU+HYz6vjlGjQX5Y+yZEkg==", "match"=>{"title"=>"efdffasdf", "data(1i)"=>"2018", "data(2i)"=>"6", "data(3i)"=>"2"}, "commit"=>"Create", "session_id"=>"1"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:12
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:13
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches"[0m
+  ↳ app/controllers/matches_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:21
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("session_id", "title", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["session_id", 1], ["title", "efdffasdf"], ["data", "2018-06-02 00:00:00"], ["created_at", "2018-06-02 07:52:45.684209"], ["updated_at", "2018-06-02 07:52:45.684209"]]
+  ↳ app/controllers/matches_controller.rb:21
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:21
+Redirected to http://127.0.0.1:3000/sessions/1
+Completed 302 Found in 66ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:52:45 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mPartecipation Load (0.5ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 645ms (Views: 33.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007ff8b8d406f8%3E/show_current" for 127.0.0.1 at 2018-06-02 09:52:50 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007ff8b8d406f8>"}
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:44
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:46
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:49
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:50
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (5.9ms)
+Completed 200 OK in 529ms (Views: 28.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:55:15 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 534ms (Views: 22.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007ff8c47b6ca8%3E/show_current" for 127.0.0.1 at 2018-06-02 09:55:17 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007ff8c47b6ca8>"}
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:44
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:46
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:49
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:50
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 1084ms (Views: 23.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007ff8c47b6ca8%3E/show_current" for 127.0.0.1 at 2018-06-02 09:55:51 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007ff8c47b6ca8>"}
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:44
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:46
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:49
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:50
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 507ms (Views: 22.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007ff8c47b6ca8%3E/show_current" for 127.0.0.1 at 2018-06-02 09:56:24 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007ff8c47b6ca8>"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:44
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:46
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:49
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:50
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 551ms (Views: 34.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/sessions/1/matches/4/close" for 127.0.0.1 at 2018-06-02 09:56:30 +0200
+Processing by MatchesController#close as HTML
+  Parameters: {"session_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:87
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:89
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:91
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:92
+  Rendering matches/close.html.haml within layouts/application
+  Rendered matches/close.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 41ms (Views: 27.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:56:32 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 543ms (Views: 23.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:57:22 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 482ms (Views: 25.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007ff8c45d7f68%3E/show_current" for 127.0.0.1 at 2018-06-02 09:57:24 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007ff8c45d7f68>"}
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:44
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:46
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:49
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:50
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 474ms (Views: 21.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:57:26 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 625ms (Views: 22.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:58:38 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `master_id' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:49:in `show'
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:59:00 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:51
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:53
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 528ms (ActiveRecord: 2.1ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+s);; _hamlout.buffer << ("</h3>\n<h3>".freeze);; _hamlout.bu
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+l::Helpers.html_escape((("Date: #{@session.date}"
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/show.html.haml:16: unknown regexp option - h
+app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 09:59:21 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:48
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:50
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:51
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:53
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 513ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+s);; _hamlout.buffer << ("</h3>\n<h3>".freeze);; _hamlout.bu
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+l::Helpers.html_escape((("Date: #{@session.date}"
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/show.html.haml:16: unknown regexp option - h
+app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007ff8c45d7f68%3E/show_current" for 127.0.0.1 at 2018-06-02 09:59:26 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007ff8c45d7f68>"}
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:44
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:46
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:49
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:50
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 650ms (Views: 23.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 10:02:38 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:52
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:54
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:55
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:57
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 605ms (ActiveRecord: 1.5ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+s);; _hamlout.buffer << ("</h3>\n<h3>".freeze);; _hamlout.bu
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+l::Helpers.html_escape((("Date: #{@session.date}"
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/show.html.haml:16: unknown regexp option - h
+app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-06-02 10:02:48 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:02:48 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 28ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:02:54 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `master_id' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:19:in `showcreated'
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:03:11 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:03:12 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `master_id' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:5:in `showactive'
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:03:23 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/closedsessions" for 127.0.0.1 at 2018-06-02 10:03:24 +0200
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `master_id' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:12:in `showclosed'
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:03:52 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (3.1ms)
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:03:56 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:17
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `master_id' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:19:in `showcreated'
+Started GET "/" for 127.0.0.1 at 2018-06-02 10:06:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:06:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 40ms (Views: 27.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:06:27 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:16
+  Rendering sessions/showcreated.html.haml within layouts/application
+  Rendered sessions/showcreated.html.haml within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 553ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:3: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:3: syntax error, unexpected tINTEGER, expecting ')'
+/h2>\n<h3>Created sessions</h3>\n".freeze);; 
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:5: syntax error, unexpected tCONSTANT, expecting ')'
+pers.html_escape(((link_to "Id session: #{session.title}", s
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+er << ("</h3>\n".freeze);; end;::Haml::Util.html_safe(_erbou
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/showcreated.html.haml:3: unknown regexp option - h
+app/views/sessions/showcreated.html.haml:3: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/showcreated.html.haml:5: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showcreated.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:06:35 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (9.4ms)
+Completed 200 OK in 40ms (Views: 34.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:06:37 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:16
+  Rendering sessions/showcreated.html.haml within layouts/application
+  Rendered sessions/showcreated.html.haml within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 475ms (ActiveRecord: 0.2ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:3: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:3: syntax error, unexpected tINTEGER, expecting ')'
+/h2>\n<h3>Created sessions</h3>\n".freeze);; 
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:5: syntax error, unexpected tCONSTANT, expecting ')'
+pers.html_escape(((link_to "Id session: #{session.title}", s
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+er << ("</h3>\n".freeze);; end;::Haml::Util.html_safe(_erbou
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/showcreated.html.haml:3: unknown regexp option - h
+app/views/sessions/showcreated.html.haml:3: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/showcreated.html.haml:5: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showcreated.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-06-02 10:07:06 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:07:06 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 34ms (Views: 22.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:07:07 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:16
+  Rendering sessions/showcreated.html.haml within layouts/application
+  Rendered sessions/showcreated.html.haml within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 500ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:3: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:3: syntax error, unexpected tINTEGER, expecting ')'
+/h2>\n<h3>Created sessions</h3>\n".freeze);; 
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:5: syntax error, unexpected tCONSTANT, expecting ')'
+pers.html_escape(((link_to "Id session: #{session.title}", s
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+er << ("</h3>\n".freeze);; end;::Haml::Util.html_safe(_erbou
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showcreated.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/showcreated.html.haml:3: unknown regexp option - h
+app/views/sessions/showcreated.html.haml:3: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/showcreated.html.haml:5: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/showcreated.html.haml:6: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showcreated.html.haml:9: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:07:44 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:16
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 500ms (Views: 24.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:07:46 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:07:48 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `master_id' for nil:NilClass):
+  
+app/controllers/sessions_controller.rb:5:in `showactive'
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:08:12 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (7.3ms)
+Completed 200 OK in 69ms (Views: 43.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:08:13 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+  Rendering sessions/showactive.html.haml within layouts/application
+  Rendered sessions/showactive.html.haml within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 479ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:4: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+</h2>\n<h3>Active sessions</h3>\n".freeze);; 
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:6: syntax error, unexpected tCONSTANT, expecting ')'
+pers.html_escape(((link_to "Id session: #{session.title}", s
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:7: syntax error, unexpected keyword_end, expecting ')'
+er << ("</h3>\n".freeze);; end;; elsif current_user.has_role
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:14: syntax error, unexpected keyword_end, expecting ')'
+haml_temp).to_s);).to_s);; end;::Haml::Util.html_safe(_erbou
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:14: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:14: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/showactive.html.haml:4: unknown regexp option - h
+app/views/sessions/showactive.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/showactive.html.haml:6: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/showactive.html.haml:7: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:14: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:14: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/showactive.html.haml:14: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:21:11 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 41ms (Views: 21.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:21:13 +0200
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+.where(:player_id=current_user.id)
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+re(:player_id=current_user.id)
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/sessions_controller.rb:81: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:81: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:21:24 +0200
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+.where(:player_id=current_user.id)
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+re(:player_id=current_user.id)
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/sessions_controller.rb:81: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:6: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/sessions_controller.rb:6: syntax error, unexpected ')', expecting keyword_end
+app/controllers/sessions_controller.rb:81: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:21:40 +0200
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/sessions_controller.rb:81: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/sessions_controller.rb:81: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:21:50 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+  Rendering sessions/showactive.html.haml within layouts/application
+  Rendered sessions/showactive.html.haml within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 555ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:4: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+</h2>\n<h3>Active sessions</h3>\n".freeze);; 
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:7: syntax error, unexpected tCONSTANT, expecting ')'
+html_escape(((link_to "Session: #{session.title}", session_p
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+er << ("</h3>\n".freeze);; end;; end;; elsif current_user.ha
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+.to_s);; end;; end;; end;; end;::Haml::Util.html_safe(_erbou
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/showactive.html.haml:4: unknown regexp option - h
+app/views/sessions/showactive.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/showactive.html.haml:7: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/showactive.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:22:01 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+  Rendering sessions/showactive.html.haml within layouts/application
+  Rendered sessions/showactive.html.haml within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 477ms (ActiveRecord: 0.2ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:4: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+</h2>\n<h3>Active sessions</h3>\n".freeze);; 
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:7: syntax error, unexpected tCONSTANT, expecting ')'
+html_escape(((link_to "Session: #{session.title}", session_p
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+er << ("</h3>\n".freeze);; end;; end;; elsif current_user.ha
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+.to_s);; end;; end;; end;; end;::Haml::Util.html_safe(_erbou
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showactive.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/showactive.html.haml:4: unknown regexp option - h
+app/views/sessions/showactive.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/showactive.html.haml:7: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/showactive.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/showactive.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showactive.html.haml:20: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:22:08 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:5
+  Rendered sessions/showactive.html.haml within layouts/application (17.1ms)
+Completed 500 Internal Server Error in 529ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `master_id' for nil:NilClass):
+    3:   %h2= "Master:  #{@username}"
+    4:   %h3 Active sessions
+    5:   -@activesessions.each do |session|
+    6:     - if current_user.id==@session.master_id
+    7:       %h3= link_to "Session: #{session.title}", session_path(session.id)
+    8: -elsif current_user.has_role?(:player)
+    9:   %h2= "Player: #{@username}"
+  
+app/views/sessions/showactive.html.haml:6:in `block in _app_views_sessions_showactive_html_haml__3572763455909551611_70353212813560'
+app/views/sessions/showactive.html.haml:5:in `_app_views_sessions_showactive_html_haml__3572763455909551611_70353212813560'
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:22:21 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:5
+  Rendered sessions/showactive.html.haml within layouts/application (2.6ms)
+Completed 200 OK in 589ms (Views: 28.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 10:22:24 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:51
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:53
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:54
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:56
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 523ms (ActiveRecord: 1.0ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+s);; _hamlout.buffer << ("</h3>\n<h3>".freeze);; _hamlout.bu
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+l::Helpers.html_escape((("Date: #{@session.date}"
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/show.html.haml:16: unknown regexp option - h
+app/views/sessions/show.html.haml:16: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/show.html.haml:16: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/show.html.haml:53: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/show.html.haml:56: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 10:22:47 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:51
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:53
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:54
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:56
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 522ms (Views: 26.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007ff8c46932e0%3E/show_current" for 127.0.0.1 at 2018-06-02 10:22:54 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007ff8c46932e0>"}
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:44
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:46
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:49
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:50
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 517ms (Views: 26.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 10:24:32 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:51
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:53
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:54
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:56
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 587ms (Views: 29.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:24:34 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 25ms (Views: 23.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:24:43 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:18
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 487ms (Views: 20.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:26:33 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 26ms (Views: 23.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/createdsessions" for 127.0.0.1 at 2018-06-02 10:26:35 +0200
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:18
+  Rendering sessions/showcreated.html.haml within layouts/application
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 1]]
+  ↳ app/views/sessions/showcreated.html.haml:4
+  Rendered sessions/showcreated.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 559ms (Views: 33.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:26:36 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (10.2ms)
+Completed 200 OK in 36ms (Views: 33.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:26:37 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:5
+  Rendered sessions/showactive.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 506ms (Views: 25.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:26:38 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/closedsessions" for 127.0.0.1 at 2018-06-02 10:26:38 +0200
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12
+  Rendering sessions/showclosed.html.haml within layouts/application
+  Rendered sessions/showclosed.html.haml within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 460ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (The line was indented 2 levels deeper than the previous line.):
+    4:   %h3 Ended sessions
+    5:   -@closedsessions.each do |session|
+    6: 
+    7:       %h3= link_to "Session: #{session.title}", session_path(session.id)
+    8: -elsif current_user.has_role?(:player)
+    9:   %h2= "Player: #{@username}"
+   10:   %h3 Ended sessions
+  
+app/views/sessions/showclosed.html.haml:7
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:29:16 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 32ms (Views: 19.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/closedsessions" for 127.0.0.1 at 2018-06-02 10:29:17 +0200
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12
+  Rendering sessions/showclosed.html.haml within layouts/application
+  Rendered sessions/showclosed.html.haml within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 480ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:4: unknown regexp option - h
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+"</h2>\n<h3>Ended sessions</h3>\n".freeze);; 
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:7: syntax error, unexpected tCONSTANT, expecting ')'
+html_escape(((link_to "Session: #{session.title}", session_p
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+er << ("</h3>\n".freeze);; end;; end;; elsif current_user.ha
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+.to_s);; end;; end;; end;; end;; _hamlout.buffer << ("<td>".
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:19: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:19: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/views/sessions/showclosed.html.haml:22: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/sessions/showclosed.html.haml:4: unknown regexp option - h
+app/views/sessions/showclosed.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+app/views/sessions/showclosed.html.haml:7: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/sessions/showclosed.html.haml:8: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showclosed.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showclosed.html.haml:19: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/showclosed.html.haml:19: syntax error, unexpected keyword_end, expecting ')'
+app/views/sessions/showclosed.html.haml:22: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/closedsessions" for 127.0.0.1 at 2018-06-02 10:29:29 +0200
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:12
+  Rendering sessions/showclosed.html.haml within layouts/application
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 3]]
+  ↳ app/views/sessions/showclosed.html.haml:5
+  Rendered sessions/showclosed.html.haml within layouts/application (7.4ms)
+Completed 200 OK in 623ms (Views: 47.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-02 10:29:33 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (12.9ms)
+Completed 200 OK in 38ms (Views: 34.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-02 10:29:36 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."status" = ?[0m  [["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:5
+  Rendered sessions/showactive.html.haml within layouts/application (9.2ms)
+Completed 200 OK in 547ms (Views: 26.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-02 10:29:37 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:54
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:57
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:59
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 470ms (Views: 27.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-02 10:29:43 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:27
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:29
+  Rendering matches/index.html.haml within layouts/application
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/views/matches/index.html.haml:14
+  Rendered matches/index.html.haml within layouts/application (8.8ms)
+Completed 200 OK in 40ms (Views: 28.7ms | ActiveRecord: 0.8ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateSessions (20180526090701)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "master_id" integer, "status" integer, "type" boolean, "private_flag" boolean DEFAULT 0, "title" varchar, "description" varchar, "date" datetime, "version" varchar, "reported_counter" integer DEFAULT 0, "location" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526090701_create_sessions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526090701"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreatePartecipations (20180526092804)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "partecipations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526092804_create_partecipations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526092804"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateInvitations (20180526093225)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "invitations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093225_create_invitations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093225"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateRequests (20180526093844)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093844_create_requests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093844"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateMatches (20180526094157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "matches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "status" boolean DEFAULT 1, "title" varchar, "data" datetime, "summary" varchar, "like" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526094157_create_matches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526094157"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to DeviseCreateUsers (20180526132859)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "username" varchar, "invitation_flag" boolean, "roles_mask" integer DEFAULT 4, "provider" varchar, "uid" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:50
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:51
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:56
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526132859"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-06-02 08:30:18.702527"], ["updated_at", "2018-06-02 08:30:18.702527"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23

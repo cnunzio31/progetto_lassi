@@ -9,6 +9,7 @@ class MatchesController < ApplicationController
   def create
     id = params[:session_id]
     @session = Session.find(id)
+    @session.update(status:2)
     @master_username = User.find(@session.master_id).username
     @matches=Match.all
     @matches.each do |match|
