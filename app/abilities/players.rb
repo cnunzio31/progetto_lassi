@@ -1,3 +1,9 @@
 Canard::Abilities.for(:player) do
-  can [:read], Home
+  can [:show], Home
+  can [:report, :showjoined, :showclosed, :showjoinable, :show, :exit], Session
+  can [:blockinvitation], User
+  can [:index, :show, :show_current, :like], Match
+  can [:create], Request
+  can [:index, :accept], Invitation
+  can [:create], Partecipationsmatch
 end
