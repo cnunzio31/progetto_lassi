@@ -9,6 +9,7 @@ class PartecipationsController < ApplicationController
       redirect_to home_path
     elsif current_user.has_role?(:player) and request.player_id == current_user.id
       redirect_to home_path
+    end
     @partecipation = Partecipation.create!(:session_id => request.session_id,:player_id => request.player_id)
     Request.find(r_id).delete
     redirect_to home_path
