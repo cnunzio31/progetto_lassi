@@ -25,7 +25,8 @@
     %tr
       -@partecipants.each do |partecipant|
         %td= "#{partecipant.username}"
-        %td= button_to "Kick", ban_user_path(@session.id,partecipant.id), :method => :post
+        - if current_user.has_role?(:master)
+          %td= button_to "Kick", ban_user_path(@session.id,partecipant.id), :method => :post
 %h3 Flickr photos:
 - @photos.each do |photo|
   - s="session"+@session.title

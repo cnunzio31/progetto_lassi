@@ -34,10 +34,11 @@
     - if current_user.has_role?(:master)
         %td= button_to "Add summary and close", close_match_path(@session,@match), :method => :get
     - if current_user.has_role?(:player)
-        - if @partecipations.nil?
+        - if @partecipation.nil?
             %td= button_to "Partecipate", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
-            - if current_user.provider==request.env["omniauth.auth"].provider
-                %td= button_to "Add to Google Calendar", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
+            %br/
+            %td= button_to "Add to Google Calendar", calendars_path(@session,@match), :method => :post
+            %br/
 
 %br/
 %td= button_to "Back to Session", session_path(@session), :method => :get

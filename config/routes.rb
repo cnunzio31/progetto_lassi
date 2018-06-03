@@ -47,6 +47,13 @@ Rails.application.routes.draw do
   put 'session/:session_id/add_photo/:id', to: 'sessions#add_photo', as: 'add_photo'
   put 'session/:session_id/matches/:match_id/add_photo_match/:id', to: 'matches#add_photo', as: 'add_photo_match'
 
+  get '/redirect', to: 'matches#redirect', as: 'calendar_redirect'
+  get '/callback', to: 'matches#callback', as: 'calendar_callback'
+  post '/session/:session_id/matches/:match_id/calendars', to: 'matches#calendars', as: 'calendars'
+  get '/session/:session_id/matches/:match_id/calendar/new_event/:calendar_id', to: 'matches#new_event', as: 'calendar_new_event', calendar_id: /[^\/]+/
+
+
+
   root :to => redirect('/home')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
