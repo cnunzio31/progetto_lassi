@@ -6,7 +6,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
-  ActionMailer::Base.smtp_settings = { :address => "smtp.gmail.com", :port => 587, :authentication => :plain, :domain => 'gmail.com', :user_name => 'mydndmailer@gmail.com', :password => ENV["EMAIL_PASSWORD"] }
+  ActionMailer::Base.smtp_settings = { :address => "smtp.gmail.com", :port => 587, :authentication => :plain, :domain => 'gmail.com', :user_name => 'mydndmailer@gmail.com', :password => Rails.application.secrets.email_password }
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
