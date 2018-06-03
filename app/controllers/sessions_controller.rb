@@ -1,25 +1,44 @@
 class SessionsController < ApplicationController
   def showactive
     @username = current_user.username
-    @activesessions = Session.where(:status => 2)
-    if current_user.has_role?(:player)
+    if current_user.has_role?(:master)
+        @mysessions = Session.where(:master_id => current_user.id)
+        @activesessions = @mysessions.where(:status => 2)
+    elsif current_user.has_role?(:player)
         @partecipations=Partecipation.where(:player_id => current_user.id)
+        @activesessions=[]
+        @partecipations.each do |p|
+            @session=Session.find(p.session_id)
+            if @session.status==2
+                @activesessions.push(@session)
+            end
+        end
     end
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     #mockup: activesessionsmaster, activesessionsplayer
   end
   def showclosed
     @username = current_user.username
-    @closedsessions = Session.where(:status => 3)
-    if current_user.has_role?(:player)
+    if current_user.has_role?(:master)
+        @mysessions = Session.where(:master_id => current_user.id)
+        @closedsessions = @mysessions.where(:status => 3)
+    elsif current_user.has_role?(:player)
         @partecipations=Partecipation.where(:player_id => current_user.id)
+        @closedsessions=[]
+        @partecipations.each do |p|
+            @session=Session.find(p.session_id)
+            if @session.status==3
+                @closedsessions.push(@session)
+            end
+        end
     end
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     #mockup: endedsessionsmaster, endedsessionsplayer
   end
   def showcreated
     @username = current_user.username
-    @createdsessions = Session.where(:status => 1)
+    @mysessions = Session.where(:master_id => current_user.id)
+    @createdsessions = @mysessions.where(:status => 1)
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     #mockup: createdsessionsmaster, joinablesessionsplayer
   end
@@ -31,7 +50,14 @@ class SessionsController < ApplicationController
   end
   def showjoined
     @username = current_user.username
-    @joinedsessions = Session.where("status == 1 OR status == 2")
+    @partecipations=Partecipation.where(:player_id => current_user.id)
+    @joinedsessions=[]
+    @partecipations.each do |p|
+        @session=Session.find(p.session_id)
+        if @session.status!=3
+            @joinedsessions.push(@session)
+        end
+    end
     @photos = Flickr.photos.search(user_id: "139197130@N06")
   end
   def showjoinable

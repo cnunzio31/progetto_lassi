@@ -1,6 +1,6 @@
 %h1 My DnD
 %h2 Active sessions
 - @joinedsessions.each do |session|
-  %h3= link_to "Id session: #{session.title}", session_path(session.id)
+  %h3= link_to "Session: #{session.title}", session_path(session.id)
 
 %td= button_to "Home", home_path, :method => :get
