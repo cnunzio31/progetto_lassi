@@ -1,7 +1,7 @@
 %h1 My DnD
 -if current_user.has_role?(:notdefined)
   = form_tag home_path, :method => :post do
-    = select :user, :roles_mask, [1, 2]
+    = select :user, :roles_mask, [["Master", 1], ["Player", 2]]
     = submit_tag 'Save Changes'
 -elsif current_user.has_role?(:master)
   %h2= "Master: #{@username}"
