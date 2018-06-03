@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     #post associata al tasto kick del master
     s_id = params[:session_id]
     if Session.find(s_id).master_id != current_user.id
-      redirect_to session_path(s_id)
+      redirect_to home_path
     end
     p_id = params[:player_id]
     Partecipation.where(:session_id=>s_id).where(:player_id=>p_id).first.delete
