@@ -149,7 +149,7 @@ class MatchesController < ApplicationController
     client.code = params[:code]
     response = client.fetch_access_token!
     session[:authorization] = response
-    redirect_to calendars_path
+    redirect_to home_path
   end
 
   def calendars
