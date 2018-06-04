@@ -19,8 +19,7 @@
   .field
     = f.label :roles_mask
     %br/
-    = select :user, :roles_mask, [1, 2]
-    -#, options_for_select([['A data', 'A'], ['B data', 'B']]
+    = select :user, :roles_mask, [["Master", 1], ["Player", 2]]
     %br/
     = f.label :username
     %br/

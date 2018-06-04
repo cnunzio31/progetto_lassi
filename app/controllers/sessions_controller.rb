@@ -110,6 +110,7 @@ class SessionsController < ApplicationController
     end
     partecipations = Partecipation.where(:session_id => id)
     @partecipants = partecipations.map { |x| User.find(x.player_id) }
+    @val = Partecipation.where(:session_id => id, :player_id => current_user.id).count
     @currentmatch = Match.where(:session_id => id, :status => true)
     @photos = Flickr.photos.search(user_id: "139197130@N06")
   end
