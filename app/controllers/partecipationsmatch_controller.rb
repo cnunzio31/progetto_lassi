@@ -5,7 +5,7 @@ class PartecipationsmatchController < ApplicationController
       s_id = params[:session_id]
       @session = Session.find(s_id)
       m_id = params[:match_id]
-    	@match = Match.find(m_id)
+      @match = Match.find(m_id)
       @partecipationmatch = Partecipationsmatch.create(:session_id => s_id,:match_id => m_id, :player_id => current_user.id)
       if current_user.provider=="google_oauth2"
           redirect_to calendars_path(@session,@match)

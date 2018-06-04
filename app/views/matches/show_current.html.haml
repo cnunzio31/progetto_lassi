@@ -36,7 +36,7 @@
     - if current_user.has_role?(:player)
         - if @partecipation.nil?
             - if current_user.provider=="google_oauth2"
-                %td= button_to "Partecipate and add to Google Calendar", calendars_path(@session,@match), :method => :post
+                %td= button_to "Partecipate and add to Google Calendar", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
                 %br/
             - else
                 %td= button_to "Partecipate", session_match_partecipationsmatch_index_path(@session,@match), :method => :post

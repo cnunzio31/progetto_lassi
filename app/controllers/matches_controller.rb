@@ -57,10 +57,11 @@ class MatchesController < ApplicationController
 
   def show_current
     authorize! :show_current, Match, :message => "You can't see current match"
+    id = params[:session_id]
+    current_user.update(current_session_id: id)
     if current_user.has_role?(:player)
         @partecipationmatch = Partecipationsmatch.where(:player_id => current_user.id)
     end
-    id = params[:session_id]
     @session = Session.find(id)
     if current_user.has_role?(:master) and current_user.id != @session.master_id
       redirect_to home_path
@@ -69,6 +70,7 @@ class MatchesController < ApplicationController
     @matches.each do |match|
         if match.status==true
             @match=match
+            current_user.update(current_match_id: @match.id)
             @username = current_user.username
             @master_username = User.find(@session.master_id).username
             @photos = Flickr.photos.search(user_id: "139197130@N06")
@@ -149,25 +151,33 @@ class MatchesController < ApplicationController
     client.code = params[:code]
     response = client.fetch_access_token!
     session[:authorization] = response
-    redirect_to home_path
+    current_user.update(calendar_flag: true)
+    @session = Session.find(current_user.current_session_id)
+    @match = Match.find(current_user.current_match_id)
+    redirect_to calendars_path(@session,@match)
   end
 
   def calendars
-    s_id = params[:session_id]
-    @session = Session.find(s_id)
-    m_id = params[:match_id]
-    @match = Match.find(m_id)
-    client = Signet::OAuth2::Client.new(client_options)
-    client.update!(session[:authorization])
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.authorization = client
-    @calendar_list = service.list_calendar_lists
-    c_id=0
-    @calendar_list.items.each do |c|
-        c_id=c.id
-        break
+    if !current_user.calendar_flag
+        redirect_to calendar_redirect_path
+    else
+        current_user.update(calendar_flag: false)
+        s_id = params[:session_id]
+        @session = Session.find(s_id)
+        m_id = params[:match_id]
+        @match = Match.find(m_id)
+        client = Signet::OAuth2::Client.new(client_options)
+        client.update!(session[:authorization])
+        service = Google::Apis::CalendarV3::CalendarService.new
+        service.authorization = client
+        @calendar_list = service.list_calendar_lists
+        c_id=0
+        @calendar_list.items.each do |c|
+            c_id=c.id
+            break
+        end
+        redirect_to calendar_new_event_path(@session,@match,c_id)
     end
-    redirect_to calendar_new_event_path(@session,@match,c_id)
   end
 
   def new_event
@@ -188,6 +198,7 @@ class MatchesController < ApplicationController
       summary: s
     })
     service.insert_event(params[:calendar_id], event)
+    flash[:notice]="Added to calendar"
     redirect_to session_match_path(@session,@match)
   end
 

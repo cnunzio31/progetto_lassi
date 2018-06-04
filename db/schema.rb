@@ -83,6 +83,9 @@ ActiveRecord::Schema.define(version: 2018_06_02_175951) do
     t.integer "roles_mask", default: 4
     t.string "provider"
     t.string "uid"
+    t.boolean "calendar_flag", default: false
+    t.integer "current_session_id", default: -1
+    t.integer "current_match_id", default: -1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

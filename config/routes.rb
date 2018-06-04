@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
   get '/redirect', to: 'matches#redirect', as: 'calendar_redirect'
   get '/callback', to: 'matches#callback', as: 'calendar_callback'
-  post '/session/:session_id/matches/:match_id/calendars', to: 'matches#calendars', as: 'calendars'
+  get '/session/:session_id/matches/:match_id/calendars', to: 'matches#calendars', as: 'calendars'
   get '/session/:session_id/matches/:match_id/calendar/new_event/:calendar_id', to: 'matches#new_event', as: 'calendar_new_event', calendar_id: /[^\/]+/
 
 

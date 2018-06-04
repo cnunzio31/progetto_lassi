@@ -11,10 +11,6 @@ class HomesController < ApplicationController
     role = params[:user][:roles_mask]
     #Rails.logger.debug("Salveeee #{role}")
     current_user.update_attributes(:roles_mask => role)
-    if current_user.provider=="google_oauth2"
-        redirect_to calendar_redirect_path
-    else
-        redirect_to home_path
-    end
+    redirect_to home_path
   end
 end
