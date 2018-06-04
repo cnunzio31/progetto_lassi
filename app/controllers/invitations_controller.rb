@@ -28,18 +28,17 @@ class InvitationsController < ApplicationController
     redirect_to session_path(s_id)
   end
   def accept
-    authorize! :new, Invitation, :message => "You can't accept invitations"
+    authorize! :accept, Invitation, :message => "You can't accept invitations"
     s_id = params[:s_id]
     p_id = params[:p_id]
-    if p_id != current_user.id
-      redirect_to session_path(s_id)
-    end
     invite = Invitation.where(:session_id => s_id).where(:player_id => p_id).first
     if invite == nil
       redirect_to home_path
+      return
     end
     invite.delete
     @partecipations = Partecipation.create!(:session_id => s_id, :player_id => p_id)
     redirect_to session_path(s_id)
+    return
   end
 end

@@ -5,9 +5,10 @@
     %tr
       %td= button_to "Home", home_path, :method => :get
       -if current_user.has_role?(:master)
-        %td= button_to "Make it private", make_session_private_path, :method => :get
-        %td= button_to "Invite people", new_invitations_path(@session.id), :method => :get
-        %td= button_to "Pending request", index_requests_path, :method => :get
+        -if @session.status==1 or @session.status==2
+          %td= button_to "Make it private", make_session_private_path, :method => :get
+          %td= button_to "Invite people", new_invitations_path(@session.id), :method => :get
+          %td= button_to "Pending request", index_requests_path, :method => :get
       -elsif current_user.has_role?(:player)
         -if @val == 0
           %td= button_to "Join", create_requests_path(@session.id), :method => :post
@@ -45,13 +46,14 @@
 -if current_user.has_role?(:master)
   - if @session.status==1
     %td= button_to "Activate session: Create first match!", new_session_match_path(@session), :method => :get
-  - else
+  - if @session.status==2
     %td= button_to "Create new match!", new_session_match_path(@session), :method => :get
 
 %table
   %tbody
     %tr
       -if current_user.has_role?(:master)
-        %td= button_to "Close session", close_session_path(@session.id), :method => :get
+        -if @session.status==1 or @session.status==2
+          %td= button_to "Close session", close_session_path(@session.id), :method => :get
       -elsif current_user.has_role?(:player)
         %td= button_to "Report", report_session_path(@session.id), :method => :get

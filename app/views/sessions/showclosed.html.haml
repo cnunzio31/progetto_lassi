@@ -12,7 +12,5 @@
     - @partecipations.each do |partecipation|
       - if session.id==partecipation.session_id
         %h3= link_to "Session: #{session.title}", session_path(session.id)
-        =form_tag destroy_user_session_path, :method => :get do
-          =submit_tag 'Logout'
 
 %td= button_to "Home", home_path, :method => :get
