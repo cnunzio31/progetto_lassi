@@ -12,7 +12,7 @@
 
 %h3 Flickr photos:
 - @photos.each do |photo|
-    - s="match"+@match.title
+    - s="Session"+@session.title+"match"+@match.title
     - if photo.title.to_s.casecmp?(s)
         %img(src = "#{photo.url}")
 %br/

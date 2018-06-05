@@ -69,3 +69,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'flickr-objects'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
+gem 'geocoder'
+gem 'google_maps_service'

@@ -114,6 +114,7 @@ class SessionsController < ApplicationController
     @currentmatch = Match.where(:session_id => id, :status => true)
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     @latlong = Geocoder.coordinates(@session.location)
+    @matches=Match.where(:session_id => id).count
   end
   def makeprivate
     authorize! :makeprivate, Session, :message => "You can't make private this session"

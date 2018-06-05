@@ -104,7 +104,7 @@ class MatchesController < ApplicationController
     if @session.master_id != current_user.id
       redirect_to session_match_path(@session,@match)
     end
-    s="match"+@match.title
+    s="Session"+@session.title+"match"+@match.title
     if !params[:images].nil?
         params[:images].each{ |image|
             photo_id = Flickr.upload(image, title: s)

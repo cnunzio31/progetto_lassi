@@ -98,6 +98,7 @@ GEM
       faraday_middleware (>= 0.8)
       multi_xml (~> 0.4)
       simple_oauth (~> 0.3.1)
+    geocoder (1.4.9)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     google-api-client (0.22.0)
@@ -107,6 +108,10 @@ GEM
       mime-types (~> 3.0)
       representable (~> 3.0)
       retriable (>= 2.0, < 4.0)
+    google_maps_service (0.1.0)
+      hurley (~> 0.1)
+      multi_json (~> 1.11)
+      ruby-hmac (~> 0.4.0)
     googleauth (0.6.2)
       faraday (~> 0.12)
       jwt (>= 1.4, < 3.0)
@@ -120,6 +125,7 @@ GEM
       tilt
     hashie (3.5.7)
     httpclient (2.8.3)
+    hurley (0.2)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -221,6 +227,7 @@ GEM
       railties (>= 4.2.0, < 5.3)
     retriable (3.1.1)
     role_model (0.8.2)
+    ruby-hmac (0.4.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -293,7 +300,9 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   flickr-objects
+  geocoder
   google-api-client
+  google_maps_service
   haml
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

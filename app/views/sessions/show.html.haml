@@ -19,7 +19,7 @@
 %h3= "Master: #{@master_username}"
 %h3= "Status: #{@session.status}"
 %h3= "Date: #{@session.date}"
-%h3 Location: 
+%h3 Location:
 -if @latlong == nil
   %h4= "Umh,looks like the Master didn't input a valid address!"
 -else
@@ -45,9 +45,13 @@
     = file_field_tag 'images[]', multiple: true
     = submit_tag 'Add photo to flickr'
   %br/
-%h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
-%h3= link_to "Ended Match list", session_matches_path(@session.id)
--if current_user.has_role?(:master)
+-if @partecipants.include?(current_user)
+  -if @matches>0
+    %h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
+    %h3= link_to "Ended Match list", session_matches_path(@session.id)
+  - else
+    %h3= "No match created"
+- if current_user.has_role?(:master)
   - if @session.status==1
     %td= button_to "Activate session: Create first match!", new_session_match_path(@session), :method => :get
   - if @session.status==2
