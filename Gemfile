@@ -7,8 +7,10 @@ gem 'devise'
 gem 'haml'
 gem 'canard', '~> 0.5.0.pre'
 gem 'omniauth-google-oauth2'
-#gem 'omniauth-twitter'
 gem 'omniauth-github'
+
+gem 'google_maps_service'
+gem 'geocoder'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
