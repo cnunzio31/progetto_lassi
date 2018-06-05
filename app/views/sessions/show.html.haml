@@ -19,8 +19,12 @@
 %h3= "Master: #{@master_username}"
 %h3= "Status: #{@session.status}"
 %h3= "Date: #{@session.date}"
-%h3 Location:
--#google maps
+%h3 Location: 
+-if @latlong == nil
+  %h4= "Umh,looks like the Master didn't input a valid address!"
+-else
+  %h4= "#{@session.location}"
+  =image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{[ @latlong[0], @latlong[1] ].join(',')}&size=400x400&zoom=15&markers=#{[ @latlong[0], @latlong[1] ].join(',')}"
 %h3= "Description: #{@session.description}"
 %h3 Partecipants:
 %table
