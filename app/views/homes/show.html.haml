@@ -30,3 +30,8 @@
     =submit_tag 'Change username and password'
 =form_tag destroy_user_session_path, :method => :delete do
   =submit_tag 'Log out'
+%h3= "Latest Tweets #DungeonsAndDragons"
+%section#tweets
+  %ul
+    - @tweets.each do |tweet|
+      %li= link_to tweet.text, "https://www.twitter.com/#{tweet.user.screen_name}"

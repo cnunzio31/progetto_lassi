@@ -11,6 +11,7 @@ gem 'omniauth-github'
 
 gem 'google_maps_service'
 gem 'geocoder'
+gem 'twitter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
