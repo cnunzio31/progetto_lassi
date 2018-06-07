@@ -38,7 +38,7 @@
 - @photos.each do |photo|
   - s="session"+@session.title
   - if photo.title.to_s.casecmp?(s)
-    %img(src = "#{photo.url}")
+    =image_tag #{photo.url}
 -if current_user.has_role?(:master)
   %br/
   = form_tag add_photo_path(@session), :method => :put, :multipart => true do
