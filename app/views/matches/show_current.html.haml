@@ -11,10 +11,13 @@
 %h3= "Summary: #{@match.summary}"
 
 %h3 Flickr photos:
+- i=0
+- s="Session"+@session.title+"match"+@match.title
 - @photos.each do |photo|
-    - s="Session"+@session.title+"match"+@match.title
-    - if photo.title.to_s.casecmp?(s)
-        %img(src = "#{photo.url}")
+  - if photo.title.to_s.casecmp?(s)
+    =link_to "Photo #{i}", photo.url
+    %br/
+    - i=i+1
 %br/
 %br/
 - if current_user.has_role?(:master)

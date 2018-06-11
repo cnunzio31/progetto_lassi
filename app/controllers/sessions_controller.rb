@@ -112,6 +112,7 @@ class SessionsController < ApplicationController
     @partecipants = partecipations.map { |x| User.find(x.player_id) }
     @val = Partecipation.where(:session_id => id, :player_id => current_user.id).count
     @currentmatch = Match.where(:session_id => id, :status => true)
+    s="session"+@session.title
     @photos = Flickr.photos.search(user_id: "139197130@N06")
     @latlong = Geocoder.coordinates(@session.location)
     @matches=Match.where(:session_id => id).count

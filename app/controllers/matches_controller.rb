@@ -52,7 +52,8 @@ class MatchesController < ApplicationController
     end
     @match=Match.find(id)
     @master_username = User.find(@session.master_id).username
-    @photos = Flickr.photos.search(user_id: "139197130@N06")
+    s="Session"+@session.title+"match"+@match.title
+    @photos = Flickr.photos.search(user_id: "139197130@N06", title: s)
   end
 
   def show_current
