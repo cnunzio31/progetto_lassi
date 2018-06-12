@@ -3,6 +3,6 @@
 %h3 Invitations
 -@invitations.each do |invitation|
   - if current_user.id==invitation.player_id
-    %h3= link_to "Id session: #{invitation.session_id}", session_path(invitation.session_id)
+    %h3= link_to "Session: #{Session.find(invitation.session_id).title}", session_path(invitation.session_id)
     %h3= button_to "Accept!", accept_invitations_path(invitation.session_id,current_user.id), :method => :post
 %td= button_to "Home", home_path, :method => :get

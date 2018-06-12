@@ -14,12 +14,16 @@ Given("There is at least one closed match in the session") do
     visit session_matches_path(@session1.id)
 end
 
-When /^I click on \"(.+)\".*$/ do |string|
-    click_on(string)
+When /I click on "Details"/ do
+    click_on("Details")
 end
 
 Given("I am on the closed match page") do
     visit session_match_path(@session1.id,@match1.id)
+end
+
+When /I click on "Like!"/ do
+    click_on("Like!")
 end
 
 Then("I should see the like counter increased by one") do

@@ -43,8 +43,6 @@ class SessionsController < ApplicationController
     @username = current_user.username
     @mysessions = Session.where(:master_id => current_user.id)
     @createdsessions = @mysessions.where(:status => 1)
-    @photos = Flickr.photos.search(user_id: "139197130@N06")
-    #mockup: createdsessionsmaster, joinablesessionsplayer
   end
   def showreported
     authorize! :showreported, Session, :message => "You can't read showreported page"
@@ -119,8 +117,12 @@ class SessionsController < ApplicationController
     @partecipants = partecipations.map { |x| User.find(x.player_id) }
     @val = Partecipation.where(:session_id => id, :player_id => current_user.id).count
     @currentmatch = Match.where(:session_id => id, :status => true)
-    s="session"+@session.title
-    @photos = Flickr.photos.search(user_id: "139197130@N06")
+    if current_user.email.split("@")[1].to_s.casecmp?("test.com")
+        @photos=[]
+    else
+        s="Session"+@session.title+"match"+@match.title
+        @photos = Flickr.photos.search(user_id: "139197130@N06", title: s)
+    end
     @latlong = Geocoder.coordinates(@session.location)
     @matches=Match.where(:session_id => id).count
   end

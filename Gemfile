@@ -63,7 +63,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'factory_bot_rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'rspec-rails'
   gem 'database_cleaner'
