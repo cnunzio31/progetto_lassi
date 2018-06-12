@@ -52,8 +52,12 @@ class MatchesController < ApplicationController
     end
     @match=Match.find(id)
     @master_username = User.find(@session.master_id).username
-    s="Session"+@session.title+"match"+@match.title
-    @photos = Flickr.photos.search(user_id: "139197130@N06", title: s)
+    if current_user.email.split("@")[1].to_s.casecmp?("test.com")
+        @photos=[]
+    else
+        s="Session"+@session.title+"match"+@match.title
+        @photos = Flickr.photos.search(user_id: "139197130@N06", title: s)
+    end
   end
 
   def show_current
@@ -74,7 +78,12 @@ class MatchesController < ApplicationController
             current_user.update(current_match_id: @match.id)
             @username = current_user.username
             @master_username = User.find(@session.master_id).username
-            @photos = Flickr.photos.search(user_id: "139197130@N06")
+            if current_user.email.split("@")[1].to_s.casecmp?("test.com")
+                @photos=[]
+            else
+                s="Session"+@session.title+"match"+@match.title
+                @photos = Flickr.photos.search(user_id: "139197130@N06", title: s)
+            end
             return
         end
     end

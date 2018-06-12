@@ -43,12 +43,15 @@
     %br/
     - i=i+1
 -if current_user.has_role?(:master)
-  %br/
   = form_tag add_photo_path(@session), :method => :put, :multipart => true do
     = file_field_tag 'images[]', multiple: true
     = submit_tag 'Add photo to flickr'
   %br/
--if @partecipants.include?(current_user)
+  -if @matches>0
+    %h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
+    %h3= link_to "Ended Match list", session_matches_path(@session.id)
+  %br/
+-if current_user.has_role?(:player) && @partecipants.include?(current_user)
   -if @matches>0
     %h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
     %h3= link_to "Ended Match list", session_matches_path(@session.id)

@@ -7,7 +7,11 @@ end
   def show
     authorize! :show, Home, :message => "You can't read home page"
     @username = current_user.username
-    @tweets = $TwitterClient.search("Dungeons and Dragons",result_type: "recent",lang: "en").first(10)
+    if current_user.email.split("@")[1].to_s.casecmp?("test.com")
+        @tweets=[]
+    else
+        @tweets = $TwitterClient.search("#Dungeons and Dragons",result_type: "recent",lang: "en").first(10)
+    end
   end
   def create
     authorize! :create, Home, :message => "You can't change your role"
