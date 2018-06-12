@@ -20,30 +20,30 @@
         - i=i+1
 %br/
 %br/
-- if current_user.has_role?(:master)
-    = form_tag add_photo_match_path(@session,@match), :method => :put, :multipart => true do
-        = file_field_tag 'images[]', multiple: true
-        = submit_tag 'Add photo to flickr'
+-if current_user.has_role?(:master)
+  = form_tag add_photo_match_path(@session,@match), :method => :put, :multipart => true do
+    = file_field_tag 'images[]', multiple: true
+    = submit_tag 'Add photo to flickr'
 %br/
 %br/
-- if !(@match.status)
-    %h3= "Like: @match.like"
+-if !(@match.status)
+  %h3= "Like: @match.like"
 %br/
 %br/
-- if !(@match.status)
-    %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
-    %br/
-- if @match.status
-    - if current_user.has_role?(:master)
-        %td= button_to "Add summary and close", close_match_path(@session,@match), :method => :get
-    - if current_user.has_role?(:player)
-        - if @partecipation.nil?
-            - if current_user.provider=="google_oauth2"
-                %td= button_to "Partecipate and add to Google Calendar", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
-                %br/
-            - else
-                %td= button_to "Partecipate", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
-                %br/
+-if !(@match.status)
+  %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+  %br/
+-if @match.status
+  -if current_user.has_role?(:master)
+    %td= button_to "Add summary and close", close_match_path(@session,@match), :method => :get
+  -if current_user.has_role?(:player)
+    -if @partecipation.nil?
+      -if current_user.provider=="google_oauth2"
+        %td= button_to "Partecipate and add to Google Calendar", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
+        %br/
+      -else
+        %td= button_to "Partecipate", session_match_partecipationsmatch_index_path(@session,@match), :method => :post
+        %br/
 
 %br/
 %td= button_to "Back to Session", session_path(@session), :method => :get

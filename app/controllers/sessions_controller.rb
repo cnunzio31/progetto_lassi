@@ -104,6 +104,13 @@ class SessionsController < ApplicationController
     @username = current_user.username
     id = params[:id]
     @session = Session.find(id)
+    if @session.status == 1
+      @status = "Created"
+    elsif @session.status == 2
+      @status = "Active"
+    elsif @session.status == 3
+      @status = "Closed"
+    end
     @master_username = User.find(@session.master_id).username
     if current_user.has_role?(:master) and current_user.id != @session.master_id
       redirect_to home_path

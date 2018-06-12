@@ -17,7 +17,7 @@
       -elsif current_user.has_role?(:admin)
         %td= button_to "Delete", session_path(@session.id), :method => :delete
 %h3= "Master: #{@master_username}"
-%h3= "Status: #{@session.status}"
+%h3= "Status: #{@status}"
 %h3= "Date: #{@session.date}"
 %h3 Location:
 -if @latlong == nil
