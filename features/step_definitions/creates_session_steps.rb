@@ -26,14 +26,6 @@ When /I click on "Create session"/ do
     click_on("Create session")
 end
 
-Given("I am again on the master home page") do
-    page.has_content?("Master: "+@master1.username)
-end
-
-When /I click on "Created sessions"/ do
-    click_on("Created sessions")
-end
-
-Then("I should see the created session") do
+Then("I should be on the created session page") do
     page.has_content?("Session: "+@session1.title)
 end

@@ -9,6 +9,4 @@ Scenario: Create Session
     When I click on "Create a new sessions"
     Given I filled the form
     When I click on "Create session"
-    Given I am again on the master home page
-    When I click on "Created sessions"
-    Then I should see the created session
+    Then I should be on the created session page
