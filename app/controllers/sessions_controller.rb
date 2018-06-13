@@ -98,11 +98,9 @@ class SessionsController < ApplicationController
     @username = current_user.username
     id = params[:id]
     @session = Session.find(id)
-<<<<<<< HEAD
     partecipations = Partecipation.where(:session_id => id)
     @partecipants = partecipations.map { |x| User.find(x.player_id) }
     @currentmatch = Match.where(:session_id => id, :status => false)
-=======
     if @session.status == 1
       @status = "Created"
     elsif @session.status == 2
@@ -126,7 +124,6 @@ class SessionsController < ApplicationController
     end
     @latlong = Geocoder.coordinates(@session.location)
     @matches=Match.where(:session_id => id).count
->>>>>>> Sessions_and_Dragons
   end
   def makeprivate
     authorize! :makeprivate, Session, :message => "You can't make private this session"

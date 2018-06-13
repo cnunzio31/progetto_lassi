@@ -52,15 +52,7 @@ Rails.application.routes.draw do
   get '/session/:session_id/matches/:match_id/calendars', to: 'matches#calendars', as: 'calendars'
   get '/session/:session_id/matches/:match_id/calendar/new_event/:calendar_id', to: 'matches#new_event', as: 'calendar_new_event', calendar_id: /[^\/]+/
 
-<<<<<<< HEAD
-  get 'users/:id/ban', to: 'users#ban', as: 'ban_user'
-  get 'users/blockinvitation', to: 'users#blockinvitation', as: 'block_invitation'
 
-  get '/session/:session_id/matches/:id/like_match', to: 'matches#like', as: 'i_like_match'
-  get '/session/:session_id/matches/:id/add_summary', to: 'matches#summary', as: 'add_summary_match'
-=======
-
->>>>>>> Sessions_and_Dragons
 
   root :to => redirect('/home')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
