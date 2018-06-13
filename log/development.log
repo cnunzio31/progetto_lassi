@@ -1,0 +1,217 @@
+Started GET "/" for 127.0.0.1 at 2018-06-13 15:42:31 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:42:31 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-13 15:42:31 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (24.1ms)
+Completed 200 OK in 304ms (Views: 287.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-06-13 15:42:34 +0200
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/registrations/new.html.haml within layouts/application (11.2ms)
+Completed 200 OK in 46ms (Views: 44.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-06-13 15:42:48 +0200
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iYTcwkc1ZLGQu8N349DeDJILXpe0kPxt+NM99yCqd0VRVyh6YCMSX6ZdkBWmoABq0FpsKNShNndqtHD+EEJlmg==", "user"=>{"email"=>"prova@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "roles_mask"=>"1", "username"=>"prova"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users/registrations_controller.rb:26
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "prova@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users/registrations_controller.rb:26
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "prova@gmail.com"], ["encrypted_password", "$2a$11$jYPtkjJ5xaKxz7y7GAtu3ejVDQVKgS0u72iv77x0weZlvHuJ6YBnW"], ["username", "prova"], ["roles_mask", 1], ["created_at", "2018-06-13 13:42:48.833802"], ["updated_at", "2018-06-13 13:42:48.833802"]]
+  ↳ app/controllers/users/registrations_controller.rb:26
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users/registrations_controller.rb:26
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users/registrations_controller.rb:31
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-06-13 13:42:48.841556"], ["last_sign_in_at", "2018-06-13 13:42:48.841556"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-06-13 13:42:48.842491"], ["id", 1]]
+  ↳ app/controllers/users/registrations_controller.rb:31
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users/registrations_controller.rb:31
+Redirected to http://localhost:3000/home
+Completed 302 Found in 153ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:42:48 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 1274ms (ActiveRecord: 0.2ms)
+
+
+  
+Twitter::Error::BadRequest (Bad Authentication data.):
+  
+app/controllers/homes_controller.rb:13:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-13 15:43:51 +0200
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-13 15:43:51 +0200
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-13 15:45:02 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qFArRbW+wq6dXS8B2RR24Qrh7BvA5s5Ui4sRaMfkf4v0xNX6p03i+j9iciq1Gwi2kXeCEa4CIZPWxIpn8s9t9A==", "user"=>{"email"=>"prova@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-13 15:45:02 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:45:02 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 1193ms (ActiveRecord: 0.2ms)
+
+
+  
+Twitter::Error::BadRequest (Bad Authentication data.):
+  
+app/controllers/homes_controller.rb:13:in `show'
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-13 15:46:11 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 29ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-13 15:46:11 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:46:11 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (15.5ms)
+Completed 200 OK in 1872ms (Views: 203.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-06-13 15:46:19 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"h2ss/jNZla2y1TXN05CJnS6doqF0bjuhqQot1iF5bMXb/9JBIaq1+RDqaOa/n/fKtQvMqxqK1Gb0RbbZFFJ+ug==", "commit"=>"Log out"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 29ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-13 15:46:19 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:46:19 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-13 15:46:19 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (17.2ms)
+Completed 200 OK in 80ms (Views: 78.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-13 15:46:22 +0200
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-13 15:46:22 +0200
+Started GET "/users/auth/google_oauth2/callback?state=435dfedc0c3ce1b9efc58fc85548d07d96d8885756626c33&code=4%2FAADhcZjUj_B9zz9OD0AdBtmlbfZM48TNMweEo1lh5BNnyCgN0LwVEjec8XF59JKuPp8rOguHGDPMYwWePlrw0mg" for 127.0.0.1 at 2018-06-13 15:46:44 +0200
+Processing by OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"435dfedc0c3ce1b9efc58fc85548d07d96d8885756626c33", "code"=>"4/AADhcZjUj_B9zz9OD0AdBtmlbfZM48TNMweEo1lh5BNnyCgN0LwVEjec8XF59JKuPp8rOguHGDPMYwWePlrw0mg"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["provider", "google_oauth2"], ["uid", "110126984668945540313"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sdg1234569@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "provider", "uid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "sdg1234569@gmail.com"], ["encrypted_password", "$2a$11$KPePfkYoRqjkB7GWdArIs.GvZLWQuWHjEhlePJTRP2weJhYV/tGk6"], ["username", "Silvio dg"], ["provider", "google_oauth2"], ["uid", "110126984668945540313"], ["created_at", "2018-06-13 13:46:45.697583"], ["updated_at", "2018-06-13 13:46:45.697583"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-06-13 13:46:45.714503"], ["last_sign_in_at", "2018-06-13 13:46:45.714503"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-06-13 13:46:45.715321"], ["id", 2]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+Redirected to http://localhost:3000/home
+Completed 302 Found in 239ms (ActiveRecord: 23.9ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:46:45 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (23.2ms)
+Completed 200 OK in 1228ms (Views: 106.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/home" for 127.0.0.1 at 2018-06-13 15:47:40 +0200
+Processing by HomesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nQKgZv2Peot2O3vPlQ4ayJmbdMIg5yioJ8rdeZ3DE9csAPgAJI9ORhMuvf5DoYo4AhlsXrC2LSFIAwhm4mNyvg==", "user"=>{"roles_mask"=>"8"}, "commit"=>"Save Changes"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/home
+Completed 302 Found in 9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:47:40 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (9.7ms)
+Completed 200 OK in 1256ms (Views: 70.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/home" for 127.0.0.1 at 2018-06-13 15:48:00 +0200
+Processing by HomesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OMvuCHKNnUKFyayLeJDPDx1VpQX6uPQ5+BaDQRuHh2mJybZuq42pj+DcarquP1//hte9mWrp8bCX31ZeZCfmAA==", "user"=>{"roles_mask"=>"1"}, "commit"=>"Save Changes"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[36mUser Update (5.3ms)[0m  [1m[33mUPDATE "users" SET "roles_mask" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["roles_mask", 1], ["updated_at", "2018-06-13 13:48:00.494181"], ["id", 2]]
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+Redirected to http://localhost:3000/home
+Completed 302 Found in 30ms (ActiveRecord: 17.8ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-13 15:48:00 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (26.6ms)
+Completed 200 OK in 1322ms (Views: 131.6ms | ActiveRecord: 0.3ms)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23

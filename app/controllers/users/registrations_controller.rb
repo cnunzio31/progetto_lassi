@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       #respond_with resource, location: after_sign_up_path_for(resource)
       return
     end
-    if sign_up_params["roles_mask"] != "1" || sign_up_params["roles_mask"] != "2"
+    if sign_up_params["roles_mask"] != "1" && sign_up_params["roles_mask"] != "2"
       redirect_to new_user_registration_path, :notice => "You can only be Master or Player"
       #set_flash_message! :notice, :"You can only be Master o Player"
       return
