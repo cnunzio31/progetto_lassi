@@ -215,3 +215,162 @@ Completed 200 OK in 1322ms (Views: 131.6ms | ActiveRecord: 0.3ms)
   ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
   [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
   ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Started GET "/" for 127.0.0.1 at 2018-06-13 22:20:20 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/home" for 127.0.0.1 at 2018-06-13 22:20:20 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-13 22:20:20 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (5.2ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (27.6ms)
+Completed 200 OK in 591ms (Views: 523.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-13 22:20:23 +0200
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-13 22:20:23 +0200
+Started GET "/users/auth/google_oauth2/callback?state=cb9291d6ef5d19de8bc39b11e1584e172640fef9106292bf&code=4/AAAiR7oOYK79hoo21_Nip7LVV6eVPvYKYbeRWzPmGdirb5Dt1Ci9bZgMEA9Z7VoTpNS_GeDnK03yasIdjgwsZ_8" for 127.0.0.1 at 2018-06-13 22:20:24 +0200
+Processing by OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"cb9291d6ef5d19de8bc39b11e1584e172640fef9106292bf", "code"=>"4/AAAiR7oOYK79hoo21_Nip7LVV6eVPvYKYbeRWzPmGdirb5Dt1Ci9bZgMEA9Z7VoTpNS_GeDnK03yasIdjgwsZ_8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["provider", "google_oauth2"], ["uid", "115970503731693681401"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "c.nunzio31.nc@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "provider", "uid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "c.nunzio31.nc@gmail.com"], ["encrypted_password", "$2a$11$J2qDk/fVjkyqt43gPCXTd..9M0hr6e1ZxnuoV33cBVMQTm/DhaGb6"], ["username", "Nunziato Crisafulli"], ["provider", "google_oauth2"], ["uid", "115970503731693681401"], ["created_at", "2018-06-13 20:20:25.210519"], ["updated_at", "2018-06-13 20:20:25.210519"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (17.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-06-13 20:20:25.234090"], ["last_sign_in_at", "2018-06-13 20:20:25.234090"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-06-13 20:20:25.235353"], ["id", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+Redirected to http://localhost:3000/home
+Completed 302 Found in 304ms (ActiveRecord: 25.8ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-13 22:20:25 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (9.5ms)
+Completed 200 OK in 1327ms (Views: 54.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/home" for 127.0.0.1 at 2018-06-13 22:20:28 +0200
+Processing by HomesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"emkwdLb9swkiSuwR9cFD6OfpBJ53wIZnIF4bLfGwtn6sliCmTmoblxBvEBoyMibgb721eDnACmha2QySGsWoRQ==", "user"=>{"roles_mask"=>"1"}, "commit"=>"Save Changes"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "roles_mask" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["roles_mask", 1], ["updated_at", "2018-06-13 20:20:28.242786"], ["id", 1]]
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[35m (19.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+Redirected to http://localhost:3000/home
+Completed 302 Found in 35ms (ActiveRecord: 21.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-13 22:20:28 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (7.8ms)
+Completed 200 OK in 770ms (Views: 52.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/sessions/new?utf8=%E2%9C%93&commit=Create+a+new+sessions" for 127.0.0.1 at 2018-06-13 22:20:31 +0200
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create a new sessions"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (123.9ms)
+Completed 200 OK in 173ms (Views: 167.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-06-13 22:20:36 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JbhmLp979lJSiYMSNvn5w+HrvPQf7fhzWgT4ecLjHTDzR3b8Z+xezGCsfxnxCpzLab8NElHtdHwgg+/GKZYDCw==", "session"=>{"title"=>"", "date(1i)"=>"2018", "date(2i)"=>"6", "date(3i)"=>"13", "location"=>"", "description"=>"", "session_type"=>"Paper", "version"=>""}, "commit"=>"Create session"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+Completed 422 Unprocessable Entity in 29ms (ActiveRecord: 1.8ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Master can't be blank, Title can't be blank, Version can't be blank, Description can't be blank):
+  
+app/controllers/sessions_controller.rb:91:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-06-13 22:21:02 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JbhmLp979lJSiYMSNvn5w+HrvPQf7fhzWgT4ecLjHTDzR3b8Z+xezGCsfxnxCpzLab8NElHtdHwgg+/GKZYDCw==", "session"=>{"title"=>"Session1", "date(1i)"=>"2018", "date(2i)"=>"6", "date(3i)"=>"13", "location"=>"FOndi", "description"=>"dfgdfhsd", "session_type"=>"Paper", "version"=>"1.0"}, "commit"=>"Create session"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+Completed 422 Unprocessable Entity in 8ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Master can't be blank):
+  
+app/controllers/sessions_controller.rb:91:in `create'
+Started POST "/sessions" for 127.0.0.1 at 2018-06-13 22:21:56 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JbhmLp979lJSiYMSNvn5w+HrvPQf7fhzWgT4ecLjHTDzR3b8Z+xezGCsfxnxCpzLab8NElHtdHwgg+/GKZYDCw==", "session"=>{"title"=>"Session1", "date(1i)"=>"2018", "date(2i)"=>"6", "date(3i)"=>"13", "location"=>"FOndi", "description"=>"dfgdfhsd", "session_type"=>"Paper", "version"=>"1.0"}, "commit"=>"Create session"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[36mSession Create (0.6ms)[0m  [1m[32mINSERT INTO "sessions" ("session_type", "title", "description", "date", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["session_type", "Paper"], ["title", "Session1"], ["description", "dfgdfhsd"], ["date", "2018-06-13 00:00:00"], ["version", "1.0"], ["location", "FOndi"], ["created_at", "2018-06-13 20:22:06.823622"], ["updated_at", "2018-06-13 20:22:06.823622"]]
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:92
+  [1m[36mSession Update (0.4ms)[0m  [1m[33mUPDATE "sessions" SET "master_id" = ?, "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["master_id", 1], ["status", 1], ["updated_at", "2018-06-13 20:22:06.844554"], ["id", 1]]
+  ↳ app/controllers/sessions_controller.rb:92
+  [1m[35m (9.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/sessions_controller.rb:92
+Redirected to http://localhost:3000/sessions/1
+Completed 302 Found in 109ms (ActiveRecord: 28.2ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-13 22:22:06 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (19.4ms)
+Completed 200 OK in 1765ms (Views: 96.0ms | ActiveRecord: 3.0ms)
+
+

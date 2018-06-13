@@ -47,7 +47,7 @@ describe SessionsController, :type => :controller do
         it "creates the session 'Session1'" do
             post :create, params: {session: {master_id: @master1.id,
                  title: "Session1", location: "Roma",
-                 description: "bella"}}
+                 description: "bella", version: "1"}}
             expect(response).to redirect_to("/sessions/1")
         end
     end
