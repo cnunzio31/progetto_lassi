@@ -1,3 +1,4 @@
+%h1 My DnD
 %h2 Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
@@ -17,10 +18,9 @@
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
   .field
-    = f.label :roles_mask
+    = f.label :Choose_a_role
     %br/
-    = select :user, :roles_mask, [1, 2]
-    -#, options_for_select([['A data', 'A'], ['B data', 'B']]
+    = select :user, :roles_mask, [["Master", 1], ["Player", 2]]
     %br/
     = f.label :username
     %br/

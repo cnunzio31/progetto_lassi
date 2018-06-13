@@ -3,18 +3,28 @@
 %table
   %tbody
     %tr
+      %td= button_to "Home", home_path, :method => :get
       -if current_user.has_role?(:master)
-        %td= button_to "Make it private", make_session_private_path, :method => :get
-        %td= button_to "Invite people", new_invitation_path, :method => :get
-        %td= button_to "Pending request", reported_sessions_path, :method => :get
+        -if @session.status==1 or @session.status==2
+          %td= button_to "Make it private", make_session_private_path, :method => :get
+          %td= button_to "Invite people", new_invitations_path(@session.id), :method => :get
+          %td= button_to "Pending request", index_requests_path, :method => :get
       -elsif current_user.has_role?(:player)
-        %td= button_to "Join", session_partecipations_path(@session.id), :method => :get
+        -if @val == 0
+          %td= button_to "Join", create_requests_path(@session.id), :method => :post
+        -else
+          %td= button_to "Exit Session", exit_session_path(@session.id), :method => :post
       -elsif current_user.has_role?(:admin)
         %td= button_to "Delete", session_path(@session.id), :method => :delete
-%h3= "Master: #{@session.master_id}"
-%h3= "Status: #{@session.status}"
+%h3= "Master: #{@master_username}"
+%h3= "Status: #{@status}"
+%h3= "Date: #{@session.date}"
 %h3 Location:
--#google maps
+-if @latlong == nil
+  %h4= "Umh,looks like the Master didn't input a valid address!"
+-else
+  %h4= "#{@session.location}"
+  =image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{[ @latlong[0], @latlong[1] ].join(',')}&size=400x400&zoom=15&markers=#{[ @latlong[0], @latlong[1] ].join(',')}"
 %h3= "Description: #{@session.description}"
 %h3 Partecipants:
 %table
@@ -22,16 +32,42 @@
     %tr
       -@partecipants.each do |partecipant|
         %td= "#{partecipant.username}"
-        %td= button_to "Ban", ban_user_path(@session.id), :method => :get
+        -if current_user.has_role?(:master)
+          %td= button_to "Kick", ban_user_path(@session.id,partecipant.id), :method => :post
 %h3 Flickr photos:
--#aggiungi le foto di Flickr
-%h3= link_to "Current match", session_match_path(@session.id, @currentmatch)
-%h3= link_to "Match list", session_matches_path(@session.id)
+- i=0
+- s="session"+@session.title
+- @photos.each do |photo|
+  - if photo.title.to_s.casecmp?(s)
+    =link_to "Photo #{i}", photo.url
+    %br/
+    - i=i+1
+-if current_user.has_role?(:master)
+  = form_tag add_photo_path(@session), :method => :put, :multipart => true do
+    = file_field_tag 'images[]', multiple: true
+    = submit_tag 'Add photo to flickr'
+  %br/
+  -if @matches>0
+    %h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
+    %h3= link_to "Ended Match list", session_matches_path(@session.id)
+  %br/
+-if current_user.has_role?(:player) && @partecipants.include?(current_user)
+  -if @matches>0
+    %h3= link_to "Current match", show_current_match_path(@session.id, @currentmatch)
+    %h3= link_to "Ended Match list", session_matches_path(@session.id)
+  - else
+    %h3= "No match created"
+- if current_user.has_role?(:master)
+  - if @session.status==1
+    %td= button_to "Activate session: Create first match!", new_session_match_path(@session), :method => :get
+  - if @session.status==2
+    %td= button_to "Create new match!", new_session_match_path(@session), :method => :get
+
 %table
   %tbody
     %tr
       -if current_user.has_role?(:master)
-        %td= button_to "Add photo", home_path, :method => :get
-        %td= button_to "Close session", close_session_path(@session.id), :method => :get
+        -if @session.status==1 or @session.status==2
+          %td= button_to "Close session", close_session_path(@session.id), :method => :get
       -elsif current_user.has_role?(:player)
         %td= button_to "Report", report_session_path(@session.id), :method => :get

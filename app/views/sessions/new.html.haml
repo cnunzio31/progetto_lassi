@@ -1,1 +1,27 @@
-%h2 pagina creazione sessione
+%h1 My DnD
+%h2 Create a new session!
+
+= form_tag sessions_path, :method => :post do
+
+  = label :session, :title, 'Title'
+  = text_field :session, :title
+  %br/
+  = label :session, :date, 'Date'
+  = date_select :session, :date
+  %br/
+  = label :session, :location, 'Location'
+  = text_field :session, :location
+  %br/
+  = label :session, :description, 'Description'
+  = text_field :session, :description
+  %br/
+  = label :session, :session_type, 'Session type'
+  = select :session, :session_type, ['Paper','Online']
+  %br/
+  = label :session, :version, 'Version'
+  = text_field :session, :version
+  %br/
+  = radio_button :session, 'private_flag', :checked => true
+  Private
+  %br/
+  = submit_tag 'Create session'

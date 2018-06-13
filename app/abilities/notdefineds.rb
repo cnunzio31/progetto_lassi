@@ -1,4 +1,3 @@
 Canard::Abilities.for(:notdefined) do
-  can [:read, :create], Home
-  
+  can [:show, :create], Home
 end

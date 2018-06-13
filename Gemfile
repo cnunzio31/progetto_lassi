@@ -7,8 +7,11 @@ gem 'devise'
 gem 'haml'
 gem 'canard', '~> 0.5.0.pre'
 gem 'omniauth-google-oauth2'
-#gem 'omniauth-twitter'
 gem 'omniauth-github'
+
+gem 'google_maps_service'
+gem 'geocoder'
+gem 'twitter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -59,7 +62,11 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'factory_bot_rails'
+  gem 'cucumber-rails', require: false
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -67,3 +74,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'flickr-objects'
+gem 'google-api-client', require: 'google/apis/calendar_v3'
+gem 'geocoder'
+gem 'google_maps_service'

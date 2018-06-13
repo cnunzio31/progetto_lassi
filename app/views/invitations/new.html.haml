@@ -1,1 +1,6 @@
-%h2 pagina nuono invito
+%h1 My DnD
+%h2 Invite a new player!
+%h2= "Master:  #{@username}"
+-@eligibleusers.each do |user|
+    %h3= "Player name: #{user.username}"
+    %td= button_to "Invite!", send_invitations_path(@session.id,user.id), :method => :post

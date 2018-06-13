@@ -1,1 +1,21 @@
-%h2 pagina visualizzazione match finiti
+%h1 MyDnD
+
+%h2 Session: #{@session.title}
+
+%h2 Master: #{@master_username}
+
+%h2 All Ended Matches
+
+%table#matches
+  %thead
+    %tr
+      %th Match Title
+  %tbody
+    - @matches.each do |match|
+      %tr
+        - if !match.status
+          %td= match.title
+          %td= link_to "Details", session_match_path(@session.id, match)
+%br/
+%br/
+%td= button_to "Return to #{@session.title}", session_path(@session), :method => :get

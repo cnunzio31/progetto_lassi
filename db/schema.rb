@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_132859) do
+ActiveRecord::Schema.define(version: 2018_06_02_175951) do
 
   create_table "invitations", force: :cascade do |t|
     t.integer "session_id"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "partecipationsmatches", force: :cascade do |t|
+    t.integer "session_id"
+    t.integer "match_id"
+    t.integer "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "requests", force: :cascade do |t|
     t.integer "session_id"
     t.integer "player_id"
@@ -47,13 +55,13 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
   create_table "sessions", force: :cascade do |t|
     t.integer "master_id"
     t.integer "status"
-    t.boolean "session_type"
-    t.boolean "private_flag"
+    t.string "session_type"
+    t.boolean "private_flag", default: false
     t.string "title"
     t.string "description"
     t.datetime "date"
     t.string "version"
-    t.integer "reported_counter"
+    t.integer "reported_counter", default: 0
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,10 +79,13 @@ ActiveRecord::Schema.define(version: 2018_05_26_132859) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "username"
-    t.boolean "invitation_flag"
+    t.boolean "invitation_flag", default: true
     t.integer "roles_mask", default: 4
     t.string "provider"
     t.string "uid"
+    t.boolean "calendar_flag", default: false
+    t.integer "current_session_id", default: -1
+    t.integer "current_match_id", default: -1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

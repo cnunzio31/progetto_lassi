@@ -1,0 +1,16 @@
+%h1 MyDnD
+
+%h2 Session: #{@session.title}
+
+%h2 Master: #{@master_username}
+
+%h3 #{@match.title}
+
+= form_tag add_summary_match_path(@session,@match), :method => :put do
+    = label :match, :summary, 'Summary'
+    %br/
+    %br/
+    = text_field :match, :summary
+    %br/
+    %br/
+    = submit_tag 'Add summary and close'
