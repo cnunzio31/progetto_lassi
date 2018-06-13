@@ -66,15 +66,15 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'rspec'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'flickr-objects'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
-gem 'geocoder'
-gem 'google_maps_service'

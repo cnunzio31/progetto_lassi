@@ -89,8 +89,8 @@ class SessionsController < ApplicationController
     authorize! :create, Session, :message => "You can't create new session"
     #post di creazione della sessione del master (va insieme a new)
     @session = Session.create!(params[:session].permit(:title, :date, :location,:version,:session_type ,:description,:private_flag))
-    .update(master_id:current_user.id,status:1)
-    redirect_to home_path
+    @session.update(master_id:current_user.id,status:1)
+    redirect_to session_path(@session.id)
   end
   def show
     authorize! :show, Session, :message => "You can't see session"
@@ -119,7 +119,7 @@ class SessionsController < ApplicationController
     if current_user.email.split("@")[1].to_s.casecmp?("test.com")
         @photos=[]
     else
-        s="Session"+@session.title+"match"+@match.title
+        s="session"+@session.title
         @photos = Flickr.photos.search(user_id: "139197130@N06", title: s)
     end
     @latlong = Geocoder.coordinates(@session.location)
