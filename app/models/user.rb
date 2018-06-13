@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2, :github]
   #validates_format_of :roles_mask, with: /[1-2]/#, :on => :create
+  validates_format_of :email, with: /\A((?!@test.com)[\w\W](?!\n))*\z/
 
   acts_as_user :roles => [ :master, :player, :notdefined, :admin ]
 end
