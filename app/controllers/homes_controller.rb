@@ -16,6 +16,10 @@ end
   def create
     authorize! :create, Home, :message => "You can't change your role"
     role = params[:user][:roles_mask]
+    if role != "1" && role != "2"
+      redirect_to home_path, :notice => "You can only be Master or Player"
+      return
+    end
     current_user.update_attributes(:roles_mask => role)
     redirect_to home_path
   end
