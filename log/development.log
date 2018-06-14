@@ -4635,3 +4635,1986 @@ Migrating to CreatePartecipationsmatches (20180602175951)
   ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateSessions (20180526090701)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "master_id" integer, "status" integer, "session_type" varchar, "private_flag" boolean DEFAULT 0, "title" varchar, "description" varchar, "date" datetime, "version" varchar, "reported_counter" integer DEFAULT 0, "location" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526090701_create_sessions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526090701"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreatePartecipations (20180526092804)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "partecipations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526092804_create_partecipations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526092804"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateInvitations (20180526093225)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "invitations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093225_create_invitations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093225"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateRequests (20180526093844)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093844_create_requests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093844"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateMatches (20180526094157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "matches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "status" boolean DEFAULT 1, "title" varchar, "data" datetime, "summary" varchar, "like" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526094157_create_matches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526094157"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to DeviseCreateUsers (20180526132859)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "username" varchar, "invitation_flag" boolean DEFAULT 1, "roles_mask" integer DEFAULT 4, "provider" varchar, "uid" varchar, "calendar_flag" boolean DEFAULT 0, "current_session_id" integer DEFAULT -1, "current_match_id" integer DEFAULT -1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:52
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:53
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:58
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526132859"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreatePartecipationsmatches (20180602175951)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "partecipationsmatches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "match_id" integer, "player_id" integer, "like" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180602175951_create_partecipationsmatches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180602175951"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-06-14 13:27:59.591200"], ["updated_at", "2018-06-14 13:27:59.591200"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Started GET "/" for 127.0.0.1 at 2018-06-14 15:33:12 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:33:12 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 19ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-14 15:33:12 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (3.5ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (22.1ms)
+Completed 200 OK in 495ms (Views: 459.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/auth/github" for 127.0.0.1 at 2018-06-14 15:33:21 +0200
+Started GET "/users/auth/github" for 127.0.0.1 at 2018-06-14 15:33:22 +0200
+Started GET "/users/auth/github/callback?code=427873b958f2412a1044&state=9258a340f0045dfbe128815b2688485891cfa614d1b3f0e1" for 127.0.0.1 at 2018-06-14 15:33:23 +0200
+Processing by OmniauthCallbacksController#github as HTML
+  Parameters: {"code"=>"427873b958f2412a1044", "state"=>"9258a340f0045dfbe128815b2688485891cfa614d1b3f0e1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["provider", "github"], ["uid", "32683914"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:17
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "cnunzio31@github.com"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:17
+  [1m[36mUser Create (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "provider", "uid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "cnunzio31@github.com"], ["encrypted_password", "$2a$11$SffL6f4z4ftjyWd/y/hUb.9BfzYFaE8a.BFEFy98M45sqv9G7C/SW"], ["username", "cnunzio31"], ["provider", "github"], ["uid", "32683914"], ["created_at", "2018-06-14 13:33:25.455134"], ["updated_at", "2018-06-14 13:33:25.455134"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:17
+  [1m[35m (10.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:19
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-06-14 13:33:25.472062"], ["last_sign_in_at", "2018-06-14 13:33:25.472062"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-06-14 13:33:25.477208"], ["id", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:19
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:19
+Redirected to http://localhost:3000/home
+Completed 302 Found in 292ms (ActiveRecord: 19.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:33:25 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 1385ms (Views: 58.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/home" for 127.0.0.1 at 2018-06-14 15:33:33 +0200
+Processing by HomesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tUFlNStHGznQArfX/mEy4XPMMjFmBzZ4ZOnWSROP+/dm1QxASVysb+1wPJ6eXBlBb2cKzsSkAhpeuecPf/6COg==", "user"=>{"roles_mask"=>"1"}, "commit"=>"Save Changes"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "roles_mask" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["roles_mask", 1], ["updated_at", "2018-06-14 13:33:33.299653"], ["id", 1]]
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[35m (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+Redirected to http://localhost:3000/home
+Completed 302 Found in 31ms (ActiveRecord: 20.1ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:33:33 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 904ms (Views: 55.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/new?utf8=%E2%9C%93&commit=Create+a+new+sessions" for 127.0.0.1 at 2018-06-14 15:33:37 +0200
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create a new sessions"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (127.8ms)
+Completed 200 OK in 179ms (Views: 172.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2018-06-14 15:33:57 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l73czd+wUcQeoaYEkdBjRh0p87DvbGVvxZFjJnbuNBJEKbW4vavmkiPTLU3x7UjmAYLLT03PUQ3/wVJgGp9N3w==", "session"=>{"title"=>"Session1", "date(1i)"=>"2018", "date(2i)"=>"6", "date(3i)"=>"14", "location"=>"Fondi", "description"=>"fgfsgdsgf", "session_type"=>"Paper", "version"=>"1"}, "commit"=>"Create session"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[36mSession Create (1.3ms)[0m  [1m[32mINSERT INTO "sessions" ("session_type", "title", "description", "date", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["session_type", "Paper"], ["title", "Session1"], ["description", "fgfsgdsgf"], ["date", "2018-06-14 00:00:00"], ["version", "1"], ["location", "Fondi"], ["created_at", "2018-06-14 13:33:57.489000"], ["updated_at", "2018-06-14 13:33:57.489000"]]
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/sessions_controller.rb:91
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/sessions_controller.rb:92
+  [1m[36mSession Update (0.6ms)[0m  [1m[33mUPDATE "sessions" SET "master_id" = ?, "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["master_id", 1], ["status", 1], ["updated_at", "2018-06-14 13:33:57.503094"], ["id", 1]]
+  ↳ app/controllers/sessions_controller.rb:92
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/sessions_controller.rb:92
+Redirected to http://localhost:3000/sessions/1
+Completed 302 Found in 56ms (ActiveRecord: 15.4ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:33:57 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (18.6ms)
+Completed 200 OK in 767ms (Views: 83.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/sessions/1/matches/new" for 127.0.0.1 at 2018-06-14 15:34:06 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:6
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:8
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:15
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:19
+  Rendering matches/new.html.haml within layouts/application
+  Rendered matches/new.html.haml within layouts/application (6.0ms)
+Completed 200 OK in 73ms (Views: 55.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:34:11 +0200
+Processing by MatchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1E2VHKKFpbXo1R3bma7lUVv72R6fEs1rUyLYhE7ac78H2fxpwJ4S49WnlpL5k87xR1Dh4T2x+QlpcunCIqsKcg==", "match"=>{"title"=>"Match1", "data(1i)"=>"2018", "data(2i)"=>"6", "data(3i)"=>"14"}, "commit"=>"Create", "session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:29
+  [1m[36mSession Update (1.2ms)[0m  [1m[33mUPDATE "sessions" SET "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["status", 2], ["updated_at", "2018-06-14 13:34:11.562032"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:29
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:29
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:35
+  [1m[36mMatch Create (0.5ms)[0m  [1m[32mINSERT INTO "matches" ("session_id", "title", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["session_id", 1], ["title", "Match1"], ["data", "2018-06-14 00:00:00"], ["created_at", "2018-06-14 13:34:11.602174"], ["updated_at", "2018-06-14 13:34:11.602174"]]
+  ↳ app/controllers/matches_controller.rb:35
+  [1m[35m (8.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:35
+Redirected to http://localhost:3000/sessions/1
+Completed 302 Found in 62ms (ActiveRecord: 22.9ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:34:11 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (12.4ms)
+Completed 200 OK in 764ms (Views: 58.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007f55444d4068%3E/show_current" for 127.0.0.1 at 2018-06-14 15:34:16 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007f55444d4068>"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "current_session_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_session_id", 1], ["updated_at", "2018-06-14 13:34:16.526735"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[35m (18.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:80
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_match_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_match_id", 1], ["updated_at", "2018-06-14 13:34:16.561720"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:90
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (14.0ms)
+Completed 200 OK in 730ms (Views: 63.9ms | ActiveRecord: 32.8ms)
+
+
+Started GET "/sessions/1/matches/1/close" for 127.0.0.1 at 2018-06-14 15:34:19 +0200
+Processing by MatchesController#close as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:142
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:144
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:148
+  Rendering matches/close.html.haml within layouts/application
+  Rendered matches/close.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 62ms (Views: 51.1ms | ActiveRecord: 1.1ms)
+
+
+Started PUT "/session/1/matches/1/add_summary" for 127.0.0.1 at 2018-06-14 15:34:23 +0200
+Processing by MatchesController#summary as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+uw6fHgidcS9oLSyTJ9srdz3ycm0EFhvvXFYzGMuI4EpeFMJGjnCkoDSP/ssokcNwFzxNhazbA2HIWmKD19aTA==", "match"=>{"summary"=>"dasgas"}, "commit"=>"Add summary and close", "session_id"=>"1", "match_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:154
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:156
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[36mMatch Update (0.4ms)[0m  [1m[33mUPDATE "matches" SET "summary" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["summary", "dasgas"], ["updated_at", "2018-06-14 13:34:23.127406"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:161
+  [1m[36mMatch Update (0.4ms)[0m  [1m[33mUPDATE "matches" SET "status" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["status", 0], ["updated_at", "2018-06-14 13:34:23.140402"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:161
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:161
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:162
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:162
+Redirected to http://localhost:3000/sessions/1/matches.1
+Completed 302 Found in 42ms (ActiveRecord: 19.2ms)
+
+
+Started GET "/sessions/1/matches.1" for 127.0.0.1 at 2018-06-14 15:34:23 +0200
+Processing by MatchesController#index as 
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 101ms (Views: 81.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:34:24 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (1.9ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (26.9ms)
+Completed 200 OK in 782ms (Views: 78.9ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-14 15:34:42 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:34:42 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-14 15:34:42 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 27ms (Views: 26.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-14 15:34:45 +0200
+Started GET "/users/auth/google_oauth2" for 127.0.0.1 at 2018-06-14 15:34:45 +0200
+Started GET "/users/auth/google_oauth2/callback?state=e5f0991ab092d9191dc273f848d19bf4bdeb0bebc80aa6a6&code=4%2FAABDs42Hx1g-Eyry6QdAEHsWGnK9ceml010uMWIUl_bxV6kd7PxDuquqgH2vkLVqZ605IuPKdIqtpq1ruOyN4U0" for 127.0.0.1 at 2018-06-14 15:35:00 +0200
+Processing by OmniauthCallbacksController#google_oauth2 as HTML
+  Parameters: {"state"=>"e5f0991ab092d9191dc273f848d19bf4bdeb0bebc80aa6a6", "code"=>"4/AABDs42Hx1g-Eyry6QdAEHsWGnK9ceml010uMWIUl_bxV6kd7PxDuquqgH2vkLVqZ605IuPKdIqtpq1ruOyN4U0"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = ? AND "users"."uid" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["provider", "google_oauth2"], ["uid", "113567632344055327492"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "casariomma@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "provider", "uid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "casariomma@gmail.com"], ["encrypted_password", "$2a$11$VvyjluzFqTmndrhVa6vGrOx7ChwT5Dbr9pABy49L4FDPAxedrWa.u"], ["username", "casa riomma"], ["provider", "google_oauth2"], ["uid", "113567632344055327492"], ["created_at", "2018-06-14 13:35:01.766999"], ["updated_at", "2018-06-14 13:35:01.766999"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (14.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-06-14 13:35:01.784042"], ["last_sign_in_at", "2018-06-14 13:35:01.784042"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-06-14 13:35:01.784717"], ["id", 2]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:8
+Redirected to http://localhost:3000/home
+Completed 302 Found in 186ms (ActiveRecord: 21.9ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:35:01 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (6.8ms)
+Completed 200 OK in 1236ms (Views: 31.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/home" for 127.0.0.1 at 2018-06-14 15:35:07 +0200
+Processing by HomesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mQKFM5XtpF+xt5UM9lRArZ8O/OabZtYYthfNULYi+zvFdJG3lBGP4WvlutObVxAoJb290xXNo0Lw/hc2/Mi/8Q==", "user"=>{"roles_mask"=>"2"}, "commit"=>"Save Changes"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "roles_mask" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["roles_mask", 2], ["updated_at", "2018-06-14 13:35:07.204943"], ["id", 2]]
+  ↳ app/controllers/homes_controller.rb:23
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/homes_controller.rb:23
+Redirected to http://localhost:3000/home
+Completed 302 Found in 10ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:35:07 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 950ms (Views: 27.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/joinablesessions?utf8=%E2%9C%93&commit=Join+a+new+session" for 127.0.0.1 at 2018-06-14 15:35:09 +0200
+Processing by SessionsController#showjoinable as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Join a new session"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering sessions/showjoinable.html.haml within layouts/application
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."private_flag" = ? AND (status == 1 OR status == 2)[0m  [["private_flag", 0]]
+  ↳ app/views/sessions/showjoinable.html.haml:4
+  Rendered sessions/showjoinable.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 43ms (Views: 30.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:35:10 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (22.0ms)
+Completed 200 OK in 884ms (Views: 56.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/requests/1/join" for 127.0.0.1 at 2018-06-14 15:35:16 +0200
+Processing by RequestsController#create as HTML
+  Parameters: {"authenticity_token"=>"qYwhMcu3iAH56MfPXSxiCFsun2avCG9hZVwzB7xA7Fh7/uuWMWIDMASNUySi20tWdJ9F785Z0OgtMrbIHHP2tg==", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/requests_controller.rb:7
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("session_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["session_id", 1], ["player_id", 2], ["created_at", "2018-06-14 13:35:16.100934"], ["updated_at", "2018-06-14 13:35:16.100934"]]
+  ↳ app/controllers/requests_controller.rb:7
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/requests_controller.rb:7
+Redirected to http://localhost:3000/home
+Completed 302 Found in 22ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:35:16 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 851ms (Views: 31.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/requests/1" for 127.0.0.1 at 2018-06-14 15:35:23 +0200
+Processing by RequestsController#index as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/requests_controller.rb:15
+  Rendering requests/index.html.haml within layouts/application
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/views/requests/index.html.haml:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/requests/index.html.haml:6
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/requests/index.html.haml:6
+  Rendered requests/index.html.haml within layouts/application (8.0ms)
+Completed 200 OK in 69ms (Views: 56.9ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/sessions/1/partecipations" for 127.0.0.1 at 2018-06-14 15:35:24 +0200
+Processing by PartecipationsController#create as HTML
+  Parameters: {"authenticity_token"=>"Y/e20RF90GG1MJhB8nDl1/j5YRM2tUSSh5PIq+Cp00ewY9+kc2ZnN4hCEwiSTc535FJZ7JQWcPC9w/ntjNiqig==", "session_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mRequest Load (0.4ms)[0m  [1m[34mSELECT  "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/partecipations_controller.rb:7
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/partecipations_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/partecipations_controller.rb:13
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/partecipations_controller.rb:13
+  [1m[36mPartecipation Create (4.8ms)[0m  [1m[32mINSERT INTO "partecipations" ("session_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["session_id", 1], ["player_id", 2], ["created_at", "2018-06-14 13:35:25.047814"], ["updated_at", "2018-06-14 13:35:25.047814"]]
+  ↳ app/controllers/partecipations_controller.rb:13
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/partecipations_controller.rb:13
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT  "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/partecipations_controller.rb:14
+  [1m[36mRequest Destroy (8.8ms)[0m  [1m[31mDELETE FROM "requests" WHERE "requests"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/partecipations_controller.rb:14
+Redirected to http://localhost:3000/home
+Completed 302 Found in 65ms (ActiveRecord: 25.7ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2018-06-14 15:35:25 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (8.0ms)
+Completed 200 OK in 904ms (Views: 53.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/joinedsessions" for 127.0.0.1 at 2018-06-14 15:35:30 +0200
+Processing by SessionsController#showjoined as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mPartecipation Load (0.3ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."player_id" = ?[0m  [["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:56
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:57
+  Rendering sessions/showjoined.html.haml within layouts/application
+  Rendered sessions/showjoined.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 61ms (Views: 52.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:35:32 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.4ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (15.5ms)
+Completed 200 OK in 967ms (Views: 63.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:35:39 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 62ms (Views: 53.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:35:41 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.4ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  Rendered matches/show.html.haml within layouts/application (68.3ms)
+Completed 500 Internal Server Error in 681ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `like' for #<ActiveRecord::Relation []>):
+    27:     %h3= "Like: #{@match.like}"
+    28: %br/
+    29: %br/
+    30: - if !(@match.status) && !@p.like
+    31:     %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+    32:     %br/
+    33: - if @match.status
+  
+app/views/matches/show.html.haml:30:in `_app_views_matches_show_html_haml__1198236143533238070_70002141709960'
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:36:32 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  Rendered matches/show.html.haml within layouts/application (17.2ms)
+Completed 500 Internal Server Error in 776ms (ActiveRecord: 4.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `like' for #<ActiveRecord::Relation []>):
+    27:     %h3= "Like: #{@match.like}"
+    28: %br/
+    29: %br/
+    30: - if !(@match.status) && !(@p.like)
+    31:     %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+    32:     %br/
+    33: - if @match.status
+  
+app/views/matches/show.html.haml:30:in `_app_views_matches_show_html_haml__1198236143533238070_70002138699300'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:38:16 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 52ms (Views: 38.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:38:20 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.6ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  Rendered matches/show.html.haml within layouts/application (28.0ms)
+Completed 500 Internal Server Error in 607ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `like' for #<ActiveRecord::Relation []>):
+    29: %br/
+    30: 
+    31: - if !(@match.status)
+    32:     - if !(@p.like)
+    33:         %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+    34:         %br/
+    35: - if @match.status
+  
+app/views/matches/show.html.haml:32:in `_app_views_matches_show_html_haml__1198236143533238070_70002143987980'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:39:01 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 63ms (Views: 55.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:39:44 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mPartecipationsmatch Load (0.2ms)[0m  [1m[34mSELECT "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2]]
+  ↳ app/controllers/matches_controller.rb:64
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:65
+  Rendering matches/show.html.haml within layouts/application
+  Rendered matches/show.html.haml within layouts/application (19.3ms)
+Completed 500 Internal Server Error in 665ms (ActiveRecord: 3.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `like' for #<ActiveRecord::Relation []>):
+    29: %br/
+    30: 
+    31: - if !(@match.status)
+    32:     - if !(@p.like)
+    33:         %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+    34:         %br/
+    35: - if @match.status
+  
+app/views/matches/show.html.haml:32:in `_app_views_matches_show_html_haml__1198236143533238070_70002030127580'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:40:44 +0200
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/matches_controller.rb:64: syntax error, unexpected tIVAR, expecting keyword_end
+    puts "parte ---- "@p
+                        ^):
+  
+app/controllers/matches_controller.rb:64: syntax error, unexpected tIVAR, expecting keyword_end
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:40:46 +0200
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:40:46 +0200
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:40:46 +0200
+Processing by SessionsController#show as HTML
+Processing by SessionsController#show as HTML
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:40:46 +0200
+  Parameters: {"id"=>"1"}
+  Parameters: {"id"=>"1"}
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.4ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  ↳ app/controllers/sessions_controller.rb:100
+  ↳ app/controllers/sessions_controller.rb:100
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mPartecipation Load (0.4ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mPartecipation Load (0.4ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mPartecipation Load (0.3ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  ↳ app/controllers/sessions_controller.rb:116
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:117
+  ↳ app/controllers/sessions_controller.rb:117
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (12.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  ↳ app/controllers/sessions_controller.rb:126
+Completed 200 OK in 918ms (Views: 75.2ms | ActiveRecord: 3.6ms)
+
+
+  Rendering sessions/show.html.haml within layouts/application
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (1.9ms)
+  Rendered sessions/show.html.haml within layouts/application (2.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 1037ms (Views: 108.2ms | ActiveRecord: 8.0ms)
+
+
+Completed 200 OK in 1046ms (Views: 122.1ms | ActiveRecord: 2.9ms)
+
+
+Completed 200 OK in 1083ms (Views: 65.1ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:40:48 +0200
+  
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:40:48 +0200
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/matches_controller.rb:64: syntax error, unexpected tIVAR, expecting keyword_end
+    puts "parte ---- "@p
+                        ^):
+  
+app/controllers/matches_controller.rb:64: syntax error, unexpected tIVAR, expecting keyword_end
+  
+SyntaxError (/home/biar/Documents/LAB_1718/Progetto/progetto_lassi/app/controllers/matches_controller.rb:64: syntax error, unexpected tIVAR, expecting keyword_end
+    puts "parte ---- "@p
+                        ^):
+  
+app/controllers/matches_controller.rb:64: syntax error, unexpected tIVAR, expecting keyword_end
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:41:20 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.3ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (13.6ms)
+Completed 200 OK in 942ms (Views: 83.5ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:41:21 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 78ms (Views: 54.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:41:23 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:65
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.4ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  Rendered matches/show.html.haml within layouts/application (25.4ms)
+Completed 500 Internal Server Error in 591ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `like' for #<ActiveRecord::Relation []>):
+    29: %br/
+    30: 
+    31: - if !(@match.status)
+    32:     - if !(@p.like)
+    33:         %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+    34:         %br/
+    35: - if @match.status
+  
+app/views/matches/show.html.haml:32:in `_app_views_matches_show_html_haml__1198236143533238070_70002142262860'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:41:55 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 134ms (Views: 49.3ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:41:57 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mPartecipationsmatch Load (0.4ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.4ms)
+
+
+  
+  [1m[36mCACHE Partecipationsmatch Load (0.9ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+NoMethodError (undefined method `like' for #<ActiveRecord::Relation []>):
+  
+app/controllers/matches_controller.rb:64:in `show'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:42:22 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 140ms (Views: 54.9ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:42:24 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.7ms)
+
+
+  
+  [1m[36mCACHE Partecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+NoMethodError (undefined method `session_id' for #<ActiveRecord::Relation []>):
+  
+app/controllers/matches_controller.rb:64:in `show'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:44:21 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.6ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 149ms (Views: 55.6ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:44:23 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.4ms)
+
+
+  
+  [1m[36mCACHE Partecipationsmatch Load (0.0ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+NoMethodError (undefined method `like' for #<ActiveRecord::Relation []>):
+  
+app/controllers/matches_controller.rb:64:in `show'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:44:32 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 74ms (Views: 65.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:48:35 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.6ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 11]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  Rendered matches/show.html.haml within layouts/application (15.4ms)
+Completed 500 Internal Server Error in 740ms (ActiveRecord: 4.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `like' for #<ActiveRecord::Relation []>):
+    29: %br/
+    30: 
+    31: - if !(@match.status)
+    32:     - if !(@p.nil?) && !(@p.like)
+    33:         %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+    34:         %br/
+    35: - if @match.status
+  
+app/views/matches/show.html.haml:32:in `_app_views_matches_show_html_haml__1198236143533238070_70002028446780'
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:49:48 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (7.4ms)
+Completed 200 OK in 71ms (Views: 59.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:49:50 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.8ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  ↳ app/views/matches/show.html.haml:32
+  Rendered matches/show.html.haml within layouts/application (22.1ms)
+Completed 200 OK in 827ms (Views: 72.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:49:57 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 63ms (Views: 53.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:51:17 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 65ms (Views: 55.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:51:21 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  ↳ app/views/matches/show.html.haml:32
+  Rendered matches/show.html.haml within layouts/application (12.0ms)
+Completed 200 OK in 676ms (Views: 76.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-14 15:51:38 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  ↳ app/views/matches/show.html.haml:32
+  Rendered matches/show.html.haml within layouts/application (9.7ms)
+Completed 200 OK in 606ms (Views: 61.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/activesessions" for 127.0.0.1 at 2018-06-14 15:51:47 +0200
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  Rendering sessions/showactive.html.haml within layouts/application
+  [1m[36mSession Load (1.3ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."master_id" = ? AND "sessions"."status" = ?[0m  [["master_id", 1], ["status", 2]]
+  ↳ app/views/sessions/showactive.html.haml:5
+  Rendered sessions/showactive.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 62ms (Views: 52.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:51:48 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.3ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (25.4ms)
+Completed 200 OK in 965ms (Views: 90.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/sessions/1/matches/new" for 127.0.0.1 at 2018-06-14 15:51:52 +0200
+Processing by MatchesController#new as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:6
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:8
+  [1m[36mCACHE Session Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:15
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:19
+  Rendering matches/new.html.haml within layouts/application
+  Rendered matches/new.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 71ms (Views: 54.9ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:51:58 +0200
+Processing by MatchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e4Quj5vd3c2MsuFLkd8RMYFV8qdyi4vMub7qEyHI7eyoEEf6+cZqm7HAagLx4jqRnf7KWNAov66D7ttVTbmUIQ==", "match"=>{"title"=>"Match2", "data(1i)"=>"2018", "data(2i)"=>"6", "data(3i)"=>"14"}, "commit"=>"Create", "session_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:29
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:29
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:35
+  [1m[36mMatch Create (17.1ms)[0m  [1m[32mINSERT INTO "matches" ("session_id", "title", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["session_id", 1], ["title", "Match2"], ["data", "2018-06-14 00:00:00"], ["created_at", "2018-06-14 13:51:58.408165"], ["updated_at", "2018-06-14 13:51:58.408165"]]
+  ↳ app/controllers/matches_controller.rb:35
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:35
+Redirected to http://localhost:3000/sessions/1
+Completed 302 Found in 45ms (ActiveRecord: 26.2ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:51:58 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.3ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (31.5ms)
+Completed 200 OK in 686ms (Views: 88.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:52:03 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (1.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (10.9ms)
+Completed 200 OK in 746ms (Views: 63.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007f5549807aa0%3E/show_current" for 127.0.0.1 at 2018-06-14 15:52:06 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007f5549807aa0>"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "current_session_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_session_id", 1], ["updated_at", "2018-06-14 13:52:06.918532"], ["id", 2]]
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[35m (8.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:80
+  [1m[36mMatch Load (0.4ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:85
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_match_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_match_id", 2], ["updated_at", "2018-06-14 13:52:06.940551"], ["id", 2]]
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:90
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (17.8ms)
+Completed 200 OK in 743ms (Views: 68.0ms | ActiveRecord: 18.5ms)
+
+
+Started POST "/sessions/1/matches/2/partecipationsmatch" for 127.0.0.1 at 2018-06-14 15:52:18 +0200
+Processing by PartecipationsmatchController#create as HTML
+  Parameters: {"authenticity_token"=>"p6jRB6myLsF8MRdBjMZvBp0EZktPPaXGappoSUg0zMmoeB4S31JIBTLuGf0Em8osRceSOsBMcGfLn5JVNYvhBQ==", "session_id"=>"1", "match_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.9ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/partecipationsmatch_controller.rb:6
+  [1m[36mMatch Load (0.3ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/partecipationsmatch_controller.rb:8
+  [1m[35m (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/partecipationsmatch_controller.rb:9
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/partecipationsmatch_controller.rb:9
+  [1m[36mPartecipationsmatch Create (1.2ms)[0m  [1m[32mINSERT INTO "partecipationsmatches" ("session_id", "match_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["session_id", 1], ["match_id", 2], ["player_id", 2], ["created_at", "2018-06-14 13:52:18.760062"], ["updated_at", "2018-06-14 13:52:18.760062"]]
+  ↳ app/controllers/partecipationsmatch_controller.rb:9
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/partecipationsmatch_controller.rb:9
+Redirected to http://localhost:3000/session/1/matches/2/calendars
+Completed 302 Found in 42ms (ActiveRecord: 20.1ms)
+
+
+Started GET "/session/1/matches/2/calendars" for 127.0.0.1 at 2018-06-14 15:52:18 +0200
+Processing by MatchesController#calendars as HTML
+  Parameters: {"session_id"=>"1", "match_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/redirect
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/redirect" for 127.0.0.1 at 2018-06-14 15:52:18 +0200
+Processing by MatchesController#redirect as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Redirected to https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=68880843041-vbio3feve82pph1s3onr5gpa7t4dl38h.apps.googleusercontent.com&redirect_uri=http://localhost:3000/callback&response_type=code&scope=https://www.googleapis.com/auth/calendar
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/callback?code=4/AAB20YfgYXTNQNXtmMIlDL4q2HKM8g6GQz0n9cc167bFmN8-k8EuV2NpQdha56zoHnxFX2LAGR7uiNLjofnd-K8" for 127.0.0.1 at 2018-06-14 15:52:19 +0200
+Processing by MatchesController#callback as HTML
+  Parameters: {"code"=>"4/AAB20YfgYXTNQNXtmMIlDL4q2HKM8g6GQz0n9cc167bFmN8-k8EuV2NpQdha56zoHnxFX2LAGR7uiNLjofnd-K8"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:176
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "calendar_flag" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["calendar_flag", 1], ["updated_at", "2018-06-14 13:52:19.291233"], ["id", 2]]
+  ↳ app/controllers/matches_controller.rb:176
+  [1m[35m (20.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:176
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:177
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:178
+Redirected to http://localhost:3000/session/1/matches/2/calendars
+Completed 302 Found in 280ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/session/1/matches/2/calendars" for 127.0.0.1 at 2018-06-14 15:52:19 +0200
+Processing by MatchesController#calendars as HTML
+  Parameters: {"session_id"=>"1", "match_id"=>"2"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:186
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "calendar_flag" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["calendar_flag", 0], ["updated_at", "2018-06-14 13:52:19.339749"], ["id", 2]]
+  ↳ app/controllers/matches_controller.rb:186
+  [1m[35m (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:186
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:188
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:190
+Sending HTTP get https://www.googleapis.com/calendar/v3/users/me/calendarList?
+200
+#<HTTP::Message:0x007f5540569400 @http_header=#<HTTP::Message::Headers:0x007f55405693d8 @http_version="1.1", @body_size=0, @chunked=false, @request_method="GET", @request_uri=#<Addressable::URI:0x3faaa02b5234 URI:https://www.googleapis.com/calendar/v3/users/me/calendarList?>, @request_query=nil, @request_absolute_uri=nil, @status_code=200, @reason_phrase="OK", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Expires", "Thu, 14 Jun 2018 13:52:19 GMT"], ["Date", "Thu, 14 Jun 2018 13:52:19 GMT"], ["Cache-Control", "private, max-age=0, must-revalidate, no-transform"], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Content-Type", "application/json; charset=UTF-8"], ["Content-Encoding", "gzip"], ["X-Content-Type-Options", "nosniff"], ["X-Frame-Options", "SAMEORIGIN"], ["X-XSS-Protection", "1; mode=block"], ["Server", "GSE"], ["Alt-Svc", "quic=\":443\"; ma=2592000; v=\"43,42,41,39,35\""], ["Transfer-Encoding", "chunked"]], @dumped=false>, @peer_cert=#<OpenSSL::X509::Certificate: subject=#<OpenSSL::X509::Name:0x007f554053bcf8>, issuer=#<OpenSSL::X509::Name:0x007f554053bd20>, serial=#<OpenSSL::BN:0x007f554053bde8>, not_before=2018-05-23 10:23:25 UTC, not_after=2018-08-15 09:09:00 UTC>, @http_body=#<HTTP::Message::Body:0x007f5540569360 @body="{\n \"kind\": \"calendar#calendarList\",\n \"etag\": \"\\\"p33gcj4k4letdm0g\\\"\",\n \"nextSyncToken\": \"CODJkoSrutsCEhRjYXNhcmlvbW1hQGdtYWlsLmNvbQ==\",\n \"items\": [\n  {\n   \"kind\": \"calendar#calendarListEntry\",\n   \"etag\": \"\\\"1494923601040000\\\"\",\n   \"id\": \"casariomma@gmail.com\",\n   \"summary\": \"casariomma@gmail.com\",\n   \"timeZone\": \"Europe/Rome\",\n   \"colorId\": \"14\",\n   \"backgroundColor\": \"#9fe1e7\",\n   \"foregroundColor\": \"#000000\",\n   \"selected\": true,\n   \"accessRole\": \"owner\",\n   \"defaultReminders\": [\n    {\n     \"method\": \"popup\",\n     \"minutes\": 30\n    }\n   ],\n   \"notificationSettings\": {\n    \"notifications\": [\n     {\n      \"type\": \"eventCreation\",\n      \"method\": \"email\"\n     },\n     {\n      \"type\": \"eventChange\",\n      \"method\": \"email\"\n     },\n     {\n      \"type\": \"eventCancellation\",\n      \"method\": \"email\"\n     },\n     {\n      \"type\": \"eventResponse\",\n      \"method\": \"email\"\n     }\n    ]\n   },\n   \"primary\": true,\n   \"conferenceProperties\": {\n    \"allowedConferenceSolutionTypes\": [\n     \"eventHangout\"\n    ]\n   }\n  },\n  {\n   \"kind\": \"calendar#calendarListEntry\",\n   \"etag\": \"\\\"1528048782724000\\\"\",\n   \"id\": \"#contacts@group.v.calendar.google.com\",\n   \"summary\": \"Contacts\",\n   \"timeZone\": \"Europe/Rome\",\n   \"summaryOverride\": \"Contacts\",\n   \"colorId\": \"17\",\n   \"backgroundColor\": \"#9a9cff\",\n   \"foregroundColor\": \"#000000\",\n   \"selected\": true,\n   \"accessRole\": \"reader\",\n   \"defaultReminders\": [],\n   \"conferenceProperties\": {\n    \"allowedConferenceSolutionTypes\": [\n     \"eventHangout\"\n    ]\n   }\n  },\n  {\n   \"kind\": \"calendar#calendarListEntry\",\n   \"etag\": \"\\\"1528048782724000\\\"\",\n   \"id\": \"it.italian#holiday@group.v.calendar.google.com\",\n   \"summary\": \"Festività in Italia\",\n   \"timeZone\": \"Europe/Rome\",\n   \"summaryOverride\": \"Festività in Italia\",\n   \"colorId\": \"17\",\n   \"backgroundColor\": \"#9a9cff\",\n   \"foregroundColor\": \"#000000\",\n   \"selected\": true,\n   \"accessRole\": \"reader\",\n   \"defaultReminders\": [],\n   \"conferenceProperties\": {\n    \"allowedConferenceSolutionTypes\": [\n     \"eventHangout\"\n    ]\n   }\n  }\n ]\n}\n", @size=0, @positions=nil, @chunk_size=nil>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::CalendarList:0x007f554053b2d0
+ @etag="\"p33gcj4k4letdm0g\"",
+ @items=
+  [#<Google::Apis::CalendarV3::CalendarListEntry:0x007f554052ebe8
+    @access_role="owner",
+    @background_color="#9fe1e7",
+    @color_id="14",
+    @conference_properties=
+     #<Google::Apis::CalendarV3::ConferenceProperties:0x007f554052d428
+      @allowed_conference_solution_types=["eventHangout"]>,
+    @default_reminders=
+     [#<Google::Apis::CalendarV3::EventReminder:0x007f554052c528
+       @minutes=30,
+       @reminder_method="popup">],
+    @etag="\"1494923601040000\"",
+    @foreground_color="#000000",
+    @id="casariomma@gmail.com",
+    @kind="calendar#calendarListEntry",
+    @notification_settings=
+     #<Google::Apis::CalendarV3::CalendarListEntry::NotificationSettings:0x007f5540524440
+      @notifications=
+       [#<Google::Apis::CalendarV3::CalendarNotification:0x007f554051b980
+         @delivery_method="email",
+         @type="eventCreation">,
+        #<Google::Apis::CalendarV3::CalendarNotification:0x007f554051aa58
+         @delivery_method="email",
+         @type="eventChange">,
+        #<Google::Apis::CalendarV3::CalendarNotification:0x007f5540519e50
+         @delivery_method="email",
+         @type="eventCancellation">,
+        #<Google::Apis::CalendarV3::CalendarNotification:0x007f5540519568
+         @delivery_method="email",
+         @type="eventResponse">]>,
+    @primary=true,
+    @selected=true,
+    @summary="casariomma@gmail.com",
+    @time_zone="Europe/Rome">,
+   #<Google::Apis::CalendarV3::CalendarListEntry:0x007f554050f360
+    @access_role="reader",
+    @background_color="#9a9cff",
+    @color_id="17",
+    @conference_properties=
+     #<Google::Apis::CalendarV3::ConferenceProperties:0x007f554050e258
+      @allowed_conference_solution_types=["eventHangout"]>,
+    @default_reminders=[],
+    @etag="\"1528048782724000\"",
+    @foreground_color="#000000",
+    @id="#contacts@group.v.calendar.google.com",
+    @kind="calendar#calendarListEntry",
+    @selected=true,
+    @summary="Contacts",
+    @summary_override="Contacts",
+    @time_zone="Europe/Rome">,
+   #<Google::Apis::CalendarV3::CalendarListEntry:0x007f554050a2c0
+    @access_role="reader",
+    @background_color="#9a9cff",
+    @color_id="17",
+    @conference_properties=
+     #<Google::Apis::CalendarV3::ConferenceProperties:0x007f55405093e8
+      @allowed_conference_solution_types=["eventHangout"]>,
+    @default_reminders=[],
+    @etag="\"1528048782724000\"",
+    @foreground_color="#000000",
+    @id="it.italian#holiday@group.v.calendar.google.com",
+    @kind="calendar#calendarListEntry",
+    @selected=true,
+    @summary="Festività in Italia",
+    @summary_override="Festività in Italia",
+    @time_zone="Europe/Rome">],
+ @kind="calendar#calendarList",
+ @next_sync_token="CODJkoSrutsCEhRjYXNhcmlvbW1hQGdtYWlsLmNvbQ==">
+
+Redirected to http://localhost:3000/session/1/matches/2/calendar/new_event/casariomma@gmail.com
+Completed 302 Found in 283ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/session/1/matches/2/calendar/new_event/casariomma@gmail.com" for 127.0.0.1 at 2018-06-14 15:52:19 +0200
+Processing by MatchesController#new_event as HTML
+  Parameters: {"session_id"=>"1", "match_id"=>"2", "calendar_id"=>"casariomma@gmail.com"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:207
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:209
+Sending HTTP post https://www.googleapis.com/calendar/v3/calendars/casariomma%40gmail.com/events?
+200
+#<HTTP::Message:0x007f554034cbb8 @http_header=#<HTTP::Message::Headers:0x007f554034cb90 @http_version="1.1", @body_size=0, @chunked=false, @request_method="POST", @request_uri=#<Addressable::URI:0x3faaa01a725c URI:https://www.googleapis.com/calendar/v3/calendars/casariomma%40gmail.com/events?>, @request_query=nil, @request_absolute_uri=nil, @status_code=200, @reason_phrase="OK", @body_type=nil, @body_charset=nil, @body_date=nil, @body_encoding=#<Encoding:UTF-8>, @is_request=false, @header_item=[["Cache-Control", "no-cache, no-store, max-age=0, must-revalidate"], ["Pragma", "no-cache"], ["Expires", "Mon, 01 Jan 1990 00:00:00 GMT"], ["Date", "Thu, 14 Jun 2018 13:52:20 GMT"], ["ETag", "\"3057968680043000\""], ["Vary", "Origin"], ["Vary", "X-Origin"], ["Content-Type", "application/json; charset=UTF-8"], ["Content-Encoding", "gzip"], ["X-Content-Type-Options", "nosniff"], ["X-Frame-Options", "SAMEORIGIN"], ["X-XSS-Protection", "1; mode=block"], ["Server", "GSE"], ["Alt-Svc", "quic=\":443\"; ma=2592000; v=\"43,42,41,39,35\""], ["Transfer-Encoding", "chunked"]], @dumped=false>, @peer_cert=#<OpenSSL::X509::Certificate: subject=#<OpenSSL::X509::Name:0x007f554c006538>, issuer=#<OpenSSL::X509::Name:0x007f554c006560>, serial=#<OpenSSL::BN:0x007f554c006588>, not_before=2018-05-23 10:23:25 UTC, not_after=2018-08-15 09:09:00 UTC>, @http_body=#<HTTP::Message::Body:0x007f554034cb18 @body="{\n \"kind\": \"calendar#event\",\n \"etag\": \"\\\"3057968680043000\\\"\",\n \"id\": \"kmngkqfgl9sjurljoql2lm9f94\",\n \"status\": \"confirmed\",\n \"htmlLink\": \"https://www.google.com/calendar/event?eid=a21uZ2txZmdsOXNqdXJsam9xbDJsbTlmOTQgY2FzYXJpb21tYUBt\",\n \"created\": \"2018-06-14T13:52:19.000Z\",\n \"updated\": \"2018-06-14T13:52:20.049Z\",\n \"summary\": \"Session: Session1;Match: Match2\",\n \"creator\": {\n  \"email\": \"casariomma@gmail.com\",\n  \"self\": true\n },\n \"organizer\": {\n  \"email\": \"casariomma@gmail.com\",\n  \"self\": true\n },\n \"start\": {\n  \"date\": \"2018-06-14\"\n },\n \"end\": {\n  \"date\": \"2018-06-14\"\n },\n \"iCalUID\": \"kmngkqfgl9sjurljoql2lm9f94@google.com\",\n \"sequence\": 0,\n \"reminders\": {\n  \"useDefault\": false,\n  \"overrides\": [\n   {\n    \"method\": \"popup\",\n    \"minutes\": 30\n   }\n  ]\n }\n}\n", @size=0, @positions=nil, @chunk_size=nil>, @previous=nil>
+Success - #<Google::Apis::CalendarV3::Event:0x007f554c005548
+ @created=Thu, 14 Jun 2018 13:52:19 +0000,
+ @creator=
+  #<Google::Apis::CalendarV3::Event::Creator:0x007f55402bbde8
+   @email="casariomma@gmail.com",
+   @self=true>,
+ @end=
+  #<Google::Apis::CalendarV3::EventDateTime:0x007f5554062b28
+   @date="2018-06-14">,
+ @etag="\"3057968680043000\"",
+ @html_link=
+  "https://www.google.com/calendar/event?eid=a21uZ2txZmdsOXNqdXJsam9xbDJsbTlmOTQgY2FzYXJpb21tYUBt",
+ @i_cal_uid="kmngkqfgl9sjurljoql2lm9f94@google.com",
+ @id="kmngkqfgl9sjurljoql2lm9f94",
+ @kind="calendar#event",
+ @organizer=
+  #<Google::Apis::CalendarV3::Event::Organizer:0x007f5540274448
+   @email="casariomma@gmail.com",
+   @self=true>,
+ @reminders=
+  #<Google::Apis::CalendarV3::Event::Reminders:0x007f55401fad28
+   @overrides=
+    [#<Google::Apis::CalendarV3::EventReminder:0x007f55401f9ef0
+      @minutes=30,
+      @reminder_method="popup">],
+   @use_default=false>,
+ @sequence=0,
+ @start=
+  #<Google::Apis::CalendarV3::EventDateTime:0x007f55401e62d8
+   @date="2018-06-14">,
+ @status="confirmed",
+ @summary="Session: Session1;Match: Match2",
+ @updated=Thu, 14 Jun 2018 13:52:20 +0000>
+
+Redirected to http://localhost:3000/sessions/1/matches/2
+Completed 302 Found in 451ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/sessions/1/matches/2" for 127.0.0.1 at 2018-06-14 15:52:20 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  Rendered matches/show.html.haml within layouts/application (13.7ms)
+Completed 200 OK in 648ms (Views: 65.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/session/1/matches/%23%3CMatch::ActiveRecord_Relation:0x007f55440c5030%3E/show_current" for 127.0.0.1 at 2018-06-14 15:52:26 +0200
+Processing by MatchesController#show_current as HTML
+  Parameters: {"session_id"=>"1", "id"=>"#<Match::ActiveRecord_Relation:0x007f55440c5030>"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:76
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:80
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "current_match_id" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_match_id", 2], ["updated_at", "2018-06-14 13:52:26.658709"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[35m (15.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:88
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:90
+  Rendering matches/show_current.html.haml within layouts/application
+  Rendered matches/show_current.html.haml within layouts/application (16.3ms)
+Completed 200 OK in 601ms (Views: 83.7ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/sessions/1/matches/2/close" for 127.0.0.1 at 2018-06-14 15:52:28 +0200
+Processing by MatchesController#close as HTML
+  Parameters: {"session_id"=>"1", "id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:142
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:144
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:148
+  Rendering matches/close.html.haml within layouts/application
+  Rendered matches/close.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 86ms (Views: 72.0ms | ActiveRecord: 1.6ms)
+
+
+Started PUT "/session/1/matches/2/add_summary" for 127.0.0.1 at 2018-06-14 15:52:32 +0200
+Processing by MatchesController#summary as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AAn1xZuiYqv2PRQtISgpo6foloShQ7hbSsFiE/oaRZLTnZyw+bnV/ctPn2RBFQIDu0OuewPgjDlwkVNVlms8Xw==", "match"=>{"summary"=>"dsfasgsdg"}, "commit"=>"Add summary and close", "session_id"=>"1", "match_id"=>"2"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:154
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:156
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[36mMatch Update (1.1ms)[0m  [1m[33mUPDATE "matches" SET "summary" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["summary", "dsfasgsdg"], ["updated_at", "2018-06-14 13:52:32.256183"], ["id", 2]]
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:160
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:161
+  [1m[36mMatch Update (0.4ms)[0m  [1m[33mUPDATE "matches" SET "status" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["status", 0], ["updated_at", "2018-06-14 13:52:32.270255"], ["id", 2]]
+  ↳ app/controllers/matches_controller.rb:161
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:161
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:162
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:162
+Redirected to http://localhost:3000/sessions/1/matches.2
+Completed 302 Found in 48ms (ActiveRecord: 18.4ms)
+
+
+Started GET "/sessions/1/matches.2" for 127.0.0.1 at 2018-06-14 15:52:32 +0200
+Processing by MatchesController#index as 
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 148ms (Views: 131.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-14 15:52:37 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:100
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:102
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:111
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:116
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 2]]
+  ↳ app/controllers/sessions_controller.rb:117
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:126
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (30.8ms)
+Completed 200 OK in 783ms (Views: 144.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-14 15:52:40 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:47
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  ↳ app/controllers/matches_controller.rb:51
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 62ms (Views: 54.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/sessions/1/matches/2" for 127.0.0.1 at 2018-06-14 15:52:42 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.6ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 2], ["player_id", 2], ["LIMIT", 1]]
+  ↳ app/views/matches/show.html.haml:32
+  Rendered matches/show.html.haml within layouts/application (18.4ms)
+Completed 200 OK in 644ms (Views: 70.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/session/1/matches/2/like_match" for 127.0.0.1 at 2018-06-14 15:52:45 +0200
+Processing by MatchesController#like as HTML
+  Parameters: {"session_id"=>"1", "match_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:106
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:108
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:115
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:115
+  [1m[36mMatch Update (0.4ms)[0m  [1m[33mUPDATE "matches" SET "like" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-14 13:52:45.365615"], ["id", 2]]
+  ↳ app/controllers/matches_controller.rb:115
+  [1m[35m (18.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:115
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ?[0m  [["session_id", 1], ["match_id", 2], ["player_id", 2]]
+  ↳ app/controllers/matches_controller.rb:116
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/matches_controller.rb:116
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:116
+  [1m[36mPartecipationsmatch Update (0.4ms)[0m  [1m[33mUPDATE "partecipationsmatches" SET "like" = ?, "updated_at" = ? WHERE "partecipationsmatches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-14 13:52:45.393654"], ["id", 1]]
+  ↳ app/controllers/matches_controller.rb:116
+  [1m[35m (7.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/matches_controller.rb:116
+Redirected to http://localhost:3000/sessions/1/matches/2
+Completed 302 Found in 52ms (ActiveRecord: 28.4ms)
+
+
+Started GET "/sessions/1/matches/2" for 127.0.0.1 at 2018-06-14 15:52:45 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:57
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:62
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/matches_controller.rb:64
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.5ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 2], ["player_id", 2], ["LIMIT", 1]]
+  ↳ app/views/matches/show.html.haml:32
+  Rendered matches/show.html.haml within layouts/application (17.9ms)
+Completed 200 OK in 708ms (Views: 68.4ms | ActiveRecord: 1.5ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (16.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateSessions (20180526090701)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "master_id" integer, "status" integer, "session_type" varchar, "private_flag" boolean DEFAULT 0, "title" varchar, "description" varchar, "date" datetime, "version" varchar, "reported_counter" integer DEFAULT 0, "location" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526090701_create_sessions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526090701"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (9.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreatePartecipations (20180526092804)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "partecipations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526092804_create_partecipations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526092804"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (7.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateInvitations (20180526093225)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "invitations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093225_create_invitations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093225"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateRequests (20180526093844)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093844_create_requests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093844"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (8.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateMatches (20180526094157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "matches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "status" boolean DEFAULT 1, "title" varchar, "data" datetime, "summary" varchar, "like" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526094157_create_matches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526094157"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to DeviseCreateUsers (20180526132859)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "username" varchar, "invitation_flag" boolean DEFAULT 1, "roles_mask" integer DEFAULT 4, "provider" varchar, "uid" varchar, "calendar_flag" boolean DEFAULT 0, "current_session_id" integer DEFAULT -1, "current_match_id" integer DEFAULT -1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:52
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:53
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:58
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526132859"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreatePartecipationsmatches (20180602175951)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "partecipationsmatches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "match_id" integer, "player_id" integer, "like" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180602175951_create_partecipationsmatches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180602175951"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (8.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-06-14 13:53:35.634432"], ["updated_at", "2018-06-14 13:53:35.634432"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (9.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateSessions (20180526090701)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "master_id" integer, "status" integer, "session_type" varchar, "private_flag" boolean DEFAULT 0, "title" varchar, "description" varchar, "date" datetime, "version" varchar, "reported_counter" integer DEFAULT 0, "location" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526090701_create_sessions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526090701"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreatePartecipations (20180526092804)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "partecipations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526092804_create_partecipations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526092804"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateInvitations (20180526093225)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "invitations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093225_create_invitations.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093225"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateRequests (20180526093844)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526093844_create_requests.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526093844"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreateMatches (20180526094157)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "matches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "status" boolean DEFAULT 1, "title" varchar, "data" datetime, "summary" varchar, "like" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526094157_create_matches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526094157"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (9.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to DeviseCreateUsers (20180526132859)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "username" varchar, "invitation_flag" boolean DEFAULT 1, "roles_mask" integer DEFAULT 4, "provider" varchar, "uid" varchar, "calendar_flag" boolean DEFAULT 0, "current_session_id" integer DEFAULT -1, "current_match_id" integer DEFAULT -1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:5
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:52
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:53
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  ↳ db/migrate/20180526132859_devise_create_users.rb:58
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180526132859"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+Migrating to CreatePartecipationsmatches (20180602175951)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "partecipationsmatches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "match_id" integer, "player_id" integer, "like" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180602175951_create_partecipationsmatches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180602175951"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-06-14 13:53:52.581203"], ["updated_at", "2018-06-14 13:53:52.581203"]]
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/biar/.rvm/gems/ruby-2.4.1/bin/rake:23

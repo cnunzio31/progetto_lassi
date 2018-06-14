@@ -27,9 +27,13 @@
     %h3= "Like: #{@match.like}"
 %br/
 %br/
+
 - if !(@match.status)
-    %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
-    %br/
+    - if (@p.first.nil?)
+        %h3 You didn't partecipate to this match. You can't like it!
+    - elsif !(@p.first.like)
+        %td= button_to "Like!", i_like_match_path(@session,@match), :method => :get
+        %br/
 - if @match.status
     - if current_user.has_role?(:master)
         %td= button_to "Add summary and close", close_match_path(@session,@match), :method => :get

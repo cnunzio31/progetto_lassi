@@ -53,13 +53,14 @@ def create
 
   def show
     authorize! :show, Match, :message => "You can't see matches"
-    id = params[:session_id]
-    @session = Session.find(id)
+    s_id = params[:session_id]
+    @session = Session.find(s_id)
     id = params[:id]
     if current_user.has_role?(:master) and current_user.id != @session.master_id
       redirect_to home_path
     end
     @match=Match.find(id)
+    @p = Partecipationsmatch.where({session_id: s_id, match_id: id, player_id: current_user.id})
     @master_username = User.find(@session.master_id).username
     if current_user.email.split("@")[1].to_s.casecmp?("test.com")
         @photos=[]
@@ -105,12 +106,14 @@ def create
     @session = Session.find(id)
     id_match = params[:match_id]
   	@match = Match.find(id_match)
+    @p=Partecipationsmatch.where(:session_id => id, :match_id => id_match, :player_id => current_user.id)
   	if @match.like.present?
   	  l = @match.like + 1
   	else
   	  l = 1
   	end
   	@match.update(like: l)
+    @p.update(like: true)
   	redirect_to session_match_path(@session,@match)
   end
 

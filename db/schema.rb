@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_06_02_175951) do
     t.integer "session_id"
     t.integer "match_id"
     t.integer "player_id"
+    t.boolean "like", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
