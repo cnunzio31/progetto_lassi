@@ -10,11 +10,13 @@
   %thead
     %tr
       %th Match Title
+      %th Like
   %tbody
     - @matches.each do |match|
       %tr
         - if !match.status
           %td= match.title
+          %td= match.like
           %td= link_to "Details", session_match_path(@session.id, match)
 %br/
 %br/

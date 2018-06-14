@@ -39,7 +39,8 @@ class MatchesController < ApplicationController
     if current_user.has_role?(:master) and current_user.id != @session.master_id
       redirect_to home_path
     end
-    @matches=@session.matches
+    @matches=@session.matches.sort_by{ |m| m.like}.reverse
+    puts @matches
   end
 
   def show

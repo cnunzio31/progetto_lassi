@@ -23,7 +23,7 @@
         = submit_tag 'Add photo to flickr'
 %br/
 %br/
-- if !(@match.status)
+- if !(@match.status) && current_user.has_role?(:player)
     %h3= "Like: #{@match.like}"
 %br/
 %br/
