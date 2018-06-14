@@ -18,7 +18,8 @@ When /I click on "Details"/ do
     click_on("Details")
 end
 
-Given("I am on the closed match page") do
+Given("I am on the closed match page and i have partecipated to that match") do
+    @p=create(:partecipationmatch1, session_id: @session1.id, match_id: @match1.id, player_id: @player1.id)
     visit session_match_path(@session1.id,@match1.id)
 end
 

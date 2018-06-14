@@ -7,6 +7,6 @@ Scenario: like a closed match
     Given I am on that session's closed matches page
     And There is at least one closed match in the session
     When I click on "Details"
-    Given I am on the closed match page
+    Given I am on the closed match page and i have partecipated to that match
     When I click on "Like!"
     Then I should see the like counter increased by one
