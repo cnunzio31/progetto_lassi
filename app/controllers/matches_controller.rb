@@ -4,13 +4,22 @@ class MatchesController < ApplicationController
     authorize! :new, Match, :message => "You can't create matches"
     id = params[:session_id]
     @session = Session.find(id)
+    @matches=@session.matches.all
+    @matches.each do |match|
+      if match.status==true
+        flash[:notice] = "There is already the match #{match.title} to play. Close it before creating another one"
+        redirect_to session_path(@session) and return
+      end
+    end
+    id = params[:session_id]
+    @session = Session.find(id)
     if current_user.id != @session.master_id
       redirect_to home_path
     end
     @master_username = User.find(@session.master_id).username
   end
 
-  def create
+def create
     authorize! :create, Match, :message => "You can't create matches"
     id = params[:session_id]
     @session = Session.find(id)
@@ -19,17 +28,17 @@ class MatchesController < ApplicationController
     end
     @session.update(status:2)
     @master_username = User.find(@session.master_id).username
-    @matches=Match.all
-    @matches.each do |match|
-      if match.status==true
-        flash[:notice] = "There is already the match #{match.title} to play. Close it before creating another one"
-        redirect_to session_path(@session) and return
-      end
+    if params[:match][:title]==""
+        flash[:warnings] = "Insert Title"
+        redirect_to new_session_match_path(@session)
+    else
+        @match = @session.matches.create(params[:match].permit(:title, :data))
+        puts @match.valid?
+        flash[:notice] = "#{@match.title} was successfully created."
+	    redirect_to session_path(@session)
     end
-  	@match = @session.matches.create!(params[:match].permit(:title, :data))
-  	flash[:notice] = "#{@match.title} was successfully created."
-  	redirect_to session_path(@session)
   end
+
 
   def index
     authorize! :index, Match, :message => "You can't see matches"
@@ -40,7 +49,6 @@ class MatchesController < ApplicationController
       redirect_to home_path
     end
     @matches=@session.matches.sort_by{ |m| m.like}.reverse
-    puts @matches
   end
 
   def show
