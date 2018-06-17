@@ -88,6 +88,12 @@ class SessionsController < ApplicationController
   def create
     authorize! :create, Session, :message => "You can't create new session"
     #post di creazione della sessione del master (va insieme a new)
+    params[:session].each do |p|
+        if p[1]==""
+            flash[:notice] = "Can't create session. Complete all fields!"
+            redirect_to new_session_path and return
+        end
+    end
     @session = Session.create!(params[:session].permit(:title, :date, :location,:version,:session_type ,:description,:private_flag))
     @session.update(master_id:current_user.id,status:1)
     redirect_to session_path(@session.id)
