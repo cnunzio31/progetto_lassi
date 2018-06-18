@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   post 'users/:session_id/user/:player_id/ban', to: 'users#ban', as: 'ban_user'
   get 'users/blockinvitation', to: 'users#blockinvitation', as: 'block_invitation'
+  get 'users/unlockkinvitation', to: 'users#unlockinvitation', as: 'unlock_invitation'
 
   get '/session/:session_id/matches/:match_id/like_match', to: 'matches#like', as: 'i_like_match'
   put '/session/:session_id/matches/:match_id/add_summary', to: 'matches#summary', as: 'add_summary_match'

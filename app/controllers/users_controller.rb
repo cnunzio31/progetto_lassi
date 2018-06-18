@@ -17,7 +17,11 @@ class UsersController < ApplicationController
     current_user.update_attributes(:invitation_flag => false)
     redirect_to home_path
   end
-  def blockinvitation
+
+  def unlockinvitation
+    authorize! :unlockinvitation, User, :message => "You can't unlock invitations"
     #post per bloccare gli inviti di un utente
+    current_user.update_attributes(:invitation_flag => true)
+    redirect_to home_path
   end
 end

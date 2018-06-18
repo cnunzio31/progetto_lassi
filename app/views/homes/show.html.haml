@@ -19,8 +19,12 @@
   %h3= link_to "Invitations", invitations_path
   =form_tag join_sessions_path, :method => :get do
     =submit_tag 'Join a new session'
-  =form_tag block_invitation_path, :method => :get do
-    =submit_tag 'Block invitation'
+  -if current_user.invitation_flag
+    =form_tag block_invitation_path, :method => :get do
+      =submit_tag 'Lock invitation'
+  -else
+    =form_tag unlock_invitation_path, :method => :get do
+      =submit_tag 'Unlock invitation'
   =form_tag edit_user_registration_path, :method => :get do
     =submit_tag 'Change username and password'
 -elsif current_user.has_role?(:admin)

@@ -1,0 +1,1314 @@
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "invitations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "invitations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "matches"[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "matches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "status" boolean DEFAULT 1, "title" varchar, "data" datetime, "summary" varchar, "like" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "partecipations"[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "partecipations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "partecipationsmatches"[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "partecipationsmatches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "match_id" integer, "player_id" integer, "like" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "requests"[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" integer, "player_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "sessions"[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "master_id" integer, "status" integer, "session_type" varchar, "private_flag" boolean DEFAULT 0, "title" varchar, "description" varchar, "date" datetime, "version" varchar, "reported_counter" integer DEFAULT 0, "location" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "username" varchar, "invitation_flag" boolean DEFAULT 1, "roles_mask" integer DEFAULT 4, "provider" varchar, "uid" varchar, "calendar_flag" boolean DEFAULT 0, "current_session_id" integer DEFAULT -1, "current_match_id" integer DEFAULT -1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_uid_and_provider" ON "users" ("uid", "provider")[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (8.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180602175951)[0m
+  [1m[35m (9.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180526092804),
+(20180526132859),
+(20180526093225),
+(20180526094157),
+(20180526093844),
+(20180526090701);
+
+[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-06-18 09:26:25.888689"], ["updated_at", "2018-06-18 09:26:25.888689"]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$E.NXOk1cO/.PRTvzQRS.He9Q/xqQjR1p8Ap9UMrLi.gzhSCBDiChG"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:26:26.302371"], ["updated_at", "2018-06-18 09:26:26.302371"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$0DOo.DFRodf6g6X9yjHyMukC.rSzgBemfF.SgY/PkiE6JTTXV2Fqy"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 09:26:26.310452"], ["updated_at", "2018-06-18 09:26:26.310452"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (43.0ms)
+Completed 200 OK in 389ms (Views: 369.6ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:26:26.801056"], ["last_sign_in_at", "2018-06-18 09:26:26.801056"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:26:26.802041"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 38ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$thX5S3EUmse2eUVMFPwSvungINzpck3ZXxWCCE8MZ7vfteYD1c52m"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:26:26.891106"], ["updated_at", "2018-06-18 09:26:26.891106"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:26:26.908041"], ["last_sign_in_at", "2018-06-18 09:26:26.908041"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:26:26.908586"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 7ms (ActiveRecord: 1.7ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$tsajDgfwc0ROnqRgY48cGegkJqTBUgKd7i9waTfs3OwGmL9BTJ3mG"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:26:26.929255"], ["updated_at", "2018-06-18 09:26:26.929255"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:26:26.944976"], ["last_sign_in_at", "2018-06-18 09:26:26.944976"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:26:26.945455"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$PaT7Kvl6supa5kiev0dVaOoaKYrOd2Uiy2KaONyF6UIxvRAx7U2Ce"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 09:26:26.964108"], ["updated_at", "2018-06-18 09:26:26.964108"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:26:26.980107"], ["last_sign_in_at", "2018-06-18 09:26:26.980107"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:26:26.980693"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:26 +0200
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$7dniyZWWQH7TZouxwG6cPuxM/xAlHd5mF0oKmuaQBHOP8PHKhEv1u"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:26:34.387565"], ["updated_at", "2018-06-18 09:26:34.387565"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$0wvnqm.3ATRJ58N37QZLoeTUVBSzGrWTZvvrrcG0E2c1NtqUBPYau"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 09:26:34.391540"], ["updated_at", "2018-06-18 09:26:34.391540"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (8.4ms)
+Completed 200 OK in 103ms (Views: 95.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:26:34.519935"], ["last_sign_in_at", "2018-06-18 09:26:34.519935"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:26:34.520543"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 23ms (Views: 6.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("master_id", "status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["master_id", 1], ["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:26:34.561139"], ["updated_at", "2018-06-18 09:26:34.561139"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 34ms (Views: 8.0ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Create (0.2ms)[0m  [1m[32mINSERT INTO "matches" ("session_id", "status", "title", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["session_id", 1], ["status", 0], ["title", "Match1"], ["data", "0018-06-18 00:00:00"], ["created_at", "2018-06-18 09:26:34.623702"], ["updated_at", "2018-06-18 09:26:34.623702"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (0.9ms)
+Completed 200 OK in 9ms (Views: 3.3ms | ActiveRecord: 0.6ms)
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.2ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (10.3ms)
+Completed 200 OK in 24ms (Views: 12.1ms | ActiveRecord: 2.3ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipationsmatch Create (0.2ms)[0m  [1m[32mINSERT INTO "partecipationsmatches" ("session_id", "match_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["created_at", "2018-06-18 09:26:34.683109"], ["updated_at", "2018-06-18 09:26:34.683109"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.6ms)
+Started GET "/session/1/matches/1/like_match" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by MatchesController#like as HTML
+  Parameters: {"session_id"=>"1", "match_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "like" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-18 09:26:34.700184"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPartecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipationsmatch Update (0.2ms)[0m  [1m[33mUPDATE "partecipationsmatches" SET "like" = ?, "updated_at" = ? WHERE "partecipationsmatches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-18 09:26:34.704450"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/1/matches/1
+Completed 302 Found in 9ms (ActiveRecord: 1.2ms)
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$voo/HrZ7daUDVHYFJ4fXp.bs6cMzUvAjIO/natIF1D26EhzZzCrMO"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:26:34.721390"], ["updated_at", "2018-06-18 09:26:34.721390"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (24.5ms)
+Completed 200 OK in 27ms (Views: 26.2ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:26:34.762680"], ["last_sign_in_at", "2018-06-18 09:26:34.762680"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:26:34.763440"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 15ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+Started GET "/sessions/new?utf8=%E2%9C%93&commit=Create+a+new+sessions" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create a new sessions"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (84.0ms)
+Completed 200 OK in 91ms (Views: 86.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:26:34.889024"], ["updated_at", "2018-06-18 09:26:34.889024"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/sessions" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"title"=>"Session1", "date(1i)"=>"2018", "date(2i)"=>"6", "date(3i)"=>"18", "location"=>"Roma", "description"=>"Sessione di prova 1", "session_type"=>"Paper", "version"=>"1"}, "commit"=>"Create session"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("session_type", "title", "description", "date", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["session_type", "Paper"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["date", "2018-06-18 00:00:00"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:26:34.901638"], ["updated_at", "2018-06-18 09:26:34.901638"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Update (0.1ms)[0m  [1m[33mUPDATE "sessions" SET "master_id" = ?, "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["master_id", 1], ["status", 1], ["updated_at", "2018-06-18 09:26:34.902933"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/2
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+Started GET "/sessions/2" for 127.0.0.1 at 2018-06-18 11:26:34 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 2], ["player_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 2]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (42.2ms)
+Completed 200 OK in 20088ms (Views: 46.6ms | ActiveRecord: 1.9ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$w2Jzn78LOP3J1qnI0rMeduguhXdgC7K2irHvQqEkm0hytNAhhJwIW"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:26:55.019006"], ["updated_at", "2018-06-18 09:26:55.019006"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:55 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:26:55 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:26:55.058691"], ["last_sign_in_at", "2018-06-18 09:26:55.058691"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:26:55.059558"], ["id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 13ms (ActiveRecord: 1.9ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:26:55 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:26:55 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 13ms (Views: 7.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.3ms)[0m  [1m[32mINSERT INTO "sessions" ("master_id", "status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["master_id", 1], ["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:26:55.090619"], ["updated_at", "2018-06-18 09:26:55.090619"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-18 11:26:55 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (0.9ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 20025ms (ActiveRecord: 2.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$QOeQfd8W9OrdmEh9uaKAVun4f3zUXi3lXdRAIfHCV/9F/6j8YE7Kq"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 09:27:15.146382"], ["updated_at", "2018-06-18 09:27:15.146382"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (5.9ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:27:15.186840"], ["last_sign_in_at", "2018-06-18 09:27:15.186840"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:27:15.188176"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 12ms (ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.5ms)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Log out"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 18ms (ActiveRecord: 1.9ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:27:15 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 10ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$dhtF8pg9kh3Vo2V9fl.G8OHXz/cA.D7FfBwd.HxsrH2k5WJJDRLmu"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:28:31.472166"], ["updated_at", "2018-06-18 09:28:31.472166"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$hrjKBQ2W1zhZb9r08yqcOOdypa6OjVrxnS2CmK3rNYzJ8iQtsr0Ou"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 09:28:31.480222"], ["updated_at", "2018-06-18 09:28:31.480222"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (2.8ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (17.7ms)
+Completed 200 OK in 232ms (Views: 214.1ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:28:31.761788"], ["last_sign_in_at", "2018-06-18 09:28:31.761788"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:28:31.762764"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 16ms (ActiveRecord: 0.8ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (13.6ms)
+Completed 200 OK in 25ms (Views: 18.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.3ms)[0m  [1m[32mINSERT INTO "sessions" ("master_id", "status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["master_id", 1], ["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:28:31.827221"], ["updated_at", "2018-06-18 09:28:31.827221"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.3ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (10.9ms)
+Completed 200 OK in 28ms (Views: 14.6ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Create (0.3ms)[0m  [1m[32mINSERT INTO "matches" ("session_id", "status", "title", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["session_id", 1], ["status", 0], ["title", "Match1"], ["data", "0018-06-18 00:00:00"], ["created_at", "2018-06-18 09:28:31.882392"], ["updated_at", "2018-06-18 09:28:31.882392"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 9ms (Views: 3.4ms | ActiveRecord: 0.6ms)
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.2ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (15.9ms)
+Completed 200 OK in 30ms (Views: 19.4ms | ActiveRecord: 1.9ms)
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipationsmatch Create (0.3ms)[0m  [1m[32mINSERT INTO "partecipationsmatches" ("session_id", "match_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["created_at", "2018-06-18 09:28:31.947416"], ["updated_at", "2018-06-18 09:28:31.947416"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 11ms (Views: 4.9ms | ActiveRecord: 0.9ms)
+Started GET "/session/1/matches/1/like_match" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by MatchesController#like as HTML
+  Parameters: {"session_id"=>"1", "match_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Update (0.5ms)[0m  [1m[33mUPDATE "matches" SET "like" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-18 09:28:31.979150"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPartecipationsmatch Load (0.2ms)[0m  [1m[34mSELECT "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipationsmatch Update (0.2ms)[0m  [1m[33mUPDATE "partecipationsmatches" SET "like" = ?, "updated_at" = ? WHERE "partecipationsmatches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-18 09:28:31.986361"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/1/matches/1
+Completed 302 Found in 17ms (ActiveRecord: 2.2ms)
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 11:28:31 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.2ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.3ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 14ms (Views: 4.6ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$mrGCpSCMCbViaF2xXPZiU.k./HYpp710PxeZ6k6IWMX.PewmkJWOe"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:28:32.022909"], ["updated_at", "2018-06-18 09:28:32.022909"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:28:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (36.6ms)
+Completed 200 OK in 44ms (Views: 40.4ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:28:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:28:32.088201"], ["last_sign_in_at", "2018-06-18 09:28:32.088201"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:28:32.089138"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 1.2ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:28:32 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:28:32 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 9ms (Views: 4.4ms | ActiveRecord: 0.4ms)
+Started GET "/sessions/new?utf8=%E2%9C%93&commit=Create+a+new+sessions" for 127.0.0.1 at 2018-06-18 11:28:32 +0200
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create a new sessions"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (148.1ms)
+Completed 200 OK in 157ms (Views: 152.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.3ms)[0m  [1m[32mINSERT INTO "sessions" ("status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:28:32.288736"], ["updated_at", "2018-06-18 09:28:32.288736"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/sessions" for 127.0.0.1 at 2018-06-18 11:28:32 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"title"=>"Session1", "date(1i)"=>"2018", "date(2i)"=>"6", "date(3i)"=>"18", "location"=>"Roma", "description"=>"Sessione di prova 1", "session_type"=>"Paper", "version"=>"1"}, "commit"=>"Create session"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("session_type", "title", "description", "date", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["session_type", "Paper"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["date", "2018-06-18 00:00:00"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:28:32.314341"], ["updated_at", "2018-06-18 09:28:32.314341"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Update (0.3ms)[0m  [1m[33mUPDATE "sessions" SET "master_id" = ?, "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["master_id", 1], ["status", 1], ["updated_at", "2018-06-18 09:28:32.317414"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/2
+Completed 302 Found in 12ms (ActiveRecord: 1.4ms)
+Started GET "/sessions/2" for 127.0.0.1 at 2018-06-18 11:28:32 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 2], ["player_id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 2]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (31.5ms)
+Completed 200 OK in 20057ms (Views: 36.2ms | ActiveRecord: 2.7ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$5t2FuboAqS/9bE2xlsbuJuz/YhD5yEfGbPvuX/6eraRN3sdwoetmu"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:28:52.405312"], ["updated_at", "2018-06-18 09:28:52.405312"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:28:52 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:28:52 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:28:52.447978"], ["last_sign_in_at", "2018-06-18 09:28:52.447978"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:28:52.449083"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 14ms (ActiveRecord: 2.4ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:28:52 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:28:52 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 15ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (1.2ms)[0m  [1m[32mINSERT INTO "sessions" ("master_id", "status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["master_id", 1], ["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:28:52.482298"], ["updated_at", "2018-06-18 09:28:52.482298"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-18 11:28:52 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (1.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (5.7ms)
+Completed 200 OK in 20038ms (Views: 17.0ms | ActiveRecord: 2.2ms)
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$edL/dZXXCos45wPirKdv0unI/D/I/lHAj5ConVMHlOHKjzhQyhL82"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 09:29:12.542344"], ["updated_at", "2018-06-18 09:29:12.542344"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/session/1/invite" for 127.0.0.1 at 2018-06-18 11:29:12 +0200
+Processing by InvitationsController#new as HTML
+  Parameters: {"s_id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering invitations/new.html.haml within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (roles_mask == 2) AND "users"."invitation_flag" = ?[0m  [["invitation_flag", 1]]
+  Rendered invitations/new.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 24ms (Views: 13.9ms | ActiveRecord: 2.2ms)
+Started POST "/session/1/users/2/invite" for 127.0.0.1 at 2018-06-18 11:29:12 +0200
+Processing by InvitationsController#inviting as HTML
+  Parameters: {"s_id"=>"1", "p_id"=>"2"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInvitation Create (0.3ms)[0m  [1m[32mINSERT INTO "invitations" ("session_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["session_id", 1], ["player_id", 2], ["created_at", "2018-06-18 09:29:12.620969"], ["updated_at", "2018-06-18 09:29:12.620969"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/1
+Completed 302 Found in 26ms (ActiveRecord: 4.3ms)
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-18 11:29:12 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (0.2ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 20032ms (Views: 14.0ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$j7nxJjfug6P9MUOWuBF2m.O5HO2DGoJanZ4QuNN6S6rrUw723dR32"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 09:29:32.701727"], ["updated_at", "2018-06-18 09:29:32.701727"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 09:29:32.740337"], ["last_sign_in_at", "2018-06-18 09:29:32.740337"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 09:29:32.741437"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 13ms (ActiveRecord: 1.1ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.9ms)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Log out"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 11:29:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$uUz/hxkFsh3hXpholXKaXO5YgCefxSrVTK1L5Pkzy2Md2U4qTpXJq"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.368593"], ["updated_at", "2018-06-18 09:29:41.368593"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showcreated.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/showcreated.html.haml within layouts/application (0.6ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 46ms (Views: 11.0ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$QQpldiREtZv6nUO46qmTZeut/mmGh4dZ1hidIeJGsdqt.ZZiFWw0."], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.437358"], ["updated_at", "2018-06-18 09:29:41.437358"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showcreated.html.haml within layouts/application
+  Rendered sessions/showcreated.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$BaqwDuWfPyY6YuFv39YdqOhJUpgqnGzwon4vLMaUAMlvo.SgDiNpq"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.459231"], ["updated_at", "2018-06-18 09:29:41.459231"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showactive.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/showactive.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 9ms (Views: 2.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$460kxOHxINXhBy/OSq19quEdIhpBgbWBPFpvpj1O/k19wZKeMCJU."], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.485080"], ["updated_at", "2018-06-18 09:29:41.485080"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showactive.html.haml within layouts/application
+  Rendered sessions/showactive.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$9/DNsFvpa/MgHYxuEAJ6mePsWjpcr8.aQtPBCJpgcxhhoAswLvxoy"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.507165"], ["updated_at", "2018-06-18 09:29:41.507165"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showclosed.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/showclosed.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 9ms (Views: 1.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$.eK7CyN9mf4lMBTty/gDPuOzqf5O2KERkTzX86Am854bxngBQu6Ae"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.532351"], ["updated_at", "2018-06-18 09:29:41.532351"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showclosed.html.haml within layouts/application
+  Rendered sessions/showclosed.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$G98v9Ojc.BlrHTdVqhl/MO.URbPuVbuhP9U5mVZZ4YR0avjQRE1WK"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.554916"], ["updated_at", "2018-06-18 09:29:41.554916"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/new.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$PDPQZioy188dU2c2DpCLcu41CiA.s8Wcm/VkrlDLOhR8RCN4k.dp6"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 09:29:41.577375"], ["updated_at", "2018-06-18 09:29:41.577375"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"description"=>"bella", "location"=>"Roma", "master_id"=>"1", "title"=>"Session1", "version"=>"1"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: :master_id
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.4ms)[0m  [1m[32mINSERT INTO "sessions" ("title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Session1"], ["description", "bella"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 09:29:41.636075"], ["updated_at", "2018-06-18 09:29:41.636075"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Update (0.3ms)[0m  [1m[33mUPDATE "sessions" SET "master_id" = ?, "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["master_id", 1], ["status", 1], ["updated_at", "2018-06-18 09:29:41.639445"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sessions/1
+Completed 302 Found in 54ms (ActiveRecord: 2.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$I4X4I2bT8BwE9UIAJi2.AO1hpjSAb2uYrzBzq3ktZJ4eCZAadKJ0."], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:24:54.658536"], ["updated_at", "2018-06-18 11:24:54.658536"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$eyv4.2ko8FudZmXPda34ru9vuo58ohJ.zkJeEVaGU7SgZhhd.iXuu"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 11:24:54.661989"], ["updated_at", "2018-06-18 11:24:54.661989"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:54 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (20.2ms)
+Completed 200 OK in 219ms (Views: 211.5ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:54 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 11:24:54.923397"], ["last_sign_in_at", "2018-06-18 11:24:54.923397"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 11:24:54.923871"], ["id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 12ms (ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 13:24:54 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 13:24:54 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (3.4ms)
+Completed 200 OK in 16ms (Views: 5.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("master_id", "status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["master_id", 1], ["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 11:24:54.964533"], ["updated_at", "2018-06-18 11:24:54.964533"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-18 13:24:54 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 19ms (Views: 3.8ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Create (0.1ms)[0m  [1m[32mINSERT INTO "matches" ("session_id", "status", "title", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["session_id", 1], ["status", 0], ["title", "Match1"], ["data", "0018-06-18 00:00:00"], ["created_at", "2018-06-18 11:24:55.001375"], ["updated_at", "2018-06-18 11:24:55.001375"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by MatchesController#index as HTML
+  Parameters: {"session_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT "matches".* FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering matches/index.html.haml within layouts/application
+  Rendered matches/index.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.3ms)
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.1ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 4.7ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipationsmatch Create (0.2ms)[0m  [1m[32mINSERT INTO "partecipationsmatches" ("session_id", "match_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["created_at", "2018-06-18 11:24:55.033041"], ["updated_at", "2018-06-18 11:24:55.033041"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+Started GET "/session/1/matches/1/like_match" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by MatchesController#like as HTML
+  Parameters: {"session_id"=>"1", "match_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Update (0.1ms)[0m  [1m[33mUPDATE "matches" SET "like" = ?, "updated_at" = ? WHERE "matches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-18 11:24:55.047336"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mPartecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipationsmatch Update (0.1ms)[0m  [1m[33mUPDATE "partecipationsmatches" SET "like" = ?, "updated_at" = ? WHERE "partecipationsmatches"."id" = ?[0m  [["like", 1], ["updated_at", "2018-06-18 11:24:55.049717"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/1/matches/1
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms)
+Started GET "/sessions/1/matches/1" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by MatchesController#show as HTML
+  Parameters: {"session_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMatch Load (0.0ms)[0m  [1m[34mSELECT  "matches".* FROM "matches" WHERE "matches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering matches/show.html.haml within layouts/application
+  [1m[36mPartecipationsmatch Load (0.1ms)[0m  [1m[34mSELECT  "partecipationsmatches".* FROM "partecipationsmatches" WHERE "partecipationsmatches"."session_id" = ? AND "partecipationsmatches"."match_id" = ? AND "partecipationsmatches"."player_id" = ? ORDER BY "partecipationsmatches"."id" ASC LIMIT ?[0m  [["session_id", 1], ["match_id", 1], ["player_id", 2], ["LIMIT", 1]]
+  Rendered matches/show.html.haml within layouts/application (0.9ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$xcsA8Ehs0mwN7bxJQgYbg.LtrPZuce46xWi/OFKmZGKCzPdol5AMC"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:24:55.067773"], ["updated_at", "2018-06-18 11:24:55.067773"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (24.1ms)
+Completed 200 OK in 26ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 11:24:55.103598"], ["last_sign_in_at", "2018-06-18 11:24:55.103598"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 11:24:55.104166"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 14ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+Started GET "/sessions/new?utf8=%E2%9C%93&commit=Create+a+new+sessions" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Create a new sessions"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/new.html.haml within layouts/application
+  Rendered sessions/new.html.haml within layouts/application (81.0ms)
+Completed 200 OK in 87ms (Views: 82.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 11:24:55.220505"], ["updated_at", "2018-06-18 11:24:55.220505"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/sessions" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"title"=>"Session1", "date(1i)"=>"2018", "date(2i)"=>"6", "date(3i)"=>"18", "location"=>"Roma", "description"=>"Sessione di prova 1", "session_type"=>"Paper", "version"=>"1"}, "commit"=>"Create session"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("session_type", "title", "description", "date", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["session_type", "Paper"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["date", "2018-06-18 00:00:00"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 11:24:55.232187"], ["updated_at", "2018-06-18 11:24:55.232187"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Update (0.1ms)[0m  [1m[33mUPDATE "sessions" SET "master_id" = ?, "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["master_id", 1], ["status", 1], ["updated_at", "2018-06-18 11:24:55.233609"], ["id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/2
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+Started GET "/sessions/2" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 2], ["player_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 2]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (39.1ms)
+Completed 200 OK in 182ms (Views: 43.0ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$eF.9JFtn6w3EMIiOv8j7iO/EyQQt.ntwflZFavZlv/ppwmAt28Tra"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:24:55.433596"], ["updated_at", "2018-06-18 11:24:55.433596"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"master1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 11:24:55.459305"], ["last_sign_in_at", "2018-06-18 11:24:55.459305"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 11:24:55.459980"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 0.7ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 8ms (Views: 4.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("master_id", "status", "session_type", "title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["master_id", 1], ["status", 2], ["session_type", "1.0"], ["title", "Session1"], ["description", "Sessione di prova 1"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 11:24:55.479245"], ["updated_at", "2018-06-18 11:24:55.479245"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (0.1ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 137ms (Views: 12.6ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$c9kXu8jdxT54Q0Bl8bucEeJSfOKg0BGSzegPkuCwZsdR8EWzeocNC"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 11:24:55.635265"], ["updated_at", "2018-06-18 11:24:55.635265"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/session/1/invite" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by InvitationsController#new as HTML
+  Parameters: {"s_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering invitations/new.html.haml within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (roles_mask == 2) AND "users"."invitation_flag" = ?[0m  [["invitation_flag", 1]]
+  Rendered invitations/new.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 25ms (Views: 12.8ms | ActiveRecord: 1.5ms)
+Started POST "/session/1/users/2/invite" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by InvitationsController#inviting as HTML
+  Parameters: {"s_id"=>"1", "p_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mInvitation Create (0.6ms)[0m  [1m[32mINSERT INTO "invitations" ("session_id", "player_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["session_id", 1], ["player_id", 2], ["created_at", "2018-06-18 11:24:55.713017"], ["updated_at", "2018-06-18 11:24:55.713017"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sessions/1
+Completed 302 Found in 23ms (ActiveRecord: 2.2ms)
+Started GET "/sessions/1" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSession Load (0.2ms)[0m  [1m[34mSELECT  "sessions".* FROM "sessions" WHERE "sessions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPartecipation Load (0.9ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Partecipation Load (0.0ms)[0m  [1m[34mSELECT "partecipations".* FROM "partecipations" WHERE "partecipations"."session_id" = ?[0m  [["session_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "partecipations" WHERE "partecipations"."session_id" = ? AND "partecipations"."player_id" = ?[0m  [["session_id", 1], ["player_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "matches" WHERE "matches"."session_id" = ?[0m  [["session_id", 1]]
+  Rendering sessions/show.html.haml within layouts/application
+  Rendered sessions/show.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 149ms (Views: 14.4ms | ActiveRecord: 3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "player1@test.com"], ["encrypted_password", "$2a$04$3bwlXaXULjemrARyAg30peYJcelaJfsZJTfsB6rHzC7p3IZOY4VdS"], ["username", "player1"], ["roles_mask", 2], ["created_at", "2018-06-18 11:24:55.894892"], ["updated_at", "2018-06-18 11:24:55.894892"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"player1@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "player1@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-06-18 11:24:55.918634"], ["last_sign_in_at", "2018-06-18 11:24:55.918634"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2018-06-18 11:24:55.919778"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 1.2ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by HomesController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering homes/show.html.haml within layouts/application
+  Rendered homes/show.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 7ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "commit"=>"Log out"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 49ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Started GET "/home" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by HomesController#show as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-06-18 13:24:55 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$rxIZB8J78DsjY9Fmyozh9uCGEpWrLa3PlvqLFQA7TpWxR3vN7zT62"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:34.937399"], ["updated_at", "2018-06-18 11:25:34.937399"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showcreated.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/showcreated.html.haml within layouts/application (1.4ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 35ms (Views: 10.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$lOZJqVLId3PHeNvtyYWtQ.6bI5pUfHMpkl1H5uQqUVeFzGO4Es9da"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:34.992571"], ["updated_at", "2018-06-18 11:25:34.992571"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showcreated as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showcreated.html.haml within layouts/application
+  Rendered sessions/showcreated.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$s86iAXNeXV64V3VbRf9cmucfVHt/M45kRg66x7Nhg3z/Zul.2JEB."], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:35.017358"], ["updated_at", "2018-06-18 11:25:35.017358"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showactive.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/showactive.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 11ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$k24ZFX3d6hFqD5CFt.pG.OV4zYp1uSP6bKjqWkb/C0W3Prt/osA8q"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:35.044572"], ["updated_at", "2018-06-18 11:25:35.044572"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showactive as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showactive.html.haml within layouts/application
+  Rendered sessions/showactive.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$is.W1Jgsy2rbCH3oUGRdCeAicZzoRf6frJpcJfajKTT7cYkxsrIYq"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:35.066456"], ["updated_at", "2018-06-18 11:25:35.066456"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showclosed.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/showclosed.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 11ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$RnM4LK7Cfz8P3j4ayFW1EOE6angWU66Fh1tOhE2Kc/ev/VmMjCRH6"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:35.094322"], ["updated_at", "2018-06-18 11:25:35.094322"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#showclosed as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/showclosed.html.haml within layouts/application
+  Rendered sessions/showclosed.html.haml within layouts/application (0.2ms)
+Completed 200 OK in 7ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$S3s1s0dDKrBa.voTd0DxKu5ihSuJADG9eDdusHS4TPThih0bBNCx6"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:35.115864"], ["updated_at", "2018-06-18 11:25:35.115864"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sessions/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sessions/new.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "master1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "roles_mask", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "master1@test.com"], ["encrypted_password", "$2a$04$/ngcjkidC8jLHyBbdF.xG./M2k3VxSlR0IJ2wH4okwynzLsBtUDDK"], ["username", "master1"], ["roles_mask", 1], ["created_at", "2018-06-18 11:25:35.139021"], ["updated_at", "2018-06-18 11:25:35.139021"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"description"=>"bella", "location"=>"Roma", "master_id"=>"1", "title"=>"Session1", "version"=>"1"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: :master_id
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.4ms)[0m  [1m[32mINSERT INTO "sessions" ("title", "description", "version", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "Session1"], ["description", "bella"], ["version", "1"], ["location", "Roma"], ["created_at", "2018-06-18 11:25:35.192666"], ["updated_at", "2018-06-18 11:25:35.192666"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Update (0.3ms)[0m  [1m[33mUPDATE "sessions" SET "master_id" = ?, "status" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["master_id", 1], ["status", 1], ["updated_at", "2018-06-18 11:25:35.196250"], ["id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sessions/1
+Completed 302 Found in 50ms (ActiveRecord: 3.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
